@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2019 a las 08:45:19
+-- Tiempo de generación: 17-10-2019 a las 12:57:34
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -21,6 +21,36 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `erronkagrupo4bd`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarUsuario` (IN `pidUsuario` INT(11), IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` VARCHAR(40))  NO SQL
+UPDATE usuarios SET usuarios.nombre = pnombre, usuarios.apellido = papellido, usuarios.telefono = ptelefono, usuarios.dni = pdni, usuarios.tipo = ptipo WHERE usuarios.idUsuario = pidUsuario$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarVehiculo` (IN `pidVehiculo` VARCHAR(11), IN `pnombre` VARCHAR(40), IN `pmodelo` VARCHAR(40), IN `ppotencia` VARCHAR(40))  NO SQL
+UPDATE vehiculos SET vehiculos.nombre = pnombre, vehiculos.modelo = pmodelo, vehiculos.potencia = ppotencia$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `añadirReserva` (IN `pfechaReserva` DATE, IN `pfechaReservada` DATE, IN `phoraInicio` TIMESTAMP, IN `phoraFin` TIMESTAMP, IN `pidUsuario` INT(11), IN `pidVehiculo` INT(11))  NO SQL
+INSERT INTO reservas (reservas.fechaReserva, reservas.fechaReservada, reservas.horaInicio, reservas.horaFin, reservas.idUsuario, reservas.idVehiculo) VALUES (pfechaReserva, pfechaReservada, phoraInicio, phoraFin, pidUsuario, pidVehiculo)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `añadirUsuario` (IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` VARCHAR(40))  NO SQL
+INSERT INTO usuarios (usuarios.nombre, usuarios.apellido, usuarios.telefono, usuarios.dni, usuarios.tipo) VALUES (pnombre, papellido, ptelefono, pdni, ptipo)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `añadirVehiculo` (IN `pnombre` VARCHAR(40), IN `pmodelo` VARCHAR(40), IN `ppotencia` VARCHAR(40))  NO SQL
+INSERT INTO vehiculos (vehiculos.nombre, vehiculos.modelo, vehiculos.potencia) VALUES (pnombre, pmodelo, ppotencia)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarReserva` (IN `pidReserva` INT)  NO SQL
+DELETE FROM reservas WHERE reservas.idReserva = pidReserva$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarUsuario` (IN `pusuario` INT)  NO SQL
+DELETE FROM usuarios WHERE usuarios.idUsuario = pusuario$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarVehiculo` (IN `pidVehiculo` INT(11))  NO SQL
+DELETE FROM vehiculos WHERE vehiculos.idVehiculo = pidVehiculo$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
