@@ -1,0 +1,5 @@
+Nombre de la página web: EcoTransport.com 
+Navbar de index.php -> Eder
+Foto con botones con imagen de fondo de index.php -> Xarles
+vAdmin crear las tablas de index.php -> Jon
+Vehiculos reserva de index.php -> Eukene
