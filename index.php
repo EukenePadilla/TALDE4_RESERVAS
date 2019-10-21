@@ -51,6 +51,48 @@
 </nav>
 <body>
 <!-- ////////////////////////////XARLES////////////////////////////// -->
+<!--/.container-->
+    <div class="container-fluid">
+            
+        <div class="row d-flex flex-row d-custom">
+            <div class="col text-center">
+                    <div class="card" >
+                            <a href="#">
+                        <img src="images/OrtlerBozenPerformanceTrapez.jpg" class="card-img-top" alt="Bicicleta">
+                        <div class="card-body">
+                            <a href="#" class="btn btn-primary btn-block">Bicicletas</a></a>
+                        </div>
+                    </div>
+            </div>
+            <div class="col text-center">
+                    <div class="card" >
+                            <a href="#">
+                        <img src="images/XiaomiMiScooterM365.jpg" class="card-img-top" alt="Patinetes">
+                        <div class="card-body">
+                            <a href="#" class="btn btn-primary btn-block">Patinetes</a></a>
+                        </div>
+                    </div>
+            </div>
+            <div class="col text-center">
+                    <div class="card" >
+                            <a href="#">
+                        <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="Monopatín">
+                        <div class="card-body">
+                            <a href="#" class="btn btn-primary btn-block">Monopatín</a></a>
+                        </div>
+                    </div>
+            </div>
+            <div class="col text-center">
+                    <div class="card" >
+                            <a href="#">
+                        <img src="images/BMWi3.jpg" class="card-img-top" alt="Coche">
+                        <div class="card-body">
+                            <a href="#" class="btn btn-primary btn-block">Coche</a></a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
 
 
 <!-- /////////////////////EUKENE//////////////////////////// -->

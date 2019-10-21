@@ -4,6 +4,25 @@
 	margin-left:50px!important;
 }
 /////////////////NAVBAR///////////////
+////////////////FRONTAL//////////////
+.d-custom{
+  width: 33% 33% 33%;
+  height: 600px;
+}
+.container > div{
+  width: 100%;
+  background-image: url("../../images/fondoDiv.jpg");
+  display: flex;
+  align-items: center!important;
+  justify-content: center!important;
+
+}
+div img{
+  width: 200px;
+  height: 200px;
+}
+////////////////FRONTAL//////////////
+
 
 /////////////RESERVAS//////////////////
 
