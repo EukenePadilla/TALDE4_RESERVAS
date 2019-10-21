@@ -41,7 +41,7 @@ class userModel extends userClass
     {
         // echo "$idEditorial"; //ok
         $this->OpenConnect();
-        $sql = "CALL spEncontrarIdUsuario($idUsuario)";
+        $sql = "CALL spFindIdUsuario($idUsuario)";
         
         $result = $this->link->query($sql);
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -65,7 +65,7 @@ class userModel extends userClass
     public function setList()
     {
         $this->OpenConnect();  // konexioa zabaldu  - abrir conexión
-        $sql = "CALL spSeleccionarTodosUsuarios()"; // SQL sententzia - sentencia SQL
+        $sql = "CALL spSelectAllUsuarios()"; // SQL sententzia - sentencia SQL
         
         $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
         // se guarda en result toda la información solicitada a la bbdd
