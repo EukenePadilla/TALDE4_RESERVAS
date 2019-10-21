@@ -86,7 +86,7 @@ class vehiculoModel extends vehiculoClass
 //             $nuevoVehiculo->listaVehiculos=$user->findEditorialBooks($row['idEditorial']);
 //             // honek itzultzen digu editorial bateko liburu guztien zerrenda
             
-            array_push($this->list, $nuevaEditorial);
+            array_push($this->list, $nuevoVehiculo);
         }
         mysqli_free_result($result);
 //         unset($listaLibrosEditorial);
