@@ -38,6 +38,10 @@ div img{
     background-color: gray;
 }
 
+.reservas_v_container>div>div>h2{
+	color:white;
+}
+
 /////////////RESERVAS//////////////////
 
 /* Esto se aplica para la vista vAdmin.php */
