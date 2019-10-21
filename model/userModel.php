@@ -9,7 +9,7 @@ class userModel extends userClass
 {
     private $link;
     private $list=array();         //editorial guztien lista - lista de todas editoriales
-    private $listaUsers=array(); // editorial honen liburu guztiak - libros de una editorial
+    private $listaUsuarios=array(); // editorial honen liburu guztiak - libros de una editorial
     
     public function getList() {
         return $this->list;
@@ -41,7 +41,7 @@ class userModel extends userClass
     {
         // echo "$idEditorial"; //ok
         $this->OpenConnect();
-        $sql = "CALL spFindIdUsuario($idUsuario)";
+        $sql = "CALL spEncontrarIdUsuario($idUsuario)";
         
         $result = $this->link->query($sql);
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -65,7 +65,7 @@ class userModel extends userClass
     public function setList()
     {
         $this->OpenConnect();  // konexioa zabaldu  - abrir conexión
-        $sql = "CALL spAllUsuarios()"; // SQL sententzia - sentencia SQL
+        $sql = "CALL spSeleccionarTodosUsuarios()"; // SQL sententzia - sentencia SQL
         
         $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
         // se guarda en result toda la información solicitada a la bbdd
