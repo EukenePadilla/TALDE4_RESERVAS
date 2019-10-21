@@ -2,8 +2,9 @@
 
 include_once ("connect_data.php");
 include_once ("vehiculoClass.php");
-include_once ("reservaModel.php");
 include_once ("userModel.php");
+include_once ("reservaClass.php");
+
 
 class vehiculoModel extends vehiculoClass
 {
