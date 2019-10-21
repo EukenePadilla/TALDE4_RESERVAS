@@ -41,7 +41,7 @@ class vehiculoModel extends vehiculoClass
     {
         // echo "$idEditorial"; //ok
         $this->OpenConnect();
-        $sql = "CALL spFindIdVehiculo($idVehiculo)";
+        $sql = "CALL spEncontrarIdVehiculo($idVehiculo)";
         
         $result = $this->link->query($sql);
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -65,7 +65,7 @@ class vehiculoModel extends vehiculoClass
     public function setList()
     {
         $this->OpenConnect();  // konexioa zabaldu  - abrir conexión
-        $sql = "CALL spAllVehiculos()"; // SQL sententzia - sentencia SQL
+        $sql = "CALL spSeleccionarTodosVehiculos()"; // SQL sententzia - sentencia SQL
         
         $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
         // se guarda en result toda la información solicitada a la bbdd
@@ -86,7 +86,7 @@ class vehiculoModel extends vehiculoClass
 //             $nuevoVehiculo->listaVehiculos=$user->findEditorialBooks($row['idEditorial']);
 //             // honek itzultzen digu editorial bateko liburu guztien zerrenda
             
-            array_push($this->list, $nuevaEditorial);
+            array_push($this->list, $nuevoVehiculo);
         }
         mysqli_free_result($result);
 //         unset($listaLibrosEditorial);
