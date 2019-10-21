@@ -51,6 +51,7 @@ class vehiculoModel extends vehiculoClass
             $this->setModel($row['modelo']);
             $this->setPotencia($row['potencia']);
             $this->setImg($row['img']);
+            $this->setTipo($row['tipo']);
             
             //echo $row['nombreEditorial'];  //ok
             //  echo $new->getNombreEditorial();  //ok
@@ -77,6 +78,7 @@ class vehiculoModel extends vehiculoClass
             $nuevoVehiculo->setModel($row['modelo']);
             $nuevoVehiculo->setPotencia($row['potencia']);
             $nuevoVehiculo->setImg($row['img']);
+            $nuevoVehiculo->setTipo($row['tipo']);
             
             
 //             $user=new userModel(); //para llamar a la función de libro_model
