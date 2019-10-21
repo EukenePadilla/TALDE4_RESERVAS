@@ -20,3 +20,52 @@
 }
 
 /////////////RESERVAS//////////////////
+
+/* Esto se aplica para la vista vAdmin.php */
+
+header{
+	height:100px;
+	background-image:url(../../images/logo.png);
+	background-size:contain;
+	text-align:center;
+}
+
+#paneladmin{
+	display:grid;
+	grid-template-columns: repeat(auto-fit,300px);
+	grid-gap:15px;
+	text-align:center;
+	margin:auto;
+	
+}
+.panel{
+	text-align:center;
+}
+.panel ul{
+	border: 2px solid black;
+	text-align:right;
+}
+.panel li{
+	list-style:none;
+	border:5px solid white;
+}
+.delete{
+	background-color:red;
+	color:white;
+	border-color:red;
+	border-radius:5px;
+}
+.update{
+	background-color:green;
+	color:white;
+	border-color:green;
+	border-radius:5px;
+}
+.insert{
+	background-color:cornblue;
+	color:white;
+	border-color:cornblue;
+	border-radius:5px;
+}
+
+/* Esto se aplica para la vista vAdmin.php */
