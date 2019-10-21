@@ -4,3 +4,19 @@
 	margin-left:50px!important;
 }
 /////////////////NAVBAR///////////////
+
+/////////////RESERVAS//////////////////
+
+.reservas_vehiculos{
+    margin-top:3%;
+    margin-bottom:3%;
+}
+.reservas_v_container{
+    background-color: gray;
+}
+
+.titulo_reservas{
+    background-color: gray;
+}
+
+/////////////RESERVAS//////////////////

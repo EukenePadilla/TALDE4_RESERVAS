@@ -52,6 +52,205 @@
 <body>
 <!-- /////////////////////EUKENE//////////////////////////// -->
 
+<!-- ////////////////////////////////////////////////////////////////////////
+    ///////////////////////RESERVAS/////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////// -->
+
+
+    <div class="container-fluid reservas_v_container">
+        <div class="row">
+            <div class="col-12 bg-dark border border-dark rounded-pill">
+              <h2 class="text-center ">BICICLETAS</h2>
+            </div>
+        </div>
+        <div class="row reservas_vehiculos">
+            <!-- <div class="card-deck"> -->
+
+                <div class="col-1"></div>
+
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+                
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+<!-- </div> -->
+        </div>
+        <div class="row">
+            <div class="col-12 bg-dark border border-dark rounded-pill">
+                <h2 class="text-center ">PATINETES</h2>
+            </div>
+        </div>
+        <div class="row reservas_vehiculos">
+                <div class="col-1"></div>
+                
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+                
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+
+        </div>
+        <div class="row">
+                <div class="col-12 bg-dark border border-dark rounded-pill">
+                    <h2 class="text-center">MONOPATIN</h2>
+                </div>
+            </div>
+            <div class="row reservas_vehiculos">
+                <div class="col-1"></div>
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+                
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+
+        </div>
+        <div class="row">
+                <div class="col-12 bg-dark border border-dark rounded-pill">
+                    <h2 class="text-center">OTROS</h2>
+                </div>
+            </div>
+            <div class="row reservas_vehiculos">
+                <div class="col-1"></div>
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+                
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+                <div class="col-1"></div>
+
+                <div class="card col" >
+                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+
+        </div>                            
+      </div>
 
 
 
