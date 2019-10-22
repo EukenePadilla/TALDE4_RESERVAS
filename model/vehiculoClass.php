@@ -5,8 +5,8 @@ class vehiculoClass{
     protected $nombre;
     protected $modelo;
     protected $potencia;
-    protected $tipo;
     protected $img;
+    protected $tipo;
     /**
      * @return mixed
      */

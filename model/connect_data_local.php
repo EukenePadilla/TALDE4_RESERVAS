@@ -1,11 +1,11 @@
 <?php
 
 
-class connect_data
+class connect_data_local
 {
     public $host='localhost';
     public $userbbdd='root';
     public $passbbdd='';
-    public $ddbbname='2aw3_peli';
+    public $ddbbname='cuatrofp_erronkagrupo4bd';
 }
 
