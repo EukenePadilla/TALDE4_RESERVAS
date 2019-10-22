@@ -135,6 +135,23 @@
                             <?php } ?>
                     </table>
 
+
+<?php               
+                            foreach ($listaVehiculos as $vehiculo)
+                            {       
+                         ?>
+                         	      <div class="card col" >
+                         	      <img src="<?php echo $vehiculo->getImg();?>" class="card-img-top" alt="<?php echo $vehiculo->getImg();?> ">
+                         	
+                                   <td><?php echo $vehiculo->getIdVehiculo();?></td>
+                                   <td><?php echo $vehiculo->getNombre();?></td>
+                                   <td><?php echo $vehiculo->getModelo();?></td>
+                                   <td><?php echo $vehiculo->getPotencia();?></td>
+								   <td><img src="<?php echo $vehiculo->getImg();?>"></td>
+                                   <td><?php echo $vehiculo->getTipo();?></td>
+                                   	
+                    	</tr>
+                            <?php } ?>
                 <div class="card col" >
                     <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
