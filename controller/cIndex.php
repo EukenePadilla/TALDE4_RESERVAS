@@ -1,5 +1,5 @@
 <?php
-include_once ("../model/vehiculoModel.php");
+include_once ("model/vehiculoModel.php");
 
 $vehiculo= new vehiculoModel();
 $vehiculo->setList();

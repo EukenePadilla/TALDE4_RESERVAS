@@ -1,6 +1,6 @@
 <?php
 
-include_once ("connect_data.php");
+include_once ("connect_data_local.php");
 include_once ("userClass.php");
 include_once ("reservaModel.php");
 include_once ("vehiculoModel.php");

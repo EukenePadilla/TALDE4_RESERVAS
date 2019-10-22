@@ -1,12 +1,12 @@
 <?php
 
-include_once ("connect_data.php");
+include_once ("connect_data_local.php");
 include_once ("vehiculoClass.php");
 include_once ("userModel.php");
 include_once ("reservaClass.php");
 
 
-class vehiculoModel extends vehiculoClass
+class reservaModel extends reservaClass
 {
     private $link;
     private $list=array();         //editorial guztien lista - lista de todas editoriales

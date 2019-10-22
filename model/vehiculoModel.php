@@ -1,6 +1,6 @@
 <?php
 
-include_once ("connect_data.php");
+include_once ("connect_data_local.php");
 include_once ("vehiculoClass.php");
 include_once ("reservaModel.php");
 include_once ("userModel.php");
@@ -17,7 +17,7 @@ class vehiculoModel extends vehiculoClass
     
     public function OpenConnect()
     {
-        $konDat=new connect_data();
+        $konDat=new connect_data_local();
         try
         {
             $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);
@@ -72,10 +72,10 @@ class vehiculoModel extends vehiculoClass
         
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             
-            $nuevoVehiculo=new self();
+            $nuevoVehiculo=new vehiculoModel();
             $nuevoVehiculo->setIdVehiculo($row['idVehiculo']);
             $nuevoVehiculo->setNombre($row['nombre']);
-            $nuevoVehiculo->setModel($row['modelo']);
+            $nuevoVehiculo->setModelo($row['modelo']);
             $nuevoVehiculo->setPotencia($row['potencia']);
             $nuevoVehiculo->setImg($row['img']);
             $nuevoVehiculo->setTipo($row['tipo']);
@@ -92,6 +92,7 @@ class vehiculoModel extends vehiculoClass
 //         unset($listaLibrosEditorial);
         $this->CloseConnect();
     }
+    
     
 }
 ?>

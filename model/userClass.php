@@ -1,6 +1,6 @@
 <?php
 
-class vehiculoClass{
+class userClass{
     protected $idUsuario;
     protected $nombre;
     protected $apellido;

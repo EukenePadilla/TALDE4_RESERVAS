@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php 
+//     $DR = $_SERVER['DOCUMENT_ROOT'];
+    include_once ("controller/cIndex.php");
+?>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -113,8 +117,26 @@
 
                 <div class="col-1"></div>
 
+                <table name="tablaVehiculos" border="1">
+                         <?php
+                         
+                            foreach ($listaVehiculos as $vehiculo)
+                            {       
+                         ?>
+                         	<tr>
+                                   <td><?php echo $vehiculo->getIdVehiculo();?></td>
+                                   <td><?php echo $vehiculo->getNombre();?></td>
+                                   <td><?php echo $vehiculo->getModelo();?></td>
+                                   <td><?php echo $vehiculo->getPotencia();?></td>
+								   <td><img src="<?php echo $vehiculo->getImg();?>"></td>
+                                   <td><?php echo $vehiculo->getTipo();?></td>
+                                   	
+                    	</tr>
+                            <?php } ?>
+                    </table>
+
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -124,7 +146,7 @@
                 <div class="col-1"></div>
 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -134,7 +156,7 @@
                 <div class="col-1"></div>
                 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -144,7 +166,7 @@
                 <div class="col-1"></div>
 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -162,7 +184,7 @@
                 <div class="col-1"></div>
                 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -172,7 +194,7 @@
                 <div class="col-1"></div>
 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -182,7 +204,7 @@
                 <div class="col-1"></div>
                 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -192,7 +214,7 @@
                 <div class="col-1"></div>
 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -209,7 +231,7 @@
             <div class="row reservas_vehiculos">
                 <div class="col-1"></div>
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -219,7 +241,7 @@
                 <div class="col-1"></div>
 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -229,7 +251,7 @@
                 <div class="col-1"></div>
                 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -239,7 +261,7 @@
                 <div class="col-1"></div>
 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -256,7 +278,7 @@
             <div class="row reservas_vehiculos">
                 <div class="col-1"></div>
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -266,7 +288,7 @@
                 <div class="col-1"></div>
 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -276,7 +298,7 @@
                 <div class="col-1"></div>
                 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -286,7 +308,7 @@
                 <div class="col-1"></div>
 
                 <div class="card col" >
-                    <img src="images/ACTONBLINKLITE450W.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>

@@ -1,6 +1,6 @@
 <?php
 
-class vehiculoClass{
+class reservaClass{
     protected $idReserva;
     protected $fechaReserva;
     protected $fechaReservada;
