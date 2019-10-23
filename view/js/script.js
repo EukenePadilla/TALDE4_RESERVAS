@@ -145,33 +145,31 @@ $(document).ready(function(){
 
             	 $(".reservas_v_container").append("<div class='row'>" +
              	 		"<div class='col-12 bg-dark border border-dark rounded-pill'>"+
-                    "<h2 class='text-center '>"+mota+"</h2></div></div>");
+                    "<h2 class='text-center '>"+mota+"</h2></div></div>"+ "<div class='row reservas_vehiculos "+mota+"'>" );
+            	 
+                 $.each(midato,function(i,dato){
+//                	 $("."+mota).append(`<div class="card mx-auto col-2" >
+//                	 <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">
+//                	  		  <div class="card-body">
+//                	           <p class="card-text">
+//                	           Nombre: `+dato.nombre+`<br>
+//                	           Modelo: `+dato.modelo+` <br>
+//                	           Potencia: `+dato.potencia+` <br>
+//                	           Tipo: `+dato.tipo+`</p>
+//                	           </div>
+//                	           </div>
+//                	            
+//                	       </div>`
+/*                		 alert("hola");
+*/                		 
+                	 });/*termina el each con el que se sacan los podructos por tipo*/
                  });/*termina aqui el each de los titulos*/
             	 
              
              
              
              
-            	/* 
-
-                                   
-                     + "<div class='row reservas_vehiculos'>"                                 
-         if(dato.tipo=="Bicicleta"){	
-  	      <div class="card mx-auto col-2" >
-  	      <img src="<?php echo $vehiculo->getImg();?>" class="card-img-top" alt="<?php echo $vehiculo->getImg();?> ">
-  		  <div class="card-body">
-           <p class="card-text">
-           Nombre: <?php echo $vehiculo->getNombre();?> <br>
-           Modelo: <?php echo $vehiculo->getModelo();?> <br>
-           Potencia: <?php echo $vehiculo->getPotencia();?> <br>
-           Tipo: <?php echo $vehiculo->getTipo();?></p>
-           </div>
-           </div>
-            
-       </div>
-            	 ")
-                 
-*/
+            	
            
         },
         error: function(xhr){
