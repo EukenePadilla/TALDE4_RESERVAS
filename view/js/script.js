@@ -153,7 +153,7 @@ function iniciar_frontal(){
                  $.each(midato,function(i,dato){
                 	 if(m!=dato.tipo){
                 		 m=dato.tipo;
-                		 $(".frontal_container").append(`<div class="mx-auto col-2 text-center">
+                		 $(".frontal_container").append(`<div class="mx-auto col-3 text-center">
                                  <div class="card card_frontal" >
                                          <a href="#">
                                      <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">

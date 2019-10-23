@@ -7,12 +7,15 @@
 ////////////////FRONTAL//////////////
 .card_frontal{
 	display:block;
-	width:20%!important;
+	
 }
 
 .d-custom{
+	justify-content:center;
+	align-items:center;
+	    background-color: gray;
+	height:700px;
   width: 33% 33% 33%;
-  height: 600px;
 }
 .container > div{
   width: 100%;
