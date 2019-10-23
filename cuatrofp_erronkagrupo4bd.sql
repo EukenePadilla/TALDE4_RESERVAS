@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 22-10-2019 a las 12:50:48
--- Versión del servidor: 10.1.41-MariaDB
--- Versión de PHP: 7.2.18
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 23-10-2019 a las 13:04:33
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,19 +44,11 @@ SELECT * FROM reservas$$
 CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spSelectAllUsuarios` ()  NO SQL
 SELECT * FROM usuarios$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spSelectAllVehiculos` ()  NO SQL
-SELECT * FROM vehiculos$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSelectAllVehiculos` ()  NO SQL
+SELECT * FROM `vehiculos` order by vehiculos.tipo$$
 
-$$
-
-$$
-
-$$
-
-$$
-
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spSelectVehiculosPorTipo` (IN `ptipo` VARCHAR(50))  NO SQL
-SELECT * FROM vehiculos WHERE vehiculos.tipo = ptipo$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSelectTipos` ()  NO SQL
+SELECT DISTINCT vehiculos.tipo FROM vehiculos$$
 
 CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spUpdateUsuario` (IN `pidUsuario` INT(11), IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` VARCHAR(40))  NO SQL
 UPDATE usuarios SET usuarios.nombre = pnombre, usuarios.apellido = papellido, usuarios.telefono = ptelefono, usuarios.dni = pdni, usuarios.tipo = ptipo WHERE usuarios.idUsuario = pidUsuario$$
@@ -129,10 +121,10 @@ INSERT INTO `vehiculos` (`idVehiculo`, `nombre`, `modelo`, `potencia`, `img`, `t
 (10, 'Moma', 'BikeE', '250w', 'https://images-na.ssl-images-amazon.com/images/I/81N0yvd7JLL._SL1500_.jpg', 'Bicicleta'),
 (11, 'Xiaomi', 'Qicycle', '250w', 'https://images-na.ssl-images-amazon.com/images/I/71HM90eCFiL._SL1500_.jpg', 'Bicicleta'),
 (12, 'NCM', 'Milano', '250w', 'https://images-na.ssl-images-amazon.com/images/I/719ng2UDN%2BL._SL1500_.jpg', 'Bicicleta'),
-(13, 'Hyundai', 'Kona EV', '64kw', 'https://imagenes-cdn.autofacil.es/multimedia/fotos/2018/10/19/140393/hyundai-kona-electrico-6_g.jpg', 'coche'),
-(17, 'Jaguar', 'I-Pace', '100kw', 'https://imagenes-cdn.autofacil.es/multimedia/fotos/2018/03/01/118655/jaguar-pace-68_g.jpg', 'coche'),
-(18, 'Kia', 'e-Niro', '70kw', 'https://imagenes-cdn.autofacil.es/multimedia/fotos/2018/10/02/138767/niro-8_g.jpg', 'coche'),
-(19, 'Renault', 'Zoe', '75kw', 'https://imagenes-cdn.autofacil.es/multimedia/fotos/2017/01/03/79182/renault-2017-prueba-19_g.jpg', 'coche');
+(13, 'Hyundai', 'Kona EV', '64kw', 'https://imagenes-cdn.autofacil.es/multimedia/fotos/2018/10/19/140393/hyundai-kona-electrico-6_g.jpg', 'Coche'),
+(17, 'Jaguar', 'I-Pace', '100kw', 'https://imagenes-cdn.autofacil.es/multimedia/fotos/2018/03/01/118655/jaguar-pace-68_g.jpg', 'Coche'),
+(18, 'Kia', 'e-Niro', '70kw', 'https://imagenes-cdn.autofacil.es/multimedia/fotos/2018/10/02/138767/niro-8_g.jpg', 'Coche'),
+(19, 'Renault', 'Zoe', '75kw', 'https://imagenes-cdn.autofacil.es/multimedia/fotos/2017/01/03/79182/renault-2017-prueba-19_g.jpg', 'Coche');
 
 --
 -- Índices para tablas volcadas
