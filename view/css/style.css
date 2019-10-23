@@ -42,6 +42,9 @@ div img{
 	color:white;
 }
 
+.card {
+        display:block;
+}
 /////////////RESERVAS//////////////////
 
 /* Esto se aplica para la vista vAdmin.php */
