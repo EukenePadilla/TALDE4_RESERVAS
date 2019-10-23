@@ -38,19 +38,40 @@
       
       
     </ul >
-    <ul class="navbar-nav  my-2 my-lg-0">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Log In
-      </button>
-  		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <button class="dropdown-item" type="button">User</button>
-        <button class="dropdown-item" type="button">Admin</button>
-        <button class="dropdown-item" type="button">Log out</button>
-  		</div>
-	</div>
-      </ul>
-     	</div>
+     <ul class="navbar-nav  my-2 my-lg-0">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Log In
+          </button>
+      		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button">User</button>
+            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#adminModal">Admin</button>
+            <button class="dropdown-item" type="button">Log out</button>
+      		</div>
+    	</div>
+     </ul>
+  </div>
+  <!-- MODAL -->
+  <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="adminModalLabel">Administrador</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Iniciar Sesion</button>
+          </div>
+        </div>
+      </div>
+  </div>
+<!-- MODAL -->
   </div>
 </nav>
 <body>
