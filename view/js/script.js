@@ -145,21 +145,20 @@ $(document).ready(function(){
 
             	 $(".reservas_v_container").append("<div class='row'>" +
              	 		"<div class='col-12 bg-dark border border-dark rounded-pill'>"+
-                    "<h2 class='text-center '>"+mota+"</h2></div></div>"+ "<div class='row reservas_vehiculos "+mota+"'>" );
-            	 
+                    "<h2 class='text-center '>"+mota.toUpperCase()+"</h2></div></div>"+ "<div class='row reservas_vehiculos "+mota+"'>" );
+
                  $.each(midato,function(i,dato){
-//                	 $("."+mota).append(`<div class="card mx-auto col-2" >
-//                	 <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">
-//                	  		  <div class="card-body">
-//                	           <p class="card-text">
-//                	           Nombre: `+dato.nombre+`<br>
-//                	           Modelo: `+dato.modelo+` <br>
-//                	           Potencia: `+dato.potencia+` <br>
-//                	           Tipo: `+dato.tipo+`</p>
-//                	           </div>
-//                	           </div>
-//                	            
-//                	       </div>`
+//                	 alert("each con datos"+mota);
+                	 if(mota==dato.tipo.toLowerCase()){
+                	 $("."+mota).append(`<div class="card mx-auto col-2" >
+                	 <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">
+                	  		  <div class="card-body">
+                	           <p class="card-text">
+                	           Nombre: `+dato.nombre+`<br>
+                	           Modelo: `+dato.modelo+` <br>
+                	           Potencia: `+dato.potencia+` <br>
+                	           Tipo: `+dato.tipo+`</p></div></div></div>`);
+                	 }
 /*                		 alert("hola");
 */                		 
                 	 });/*termina el each con el que se sacan los podructos por tipo*/
