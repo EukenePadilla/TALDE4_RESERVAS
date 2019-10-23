@@ -44,14 +44,45 @@
             Log In
           </button>
       		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button">User</button>
+            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#userModal">User</button>
             <button class="dropdown-item" type="button" data-toggle="modal" data-target="#adminModal">Admin</button>
             <button class="dropdown-item" type="button">Log out</button>
       		</div>
     	</div>
      </ul>
   </div>
-  <!-- MODAL -->
+<!-- MODAL USER-->
+  <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="userModalLabel">Usuario</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          	<form>
+  		      <div class="form-group">
+  		        <label for="userInputUsername">Usuario</label>
+    		    <input type="text" class="form-control" id="userInputUsername"placeholder="Usuario..." >
+			  </div>
+              <div class="form-group">
+                <label for="userInputPassword">Contrasena</label>
+                <input type="password" class="form-control" id="userInputPassword" placeholder="Contrasena...">
+              </div>
+              <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+  </div>
+<!-- MODAL USER-->
+
+<!-- MODAL ADMIN-->
   <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -62,16 +93,25 @@
             </button>
           </div>
           <div class="modal-body">
-            ...
+            <form>
+  		      <div class="form-group">
+  		        <label for="userInputUsername">Usuario</label>
+    		    <input type="text" class="form-control" id="userInputUsername"placeholder="Usuario..." >
+			  </div>
+              <div class="form-group">
+                <label for="userInputPassword">Contrasena</label>
+                <input type="password" class="form-control" id="userInputPassword" placeholder="Contrasena...">
+              </div>
+              <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Iniciar Sesion</button>
           </div>
         </div>
       </div>
   </div>
-<!-- MODAL -->
+<!-- MODAL ADMIN-->
   </div>
 </nav>
 <body>
