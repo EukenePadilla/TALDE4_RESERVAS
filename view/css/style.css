@@ -5,6 +5,11 @@
 }
 /////////////////NAVBAR///////////////
 ////////////////FRONTAL//////////////
+.card_frontal{
+	display:block;
+	width:20%!important;
+}
+
 .d-custom{
   width: 33% 33% 33%;
   height: 600px;
@@ -42,8 +47,8 @@ div img{
 	color:white;
 }
 
-.card {
-        display:block;
+.cards_reserva {
+    display:block;
 }
 /////////////RESERVAS//////////////////
 

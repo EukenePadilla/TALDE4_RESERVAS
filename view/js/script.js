@@ -115,10 +115,21 @@
 */
 var midato= new Object();
 var tipos = [];
-
+var m;//variable utilizada en frontal para sacar los tipos
 $(document).ready(function(){
 /*	alert("ready");
-*/	$.ajax({
+*/	
+	iniciar_frontal();
+	iniciar_reservas();
+	
+	
+	
+});
+
+
+
+function iniciar_frontal(){
+	$.ajax({
         type:"JSON",
         url:"controller/cIndex.php",
         success: function(datos){
@@ -130,10 +141,54 @@ $(document).ready(function(){
             	 /* despues de haber creado la variable tipo, hemos recorrido toda la tabla vehiculos
             	  * y si el tipo no estaba guardado en el array tipos, se hara un push para guardarlo ahi.
              */
-            	 
             	 var tipo =dato.tipo.toLowerCase();
 
+            	 if(!tipos.includes(tipo)){
+            		tipos.push(dato.tipo.toLowerCase());
+//            		alert(tipos);
+            	}
+                 
+             });/*termina aqui el each del array de tipos*/
             	 
+                 $.each(midato,function(i,dato){
+                	 if(m!=dato.tipo){
+                		 m=dato.tipo;
+                		 $(".frontal_container").append(`<div class="mx-auto col-2 text-center">
+                                 <div class="card card_frontal" >
+                                         <a href="#">
+                                     <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">
+                                     <div class="card-body">
+                                         <a href="#" class="btn btn-primary btn-block">`+dato.tipo+`</a></a>
+                                     </div>
+                                 </div>
+                         </div>
+                        `);
+                	 }
+                              });/*termina aqui el each de los datos del frontal*/
+
+                	 
+            	 
+        },
+        error: function(xhr){
+            alert("An error occured: "+xhr.status+" "+xhr.statusText);
+        }
+    });
+}
+function iniciar_reservas(){
+	$.ajax({
+        type:"JSON",
+        url:"controller/cIndex.php",
+        success: function(datos){
+/*            alert(datos);
+       	alert("success");
+*/            midato=JSON.parse(datos);
+            
+             $.each(midato,function(i,dato){
+            	 /* despues de haber creado la variable tipo, hemos recorrido toda la tabla vehiculos
+            	  * y si el tipo no estaba guardado en el array tipos, se hara un push para guardarlo ahi.
+             */
+            	 var tipo =dato.tipo.toLowerCase();
+
             	 if(!tipos.includes(tipo)){
             		tipos.push(dato.tipo.toLowerCase());
 //            		alert(tipos);
@@ -150,7 +205,7 @@ $(document).ready(function(){
                  $.each(midato,function(i,dato){
 //                	 alert("each con datos"+mota);
                 	 if(mota==dato.tipo.toLowerCase()){
-                	 $("."+mota).append(`<div class="card mx-auto col-2" >
+                	 $("."+mota).append(`<div class="card mx-auto col-2 cards_reserva" >
                 	 <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">
                 	  		  <div class="card-body">
                 	           <p class="card-text">
@@ -162,19 +217,10 @@ $(document).ready(function(){
 /*                		 alert("hola");
 */                		 
                 	 });/*termina el each con el que se sacan los podructos por tipo*/
-                 });/*termina aqui el each de los titulos*/
-            	 
-             
-             
-             
-             
-            	
-           
+                 });/*termina aqui el each de los titulos de reservas*/
         },
         error: function(xhr){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);
         }
     });
-	
-});
-
+	}
