@@ -113,228 +113,110 @@
             </div>
         </div>
         <div class="row reservas_vehiculos">
-            <!-- <div class="card-deck"> -->
 
-                <div class="col-1"></div>
 
-                <table name="tablaVehiculos" border="1">
-                         <?php
-                         
+                <?php               
                             foreach ($listaVehiculos as $vehiculo)
                             {       
-                         ?>
-                         	<tr>
-                                   <td><?php echo $vehiculo->getIdVehiculo();?></td>
-                                   <td><?php echo $vehiculo->getNombre();?></td>
-                                   <td><?php echo $vehiculo->getModelo();?></td>
-                                   <td><?php echo $vehiculo->getPotencia();?></td>
-								   <td><img src="<?php echo $vehiculo->getImg();?>"></td>
-                                   <td><?php echo $vehiculo->getTipo();?></td>
-                                   	
-                    	</tr>
-                            <?php } ?>
-                    </table>
-
-
-<?php               
-                            foreach ($listaVehiculos as $vehiculo)
-                            {       
-                         ?>
-                         	      <div class="card col" >
+                                ?>                              <?php   
+                                if($vehiculo->getTipo()=="Bicicleta"){	?>
+                         	      <div class="card col-2" >
                          	      <img src="<?php echo $vehiculo->getImg();?>" class="card-img-top" alt="<?php echo $vehiculo->getImg();?> ">
-                         	
-                                   <td><?php echo $vehiculo->getIdVehiculo();?></td>
-                                   <td><?php echo $vehiculo->getNombre();?></td>
-                                   <td><?php echo $vehiculo->getModelo();?></td>
-                                   <td><?php echo $vehiculo->getPotencia();?></td>
-								   <td><img src="<?php echo $vehiculo->getImg();?>"></td>
-                                   <td><?php echo $vehiculo->getTipo();?></td>
-                                   	
-                    	</tr>
-                            <?php } ?>
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-                
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="col-1"></div>
-<!-- </div> -->
-        </div>
-        <div class="row">
+                         		  <div class="card-body">
+                                  <p class="card-text">
+                                  Nombre: <?php echo $vehiculo->getNombre();?> <br>
+                                  Modelo: <?php echo $vehiculo->getModelo();?> <br>
+                                  Potencia: <?php echo $vehiculo->getPotencia();?> <br>
+                                  Tipo: <?php echo $vehiculo->getTipo();?></p>
+                                  </div>
+                                  </div>
+                              <?php   
+                            }   	
+                             } ?>
+  </div>
+                             
+<div class="row">
             <div class="col-12 bg-dark border border-dark rounded-pill">
-                <h2 class="text-center ">PATINETES</h2>
+              <h2 class="text-center ">MONOPATIN</h2>
             </div>
         </div>
         <div class="row reservas_vehiculos">
-                <div class="col-1"></div>
-                
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
 
-                <div class="col-1"></div>
 
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-                
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="col-1"></div>
-
+                <?php               
+                            foreach ($listaVehiculos as $vehiculo)
+                            {       
+                                ?>                              <?php   
+                                if($vehiculo->getTipo()=="Monopatin"){	?>
+                         	      <div class="card col-2" >
+                         	      <img src="<?php echo $vehiculo->getImg();?>" class="card-img-top" alt="<?php echo $vehiculo->getImg();?> ">
+                         		  <div class="card-body">
+                                  <p class="card-text">
+                                  Nombre: <?php echo $vehiculo->getNombre();?> <br>
+                                  Modelo: <?php echo $vehiculo->getModelo();?> <br>
+                                  Potencia: <?php echo $vehiculo->getPotencia();?> <br>
+                                  Tipo: <?php echo $vehiculo->getTipo();?></p>
+                                  </div>
+                                  </div>
+                              <?php   
+                            }   	
+                             } ?>
         </div>
-        <div class="row">
-                <div class="col-12 bg-dark border border-dark rounded-pill">
-                    <h2 class="text-center">MONOPATIN</h2>
-                </div>
+<div class="row">
+            <div class="col-12 bg-dark border border-dark rounded-pill">
+              <h2 class="text-center ">PATINETE</h2>
             </div>
-            <div class="row reservas_vehiculos">
-                <div class="col-1"></div>
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-                
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="col-1"></div>
-
         </div>
-        <div class="row">
-                <div class="col-12 bg-dark border border-dark rounded-pill">
-                    <h2 class="text-center">OTROS</h2>
-                </div>
+        <div class="row reservas_vehiculos">
+
+
+                <?php               
+                            foreach ($listaVehiculos as $vehiculo)
+                            {       
+                                ?>                              <?php   
+                                if($vehiculo->getTipo()=="Patinete"){	?>
+                         	      <div class="card col-2" >
+                         	      <img src="<?php echo $vehiculo->getImg();?>" class="card-img-top" alt="<?php echo $vehiculo->getImg();?> ">
+                         		  <div class="card-body">
+                                  <p class="card-text">
+                                  Nombre: <?php echo $vehiculo->getNombre();?> <br>
+                                  Modelo: <?php echo $vehiculo->getModelo();?> <br>
+                                  Potencia: <?php echo $vehiculo->getPotencia();?> <br>
+                                  Tipo: <?php echo $vehiculo->getTipo();?></p>
+                                  </div>
+                                  </div>
+                              <?php   
+                            }   	
+                             } ?>
+        </div>        
+<div class="row">
+            <div class="col-12 bg-dark border border-dark rounded-pill">
+              <h2 class="text-center ">COCHE</h2>
             </div>
-            <div class="row reservas_vehiculos">
-                <div class="col-1"></div>
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+        </div>
+        <div class="row reservas_vehiculos">
 
-                <div class="col-1"></div>
 
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-                
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-
-                <div class="card col" >
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="col-1"></div>
-
-        </div>                            
-      </div>
+                <?php               
+                            foreach ($listaVehiculos as $vehiculo)
+                            {       
+                                ?>                              <?php   
+                                if($vehiculo->getTipo()=="coche"){	?>
+                         	      <div class="card col-2" >
+                         	      <img src="<?php echo $vehiculo->getImg();?>" class="card-img-top" alt="<?php echo $vehiculo->getImg();?> ">
+                         		  <div class="card-body">
+                                  <p class="card-text">
+                                  Nombre: <?php echo $vehiculo->getNombre();?> <br>
+                                  Modelo: <?php echo $vehiculo->getModelo();?> <br>
+                                  Potencia: <?php echo $vehiculo->getPotencia();?> <br>
+                                  Tipo: <?php echo $vehiculo->getTipo();?></p>
+                                  </div>
+                                  </div>
+                              <?php   
+                            }   	
+                             } ?>
+        </div>        
+        </div>
 
 
 
