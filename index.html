@@ -78,10 +78,6 @@
 								id="iniciar_sesion">Iniciar Sesion</button>
 						</form>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary "
-							data-dismiss="modal">Cerrar</button>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -150,15 +146,57 @@
 								Sesion</button>
 						</form>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+		<!-- MODAL CREATE -->
+		<!-- MODAL RESERVA-->
+		<div class="modal fade" id="reservaModal" role="dialog"
+			aria-labelledby="reservaModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="reserva">Reserva</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!-- 					datos de reserva:	idReserva	fechaReserva	fechaReservada	horaInicio	horaFin	idUsuario	idVehiculo  -->
+						<form>
+							<div class="form-row justify-content-center">
+								<div class="form-group col-md-5">
+									<label for="reservaInputreserva">Fecha Reserva</label>
+									<input
+										type="date" class="form-control" id="reservaInputreservada"
+										placeholder="Fecha Reserva...">
+								</div>
+								<div class="form-group col-md-5">
+									<label for="reservaInputreservada">Fecha Reservada</label> <input
+										type="date" class="form-control" id="reservaInputreservada"
+										placeholder="Fecha Reservada...">
+								</div>
+								<div class="form-group col-md-5">
+									<label for="reservaInputInicio">Hora Inicio</label> <input
+										type="time" class="form-control" id="reservaInputInicio"
+										placeholder="Hora Inicio...">
+								</div>
+								<div class="form-group col-md-5">
+									<label for="reservaInputFin">Hora Final</label> <input
+										type="time" class="form-control" id="reservaInputFin"
+										placeholder="Hora Final...">
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary btn-block"
+								id="reservar">Reservar ahora!</button>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- MODAL ADMIN -->
-	</div>
+		<!-- MODAL RESERVA-->
+
 	</div>
 </nav>
 <body>
@@ -190,6 +228,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+		
 </body>
 
 </html>

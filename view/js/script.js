@@ -121,7 +121,6 @@ $(document).ready(function(){
 */	
 	iniciar_frontal();
 	iniciar_reservas();
-
 	
 });
 
@@ -132,6 +131,7 @@ $("#iniciar_sesion").click(function(){
 	
 	
 });
+
 
 function iniciar_frontal(){
 	$.ajax({
@@ -217,7 +217,10 @@ function iniciar_reservas(){
                 	           Nombre: `+dato.nombre+`<br>
                 	           Modelo: `+dato.modelo+` <br>
                 	           Potencia: `+dato.potencia+` <br>
-                	           Tipo: `+dato.tipo+`</p></div></div></div>`);
+                	           Tipo: `+dato.tipo+`</p>
+                	           <button class="btn btn-primary btn-block" type="button"
+				data-toggle="modal" data-target="#reservaModal">Reserva ya</button>
+                	           </div></div></div>`);
                 	 }
 /*                		 alert("hola");
 */                		 
