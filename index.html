@@ -43,8 +43,8 @@
 
 			<button class="btn btn-secondary botones_navbar " type="button"
 				data-toggle="modal" data-target="#userModal">Log in</button>
-			<button class="btn btn-secondary botones_navbar" id="registro"
-				type="button">Register</button>
+			<button class="btn btn-secondary botones_navbar" type="button"
+				data-toggle="modal" data-target="#createModal">Register</button>
 
 		</ul>
 		<!-- /////////JON///////// -->
@@ -62,15 +62,16 @@
 					</div>
 					<div class="modal-body">
 						<form>
+
 							<div class="form-group">
 								<label for="userInputUsername">Usuario</label> <input
 									type="text" class="form-control" id="userInputUsername"
 									placeholder="Usuario..." autofocus>
 							</div>
 							<div class="form-group">
-								<label for="userInputPassword">Contrasena</label> <input
+								<label for="userInputPassword">Contraseña</label> <input
 									type="password" class="form-control" id="userInputPassword"
-									placeholder="Contrasena...">
+									placeholder="Contraseña...">
 							</div>
 							<button type="submit" class="btn btn-primary" id="iniciar_sesion">Iniciar
 								Sesion</button>
@@ -85,31 +86,66 @@
 		</div>
 		<!-- MODAL USER-->
 
-		<!-- MODAL ADMIN-->
-		<div class="modal fade" id="adminModal" role="dialog"
-			aria-labelledby="userModalLabel" aria-hidden="true">
+		<!-- MODAL CREATE-->
+		<div class="modal fade" id="createModal" role="dialog"
+			aria-labelledby="createModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="adminModalLabel">Administrador</h5>
+						<h5 class="modal-title" id="createModalLabel">Crear cuenta</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">
+					<div class="modal-body ">
 						<form>
-							<div class="form-group">
-								<label for="adminInputUsername">Usuario</label> <input
-									type="text" class="form-control" id="adminInputUsername"
-									placeholder="Usuario..." autofocus>
+							<div class="form-row justify-content-center">
+								<div class="form-group col-md-5">
+									<label for="createInputNombre">Nombre</label> <input
+										type="text" class="form-control" id="createInputNombre"
+										placeholder="Nombre...">
+								</div>
+								<div class="form-group col-md-5 ">
+									<label for="createInputApellido">Apellido</label> <input
+										type="text" class="form-control" id="createInputApellido"
+										placeholder="Apellido...">
+								</div>
+
+								<div class="form-group col-md-5">
+									<label for="createInputTelefono">Telefono</label> <input
+										type="text" class="form-control" id="createInputTelefono"
+										placeholder="Telefono..." autofocus>
+								</div>
+								<div class="form-group col-md-5">
+									<label for="createInputDNI">DNI</label> <input type="text"
+										class="form-control" id="createInputDNI" placeholder="DNI..."
+										autofocus>
+								</div>
+								<div class="form-group col-md-5">
+									<label for="createInputTipo">Tipo</label> <select
+										class="form-control" name="tipo">
+										<option value="administrador">Administrador</option>
+										<option value="usuario">Usuario</option>
+									</select>
+								</div>
+								<div class="form-group col-md-5">
+									<label for="createInputUsuario">Usuario</label> <input
+										type="text" class="form-control" id="createInputUsuario"
+										placeholder="Usuario..." autofocus>
+								</div>
+								<div class="form-group col-md-5">
+									<label for="createInputContrasena">Contraseña</label> <input
+										type="password" class="form-control"
+										id="createInputContrasena" placeholder="Contraseña...">
+								</div>
+								<div class="form-group col-md-5">
+									<label for="createInputReContrasena">Re-Contraseña</label> <input
+										type="password" class="form-control"
+										id="createInputReContrasena" placeholder="Re-Contraseña...">
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="adminInputPassword">Contrasena</label> <input
-									type="password" class="form-control" id="adminInputPassword"
-									placeholder="Contrasena...">
-							</div>
-							<button type="submit" class="btn btn-primary">Iniciar
+							<button type="submit" class="btn btn-primary btn-block">Iniciar
 								Sesion</button>
 						</form>
 					</div>
