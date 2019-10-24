@@ -5,7 +5,7 @@
 </head>
 
 <body>
-	<header>
+	<header class="encabezado_vAdmin">
 		<h1>Admin</h1>
 	</header>
 	

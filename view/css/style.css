@@ -69,7 +69,7 @@ div img{
 
 /* Esto se aplica para la vista vAdmin.php */
 
-header{
+.encabezado_vAdmin{
 	height:100px;
 	background-image:url(../../images/logo.png);
 	background-size:contain;
@@ -77,12 +77,12 @@ header{
 }
 
 #paneladmin{
-	display:grid;
-	grid-template-columns: repeat(auto-fit,300px);
-	grid-gap:15px;
-	text-align:center;
-	margin:auto;
+		display:flex;
 	
+	justify-content:center;
+	max-width:500px;
+	flex-direction:row;
+	margin:auto;
 }
 .panel{
 	text-align:center;
