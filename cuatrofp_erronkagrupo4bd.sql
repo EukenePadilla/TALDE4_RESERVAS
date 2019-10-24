@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-10-2019 a las 13:04:33
+-- Tiempo de generación: 24-10-2019 a las 10:15:07
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.1.32
 
@@ -82,12 +82,22 @@ CREATE TABLE `reservas` (
 
 CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL,
+  `usuario` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contrasena` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nombre` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `apellido` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dni` varchar(9) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL
+  `tipo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `usuario`, `contrasena`, `nombre`, `apellido`, `telefono`, `dni`, `tipo`) VALUES
+(1, 'xarles', 'xarles', 'xarles', 'goitiz', '676767679', '46366000M', 2),
+(2, 'patxi', 'patxi', 'patxi', 'elizaburu', '666555444', '46366666M', 1);
 
 -- --------------------------------------------------------
 
@@ -165,7 +175,7 @@ ALTER TABLE `reservas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculos`
