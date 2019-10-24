@@ -147,19 +147,19 @@ function iniciar_frontal(){
             		tipos.push(dato.tipo.toLowerCase());
 //            		alert(tipos);
             	}
-                 
+//            	 index.html#`+dato.tipo+`
              });/*termina aqui el each del array de tipos*/
             	 
                  $.each(midato,function(i,dato){
                 	 if(m!=dato.tipo){
                 		 m=dato.tipo;
                 		 $(".frontal_container").append(`<div class="mx-auto col-3 text-center">
-                                 <div class="card card_frontal" >
-                                         <a href="#">
+                                 <a href="index.html#`+dato.tipo.toLowerCase()+`"><div class="card card_frontal" >
+                                         
                                      <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">
                                      <div class="card-body">
-                                         <a href="#" class="btn btn-primary btn-block">`+dato.tipo+`</a></a>
-                                     </div>
+                                         <a href="index.html#`+dato.tipo.toLowerCase()+`" class="btn btn-primary btn-block">`+dato.tipo+`</a></a>
+                                     </a>
                                  </div>
                          </div>
                         `);
@@ -198,9 +198,9 @@ function iniciar_reservas(){
             	 
              $.each(tipos,function(i,mota){
 
-            	 $(".reservas_v_container").append("<div class='row'>" +
+            	 $(".reservas_v_container").append("  <hr id="+mota+"><div class='row'>" +
              	 		"<div class='col-12 bg-dark border border-dark rounded-pill'>"+
-                    "<h2 class='text-center '>"+mota.toUpperCase()+"</h2></div></div>"+ "<div class='row reservas_vehiculos "+mota+"'>" );
+                    "<h2 class='text-center '>"+mota.toUpperCase()+"</h2></div></div>"+ "<div class='row reservas_vehiculos "+mota+"'>");
 
                  $.each(midato,function(i,dato){
 //                	 alert("each con datos"+mota);

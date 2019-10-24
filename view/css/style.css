@@ -13,13 +13,13 @@
 .d-custom{
 	justify-content:center;
 	align-items:center;
-	    background-color: gray;
 	height:700px;
   width: 33% 33% 33%;
 }
-.container > div{
+.frontal{
+	background-size: cover;
   width: 100%;
-  background-image: url("../../images/fondoDiv.jpg");
+  background-image: url("../../images/fondo.gif");
   display: flex;
   align-items: center!important;
   justify-content: center!important;
