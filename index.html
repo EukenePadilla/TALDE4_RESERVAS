@@ -37,16 +37,10 @@
       
     </ul >
     <ul class="navbar-nav  my-2 my-lg-0">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Log In
-      </button>
-  		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#userModal">User</button>
-        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#adminModal">Admin</button>
-        <button class="dropdown-item" type="button">Log out</button>
-  		</div>
-	</div>
+
+        <button class="btn btn-secondary botones_navbar" onclick="comprobarUsuario()" type="button" data-toggle="modal" data-target="#userModal">Log in</button>
+        <button class="btn btn-secondary botones_navbar" onclick="registro()" type="button">Register</button>
+
       </ul>
       <!-- /////////JON///////// -->
 <!-- MODAL USER-->
@@ -54,7 +48,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="userModalLabel">Usuario</h5>
+            <h5 class="modal-title" id="user">Usuario</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

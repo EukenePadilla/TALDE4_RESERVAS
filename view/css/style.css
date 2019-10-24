@@ -1,7 +1,18 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+
+body{
+	background-color:gray;
+}
 /////////////////NAVBAR///////////////
 
 .float-right{
 	margin-left:50px!important;
+}
+.botones_navbar{
+	margin:5px;
 }
 /////////////////NAVBAR///////////////
 ////////////////FRONTAL//////////////
@@ -29,9 +40,7 @@ div img{
   width: 200px;
   height: 200px;
 }
-hr{
-	border:gray;
-	}
+
 ////////////////FRONTAL//////////////
 
 
