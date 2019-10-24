@@ -122,59 +122,16 @@ $(document).ready(function(){
 	iniciar_frontal();
 	iniciar_reservas();
 
-//	$.ajax({
-//        type:"JSON",
-//        url:"controller/cIndex.php",
-//        success: function(datos){
-///*            alert(datos);
-//       	alert("success");
-//*/            midato=JSON.parse(datos);
-//            
-//             $.each(midato,function(i,dato){
-//            	 /* despues de haber creado la variable tipo, hemos recorrido toda la tabla vehiculos
-//            	  * y si el tipo no estaba guardado en el array tipos, se hara un push para guardarlo ahi.
-//             */
-//            	 var tipo =dato.tipo.toLowerCase();
-//
-//            	 if(!tipos.includes(tipo)){
-//            		tipos.push(dato.tipo.toLowerCase());
-////            		alert(tipos);
-//            	}
-////            	 index.html#`+dato.tipo+`
-//             });/*termina aqui el each del array de tipos*/
-//            	 
-//                 $.each(midato,function(i,dato){
-//                	 if(m!=dato.tipo){
-//                		 m=dato.tipo;
-//                		 $(".frontal_container").append(`<div class="mx-auto col-3 text-center">
-//                                 <a href="index.html#`+dato.tipo.toLowerCase()+`"><div class="card card_frontal" >
-//                                         
-//                                     <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">
-//                                     <div class="card-body">
-//                                         <a href="index.html#`+dato.tipo.toLowerCase()+`" class="btn btn-primary btn-block">`+dato.tipo+`</a></a>
-//                                     </a>
-//                                 </div>
-//                         </div>
-//                        `);
-//                	 }
-//                              });/*termina aqui el each de los datos del frontal*/
-//
-//                	 
-//            	 
-//        },
-//        error: function(xhr){
-//            alert("An error occured: "+xhr.status+" "+xhr.statusText);
-//        }
-//    });
 	
 });
 
-function registro(){
+$("#iniciar_sesion").click(function(){
+	alert("hola paco");
 	var usuario=$("#user").val();
 	var contrasena=$("#password").val();
 	
 	
-}
+});
 
 function iniciar_frontal(){
 	$.ajax({
