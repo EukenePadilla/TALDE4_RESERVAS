@@ -99,12 +99,14 @@ div img{
 font-size:20px;
 }
 .delete_paneles{
+		padding:5px;
 	background-color:red;
 	color:white;
 	border-color:red;
 	border-radius:5px;
 }
 .update_paneles{
+		padding:5px;
 	background-color:green;
 	color:white;
 	border-color:green;
