@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2019 a las 08:51:31
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.1.32
+-- Tiempo de generación: 25-10-2019 a las 19:40:41
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -26,22 +26,22 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spDeleteUsuario` (IN `pidUsuario` INT(11))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteUsuario` (IN `pidUsuario` INT(11))  NO SQL
 DELETE FROM usuarios WHERE usuarios.idUsuario = pidUsuario$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spDeleteVehiculo` (IN `pidVehiculo` INT(11))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteVehiculo` (IN `pidVehiculo` INT(11))  NO SQL
 DELETE FROM vehiculos WHERE vehiculos.idVehiculo = pidVehiculo$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spInsertUsuario` (IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` VARCHAR(40))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertUsuario` (IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` VARCHAR(40))  NO SQL
 INSERT INTO usuarios (usuarios.nombre, usuarios.apellido, usuarios.telefono, usuarios.dni, usuarios.tipo) VALUES (pnombre, papellido, ptelefono, pdni, ptipo)$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spInsertVehiculo` (IN `pnombre` VARCHAR(40), IN `pmodelo` VARCHAR(40), IN `ppotencia` VARCHAR(40), IN `pimg` VARCHAR(100), IN `ptipo` VARCHAR(50))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertVehiculo` (IN `pnombre` VARCHAR(40), IN `pmodelo` VARCHAR(40), IN `ppotencia` VARCHAR(40), IN `pimg` VARCHAR(100), IN `ptipo` VARCHAR(50))  NO SQL
 INSERT INTO vehiculos (vehiculos.nombre, vehiculos.modelo, vehiculos.potencia, vehiculos.img, vehiculos.tipo) VALUES (pnombre, pmodelo, ppotencia, pimg, ptipo)$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spSelectAllReservas` ()  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSelectAllReservas` ()  NO SQL
 SELECT * FROM reservas$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spSelectAllUsuarios` ()  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSelectAllUsuarios` ()  NO SQL
 SELECT * FROM usuarios$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSelectAllVehiculos` ()  NO SQL
@@ -50,10 +50,10 @@ SELECT * FROM `vehiculos` order by vehiculos.tipo$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSelectTipos` ()  NO SQL
 SELECT DISTINCT vehiculos.tipo FROM vehiculos$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spUpdateUsuario` (IN `pidUsuario` INT(11), IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` VARCHAR(40))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUsuario` (IN `pidUsuario` INT(11), IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` VARCHAR(40))  NO SQL
 UPDATE usuarios SET usuarios.nombre = pnombre, usuarios.apellido = papellido, usuarios.telefono = ptelefono, usuarios.dni = pdni, usuarios.tipo = ptipo WHERE usuarios.idUsuario = pidUsuario$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spUpdateVehiculo` (IN `pidVehiculo` INT(11), IN `pnombre` VARCHAR(40), IN `pmodelo` VARCHAR(40), IN `ppotencia` VARCHAR(40), IN `pimg` VARCHAR(100), IN `ptipo` VARCHAR(50))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateVehiculo` (IN `pidVehiculo` INT(11), IN `pnombre` VARCHAR(40), IN `pmodelo` VARCHAR(40), IN `ppotencia` VARCHAR(40), IN `pimg` VARCHAR(100), IN `ptipo` VARCHAR(50))  NO SQL
 UPDATE vehiculos SET vehiculos.nombre = pnombre, vehiculos.modelo = pmodelo, vehiculos.potencia = ppotencia, vehiculos.img = pimg, vehiculos.tipo = ptipo$$
 
 DELIMITER ;
