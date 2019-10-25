@@ -121,6 +121,25 @@ class userModel extends userClass
        
     
     }
+    
+    public function delete()
+    {
+        $this->OpenConnect();
+        
+        $id=$this->getIdUsuario();
+        
+        
+        $sql = "CALL spDeleteUsuario($id)";
+        
+        if ($this->link->query($sql)>=1) // delete egiten da
+        {
+            return "El usuario se ha borrado con exito";
+        } else {
+            return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
+        }
+        
+        $this->CloseConnect();
+    }
 
 }
 ?>

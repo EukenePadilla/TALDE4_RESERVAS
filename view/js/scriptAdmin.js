@@ -57,6 +57,11 @@ $(document).ready(function(){
 });
 
 
+/*INICIO DE INICIAR LAS TABLAS EN LA VISTA ADMIN
+ * 
+ * 
+*/
+
 function iniciarVAdmin(){
 	$.ajax({
         type:"JSON",
@@ -125,22 +130,44 @@ function iniciarUAdmin(){
  */            midatoU=JSON.parse(datosU);
 
 
-$.each(midatoU,function(i,datoU){
+				$.each(midatoU,function(i,datoU){
+				
+				
+				            $(".rellenoAdminUsuario").append(`<tr>
+				            		<td>`+datoU.idUsuario+`</td>            		
+				            		<td>`+datoU.usuario+`</td>
+				            		<td>`+datoU.contrasena+`</td>
+				            		<td>`+datoU.nombre+`</td>
+				            		<td>`+datoU.apellido+`</td>
+				            		<td>`+datoU.telefono+`</td>
+				            		<td>`+datoU.dni+`</td>
+				            		<td>`+datoU.tipo+`</td>
+				            		<td><button class="deleteU delete_paneles" value="`+datoU.idUsuario+`">DELETE</button></td>
+				            		<td><button class="updateU update_paneles">UPDATE</button></td>
+				        		</tr>`);
+				        	$(".deleteU").click(function(){
+				     			
+				     			var id=$(this).val(); 
+				     			alert(id);
+				     			console.log(id);
+				     			
+				     		  	$.ajax({
+				     		       	type: "GET",
+				     		       	data:{'id':id},
+				     		       	url: "../controller/cDeleteUser.php", 
 
-
-            $(".rellenoAdminUsuario").append(`<tr>
-            		<td>`+datoU.idUsuario+`</td>            		
-            		<td>`+datoU.usuario+`</td>
-            		<td>`+datoU.contrasena+`</td>
-            		<td>`+datoU.nombre+`</td>
-            		<td>`+datoU.apellido+`</td>
-            		<td>`+datoU.telefono+`</td>
-            		<td>`+datoU.dni+`</td>
-            		<td>`+datoU.tipo+`</td>
-            		<td><button class="deleteU delete_paneles">DELETE</button></td>
-            		<td><button class="updateU update_paneles">UPDATE</button></td>
-        		</tr>`);
-});
+				     		       	success: function(result){  
+				     		       		
+				     		       		console.log(result);
+				     		       		alert(result);
+				     		       		location.reload(true);  //recarga la pagina
+				     		       	},
+				     		       	error : function(xhr) {
+				     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+				     		   		}
+				     		       });
+				 	       });
+				     		    });
         },
         error: function(xhr){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);
@@ -170,7 +197,7 @@ function iniciarRAdmin(){
 			            		<td>`+datoR.horaFin+`</td>
 			            		<td>`+datoR.idUsuario+`</td>
 			            		<td>`+datoR.idVehiculo+`</td>
-			            		<td><button class="deleteR delete_paneles">DELETE</button></td>
+			            		<td><button class="deleteR delete_paneles value="`+datoR.idReserva+`">DELETE</button></td>
 			            		<td><button class="updateR update_paneles">UPDATE</button></td>
 			        		</tr>`);
 			});
@@ -183,5 +210,7 @@ function iniciarRAdmin(){
 
 
 
-
-
+/*FIN DE INICIAR LAS TABLAS EN LA VISTA ADMIN
+ * 
+ * 
+*/
