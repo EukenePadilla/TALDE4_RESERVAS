@@ -1,5 +1,4 @@
 <?php
-
 include_once ("connect_data_local.php");
 include_once ("userClass.php");
 include_once ("reservaModel.php");
@@ -17,7 +16,7 @@ class userModel extends userClass
     
     public function OpenConnect()
     {
-        $konDat=new connect_data();
+        $konDat=new connect_data_local();
         try
         {
             $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);
@@ -92,6 +91,32 @@ class userModel extends userClass
         //         unset($listaLibrosEditorial);
         $this->CloseConnect();
     }
+  
     
+    public   function comprobarUser($usuario,$password){
+        
+        $this->OpenConnect();
+        
+        $usuario=$this->getUsuario();
+        $password=$this->getContrasena();
+        
+        
+        $sql = "CALL spComprobarUser('$usuario','$password')";
+        
+        
+        if ($this->link->query($sql)) // insert egiten da
+        {
+            alert("el usuario existe");
+            echo "El usuario existe";
+        } else {
+            alert("el usuario no existe");
+            echo "Fall� el usuario no existe: (" . $this->link->error . ") " . $this->link->error;
+        }
+        
+        $this->CloseConnect();
+       
+    
+    }
+
 }
 ?>

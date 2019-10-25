@@ -2,11 +2,45 @@
 
 class userClass{
     protected $idUsuario;
+    protected $usuario;
+    protected $contrasena;
     protected $nombre;
     protected $apellido;
     protected $telefono;
     protected $dni;
     protected $tipo;
+    /**
+     * @return mixed
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContrasena()
+    {
+        return $this->contrasena;
+    }
+
+    /**
+     * @param mixed $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    /**
+     * @param mixed $contrasena
+     */
+    public function setContrasena($contrasena)
+    {
+        $this->contrasena = $contrasena;
+    }
+
     /**
      * @return mixed
      */

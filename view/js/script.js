@@ -117,19 +117,34 @@ var midato= new Object();
 var tipos = [];
 var m;//variable utilizada en frontal para sacar los tipos
 $(document).ready(function(){
-/*	alert("ready");
-*/	
+
 	iniciar_frontal();
 	iniciar_reservas();
-	
-});
+	$("#iniciar_sesion").click(function(){
 
-$("#iniciar_sesion").click(function(){
-	alert("hola paco");
-	var usuario=$("#user").val();
-	var contrasena=$("#password").val();
+
+	
+		$usuario =$("#userInputUsername").val();
+		$contrasena =$("#userInputPassword").val();
+				
+		$.ajax({
+				
+			 	type:"GET",
+		        data:{"user":usuario,"password":contrasena},
+		        url:"controller/cLogin.php",
+		        datatype:json,
+		        success: function(result){
+		        	userdata=JSON.parse(datos);
+		        },
+		        error: function(xhr){
+		            alert("An error occured: "+xhr.status+" "+xhr.statusText);
+		        }
+
 	
 	
+		});
+	});
+
 });
 
 
@@ -226,9 +241,41 @@ function iniciar_reservas(){
 */                		 
                 	 });/*termina el each con el que se sacan los podructos por tipo*/
                  });/*termina aqui el each de los titulos de reservas*/
+             
+             
         },
         error: function(xhr){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);
         }
     });
-	}
+	
+}
+	
+	
+
+
+
+
+
+//$("#iniciar_sesion").click(){
+//	alert("aaaaaaaaaaaaaa");
+//	var usuario =$(#userInputUsername).val();
+//	var contrasena =$(#userInputPassword).val();
+//	alert(usuario,contrasena);
+//	
+//	$.ajax({
+//			
+//		 	type:"GET",
+//	        data:{"user":usuario,"password":contrasena},
+//	        url:"controller/cLogin.php",
+//	        datatype:json,
+//	        success: function(result){
+//	        	userdata=JSON.parse(datos);
+//	        },
+//	        error: function(xhr){
+//	            alert("An error occured: "+xhr.status+" "+xhr.statusText);
+//	        }
+
+//}
+//
+//});

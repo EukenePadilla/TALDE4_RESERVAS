@@ -18,7 +18,7 @@ class reservaModel extends reservaClass
     
     public function OpenConnect()
     {
-        $konDat=new connect_data();
+        $konDat=new connect_data_local();
         try
         {
             $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);

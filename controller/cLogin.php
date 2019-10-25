@@ -1,12 +1,18 @@
 <?php
 include_once ("../model/userModel.php");
 
-$usuario= new userModel();
-$usuario->setList();
+$user=filter_input(INPUT_GET,"user");
+$password=filter_input(INPUT_GET,"password");
 
-$listaUsuarios=$usuario->getList();
-$listaUsuarios=json_encode($listaUsuarios);
-echo ($listaUsuarios);
+$usuario= new userModel();
+$usuario->setUsuario($user);
+$usuario->setContrasena($password);
+
+$result=$usuario->comprobarUser();
+
+
+
+
 unset ($usuario);
 
 ?>
