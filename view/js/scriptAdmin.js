@@ -13,14 +13,50 @@ $(document).ready(function(){
 			$(".rellenoAdminVehiculo").show(1200); 
 			$(".rellenoAdminUsuario").hide(800);
 			$(".rellenoAdminReserva").hide(800);
-
 			comprobarV=1;
 		}else{
 			$(".rellenoAdminVehiculo").hide(800);
 			comprobarV=0;
 		}
-		
 	});
+	
+	$(".insertV").click(function(){
+		
+		$(".paneles").hide(800);
+		
+		$(".insertarVAdmin").append(`<form id="form">
+		
+		  <input id="name" type="text" placeholder="NAME">
+		  <input id="email" type="text" placeholder="E-MAIL">
+		  <textarea id="message" type="text" placeholder="MESSAGE"></textarea>
+  <input id="submit" type="submit" value="GO!">
+  <button class="boton_atras_vAdmin goBack">GO BACK</button>
+</form>`);
+		
+		$(".goBack").click(function(){
+			$(".insertarAdmin").hide(800);
+
+			$(".paneles").show(1200);
+			
+		});
+		/*$.ajax({
+		       	type: "POST",
+		       	url: "../controller/cDeleteVehiculo.php", 
+
+		       	success: function(result){  
+		       		
+		       		console.log(result);
+		       		alert(result);
+		       		location.reload(true);  //recarga la pagina
+		       	},
+		       	error : function(xhr) {
+		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+		   		}
+		       });
+		  	*/
+		    
+	});
+	
 	
 	iniciarUAdmin();
 	
@@ -84,6 +120,8 @@ function iniciarVAdmin(){
             		<td><button class="updateV update_paneles">UPDATE</button></td>
         		</tr>`);
  		});
+
+ 		
  		$(".deleteV").click(function(){
  			
  			var id=$(this).val(); 

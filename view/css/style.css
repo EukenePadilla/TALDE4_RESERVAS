@@ -136,5 +136,13 @@ font-size:20px;
 	display:none;
 }
 
+.boton_atras_vAdmin{
+	font-size:18px;
+	padding:5px;
+	background-color:blue;
+	color:white;
+	border-color:blue;
+	border-radius:5px;
+}
 
 /* Esto se aplica para la vista vAdmin.php */
