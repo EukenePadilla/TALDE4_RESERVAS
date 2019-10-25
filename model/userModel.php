@@ -46,6 +46,8 @@ class userModel extends userClass
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             
             $this->setIdUsuario($row['idUsuario']);
+            $this->setUsuario($row['usuario']);
+            $this->setContrasena($row['contrasena']);
             $this->setNombre($row['nombre']);
             $this->setApellido($row['apellido']);
             $this->setTelefono($row['telefono']);
@@ -73,6 +75,8 @@ class userModel extends userClass
             
             $nuevoUsuario=new self();
             $nuevoUsuario->setIdUsuario($row['idUsuario']);
+            $nuevoUsuario->setUsuario($row['usuario']);
+            $nuevoUsuario->setContrasena($row['contrasena']);
             $nuevoUsuario->setNombre($row['nombre']);
             $nuevoUsuario->setApellido($row['apellido']);
             $nuevoUsuario->setTelefono($row['telefono']);
@@ -85,7 +89,7 @@ class userModel extends userClass
             //             $nuevoVehiculo->listaVehiculos=$user->findEditorialBooks($row['idEditorial']);
             //             // honek itzultzen digu editorial bateko liburu guztien zerrenda
             
-            array_push($this->list, $nuevoUsuario);
+            array_push($this->list, $row);
         }
         mysqli_free_result($result);
         //         unset($listaLibrosEditorial);
