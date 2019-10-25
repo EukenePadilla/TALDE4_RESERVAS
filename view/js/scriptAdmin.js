@@ -1,70 +1,79 @@
+var comprobarV=0;
+var comprobarU=0;
+var comprobarR=0;
 
 var midato= new Object();
 var tipos = [];
-var m;//variable utilizada en frontal para sacar los tipos
+var m;// variable utilizada en frontal para sacar los tipos
 $(document).ready(function(){
-//	alert("ready");
+// alert("ready");
 	iniciarVAdmin();
 	$(".tituloVAdmin").click(function(){
-		$(".rellenoAdminVehiculo").show(2500);
+		if(comprobarV==0){
+			$(".rellenoAdminVehiculo").show(1200); 
+			comprobarV=1;
+		}else{
+			$(".rellenoAdminVehiculo").hide(800);
+			comprobarV=0;
+		}
+		
 	});
 	
 	iniciarUAdmin();
 	
 	$(".tituloUAdmin").click(function(){
-		$(".rellenoAdminUsuario").show(2500);
+		if(comprobarU==0){
+			$(".rellenoAdminUsuario").show(1200);
+		comprobarU=1;
+		}else{
+			$(".rellenoAdminUsuario").hide(800);
+			comprobarU=0;
+		}
 	});
 	
 	iniciarRAdmin();
 	
 	$(".tituloRAdmin").click(function(){
-		$(".rellenoAdminReserva").show(2500);
-		
+		if(comprobarR==0){
+			$(".rellenoAdminReserva").show(1200);
+		comprobarR=1;
+		}else{
+			$(".rellenoAdminReserva").hide(800);
+			comprobarR=0;
+		}
 	});
-
-	/*$(".deleteV").click(function(){
-		alert("boton_delete_vehiculo");
-	  	
-	    var num=parseInt($("#numeroent").val());
-	    if(num>midato[minum].butacasLibres){
-	        alert("No hay suficientes entradas");
-	    }else{
-	   	 midato[minum].butacasLibres=midato[minum].butacasLibres-parseInt($("#numeroent").val());   
-	        sala=minum+1;      
-
-//	        var cadena=JSON.stringify(json);
-//	        localsala['antzokia']=cadena;
-	        
-	       htmlCode="SALA NUMERO "+sala+"<br>NUMERO DE BUTACAS TOTALES: "+midato[minum].butacasTotal +"<br>NUMERO DE BUTACAS DISPONIBLES: "+midato[minum].butacasLibres;
-	       alert("hola");
-	       $("#salacompra").html(htmlCode);
-	       
-	       miId=midato[minum].id;
-	       miButacasLibres=midato[minum].butacasLibres;
-	       
-	       enviarDato={'id': miId,'butacasLibres': miButacasLibres};
-
-	       enviarDato=JSON.stringify(enviarDato);
-	           $.ajax({
-	               type:"POST",
-	               data:{'enviarDato':enviarDato},
-	               url:"controller/controlador_modificar_butacasLibres.php",
-	               success: function(datos){
-	               	alert("Se han comprado las entradas con éxito.");
-	               },
-	               error: function(xhr){
-	                   alert("An error occured: "+xhr.status+" "+xhr.statusText);
-	               }
-	           });
-	       
-	       
-	       $('#numeroent').val("");
-	       $('#precio').val($('#tipo').val());
-	       $('#total').val(0);  
-	       
-
-	    }
-	});	*/
+	/*
+	 * $(".deleteV").click(function(){ alert("boton_delete_vehiculo");
+	 * 
+	 * var num=parseInt($("#numeroent").val());
+	 * if(num>midato[minum].butacasLibres){ alert("No hay suficientes
+	 * entradas"); }else{
+	 * midato[minum].butacasLibres=midato[minum].butacasLibres-parseInt($("#numeroent").val());
+	 * sala=minum+1;
+	 *  // var cadena=JSON.stringify(json); // localsala['antzokia']=cadena;
+	 * 
+	 * htmlCode="SALA NUMERO "+sala+"<br>NUMERO DE BUTACAS TOTALES:
+	 * "+midato[minum].butacasTotal +"<br>NUMERO DE BUTACAS DISPONIBLES:
+	 * "+midato[minum].butacasLibres; alert("hola");
+	 * $("#salacompra").html(htmlCode);
+	 * 
+	 * miId=midato[minum].id; miButacasLibres=midato[minum].butacasLibres;
+	 * 
+	 * enviarDato={'id': miId,'butacasLibres': miButacasLibres};
+	 * 
+	 * enviarDato=JSON.stringify(enviarDato); $.ajax({ type:"POST",
+	 * data:{'enviarDato':enviarDato},
+	 * url:"controller/controlador_modificar_butacasLibres.php", success:
+	 * function(datos){ alert("Se han comprado las entradas con éxito."); },
+	 * error: function(xhr){ alert("An error occured: "+xhr.status+"
+	 * "+xhr.statusText); } });
+	 * 
+	 * 
+	 * $('#numeroent').val(""); $('#precio').val($('#tipo').val());
+	 * $('#total').val(0);
+	 * 
+	 *  } });
+	 */
 });
 
 
@@ -73,9 +82,9 @@ function iniciarVAdmin(){
         type:"JSON",
         url:"../controller/cMostrarVehiculos.php",
         success: function(datosV){
-/*            alert(datos);
-       	alert("success");
-*/            midatoV=JSON.parse(datosV);
+/*
+ * alert(datos); alert("success");
+ */            midatoV=JSON.parse(datosV);
 $.each(midatoV,function(i,datoV){
 	
 
@@ -103,9 +112,9 @@ function iniciarUAdmin(){
         url:"../controller/cMostrarUsers.php",
         success: function(datosU){
 
-/*            alert(datos);
-       	alert("success");
-*/            midatoU=JSON.parse(datosU);
+/*
+ * alert(datos); alert("success");
+ */            midatoU=JSON.parse(datosU);
 
 
 $.each(midatoU,function(i,datoU){
@@ -137,9 +146,9 @@ function iniciarRAdmin(){
         url:"../controller/cMostrarReservas.php",
         success: function(datosR){
 
-/*            alert(datos);
-       	alert("success");
-*/            midatoR=JSON.parse(datosR);
+/*
+ * alert(datos); alert("success");
+ */            midatoR=JSON.parse(datosR);
 
 
 $.each(midatoR,function(i,datoR){
