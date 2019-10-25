@@ -1,18 +1,18 @@
 <?php
 
 
-include_once ("../model/libro_model.php");
+include_once ("../model/vehiculoModel.php");
 
-$libro=new reservaModel();
+$vehiculo=new vehiculoModel();
 
 $id=filter_input(INPUT_GET,"id");
 
 if (isset($id))
 {
-    $libro->setId($id );
+    $vehiculo->setIdVehiculo($id );
 }
 
-$resultado=$libro->delete();
+$resultado=$vehiculo->delete();
 echo $resultado;
 
 //header('Location: ../index.php');

@@ -11,6 +11,9 @@ $(document).ready(function(){
 	$(".tituloVAdmin").click(function(){
 		if(comprobarV==0){
 			$(".rellenoAdminVehiculo").show(1200); 
+			$(".rellenoAdminUsuario").hide(800);
+			$(".rellenoAdminReserva").hide(800);
+
 			comprobarV=1;
 		}else{
 			$(".rellenoAdminVehiculo").hide(800);
@@ -24,6 +27,9 @@ $(document).ready(function(){
 	$(".tituloUAdmin").click(function(){
 		if(comprobarU==0){
 			$(".rellenoAdminUsuario").show(1200);
+			$(".rellenoAdminVehiculo").hide(800);
+			$(".rellenoAdminReserva").hide(800);
+
 		comprobarU=1;
 		}else{
 			$(".rellenoAdminUsuario").hide(800);
@@ -35,45 +41,19 @@ $(document).ready(function(){
 	
 	$(".tituloRAdmin").click(function(){
 		if(comprobarR==0){
-			$(".rellenoAdminReserva").show(1200);
+			$(".rellenoAdminReserva").show(1200);			
+			$(".rellenoAdminUsuario").hide(800);
+			$(".rellenoAdminVehiculo").hide(800);
+
 		comprobarR=1;
 		}else{
 			$(".rellenoAdminReserva").hide(800);
+			
 			comprobarR=0;
 		}
 	});
-	/*
-	 * $(".deleteV").click(function(){ alert("boton_delete_vehiculo");
-	 * 
-	 * var num=parseInt($("#numeroent").val());
-	 * if(num>midato[minum].butacasLibres){ alert("No hay suficientes
-	 * entradas"); }else{
-	 * midato[minum].butacasLibres=midato[minum].butacasLibres-parseInt($("#numeroent").val());
-	 * sala=minum+1;
-	 *  // var cadena=JSON.stringify(json); // localsala['antzokia']=cadena;
-	 * 
-	 * htmlCode="SALA NUMERO "+sala+"<br>NUMERO DE BUTACAS TOTALES:
-	 * "+midato[minum].butacasTotal +"<br>NUMERO DE BUTACAS DISPONIBLES:
-	 * "+midato[minum].butacasLibres; alert("hola");
-	 * $("#salacompra").html(htmlCode);
-	 * 
-	 * miId=midato[minum].id; miButacasLibres=midato[minum].butacasLibres;
-	 * 
-	 * enviarDato={'id': miId,'butacasLibres': miButacasLibres};
-	 * 
-	 * enviarDato=JSON.stringify(enviarDato); $.ajax({ type:"POST",
-	 * data:{'enviarDato':enviarDato},
-	 * url:"controller/controlador_modificar_butacasLibres.php", success:
-	 * function(datos){ alert("Se han comprado las entradas con éxito."); },
-	 * error: function(xhr){ alert("An error occured: "+xhr.status+"
-	 * "+xhr.statusText); } });
-	 * 
-	 * 
-	 * $('#numeroent').val(""); $('#precio').val($('#tipo').val());
-	 * $('#total').val(0);
-	 * 
-	 *  } });
-	 */
+	
+	  
 });
 
 
@@ -85,7 +65,7 @@ function iniciarVAdmin(){
 /*
  * alert(datos); alert("success");
  */            midatoV=JSON.parse(datosV);
-$.each(midatoV,function(i,datoV){
+ 		$.each(midatoV,function(i,datoV){
 	
 
             $(".rellenoAdminVehiculo").append(`<tr>
@@ -95,10 +75,38 @@ $.each(midatoV,function(i,datoV){
             		<td>`+datoV.potencia+`</td>
             		<td><img src="`+datoV.img+`" style="width:100px; height:auto;"></td>
             		<td>`+datoV.tipo+`</td>
-            		<td><button class="deleteV delete_paneles">DELETE</button></td>
+            		<td><button class="deleteV delete_paneles" value="`+datoV.idVehiculo+`">DELETE</button></td>
             		<td><button class="updateV update_paneles">UPDATE</button></td>
         		</tr>`);
-});
+ 		});
+ 		$(".deleteV").click(function(){
+ 			
+ 			var id=$(this).val(); 
+ 			alert(id);
+ 			console.log(id);
+ 			
+ 		  	$.ajax({
+ 		       	type: "GET",
+ 		       	data:{'id':id},
+ 		       	url: "../controller/cDeleteVehiculo.php", 
+
+ 		       	success: function(result){  
+ 		       		
+ 		       		console.log(result);
+ 		       		alert(result);
+ 		       		location.reload(true);  //recarga la pagina
+ 		       	},
+ 		       	error : function(xhr) {
+ 		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+ 		   		}
+ 		       });
+ 		  	
+ 		    });
+ 		
+
+		
+
+
         },
         error: function(xhr){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);
@@ -151,24 +159,29 @@ function iniciarRAdmin(){
  */            midatoR=JSON.parse(datosR);
 
 
-$.each(midatoR,function(i,datoR){
-
-
-            $(".rellenoAdminUsuario").append(`<tr>
-            		<td>`+datoR.idReserva+`</td>            		
-            		<td>`+datoR.fechaReserva+`</td>
-            		<td>`+datoR.fechaReservada+`</td>
-            		<td>`+datoR.horaInicio+`</td>
-            		<td>`+datoR.horaFin+`</td>
-            		<td>`+datoR.idUsuario+`</td>
-            		<td>`+datoR.idVehiculo+`</td>
-            		<td><button class="deleteU delete_paneles">DELETE</button></td>
-            		<td><button class="updateU update_paneles">UPDATE</button></td>
-        		</tr>`);
-});
+			$.each(midatoR,function(i,datoR){
+			
+			
+			            $(".rellenoAdminUsuario").append(`<tr>
+			            		<td>`+datoR.idReserva+`</td>            		
+			            		<td>`+datoR.fechaReserva+`</td>
+			            		<td>`+datoR.fechaReservada+`</td>
+			            		<td>`+datoR.horaInicio+`</td>
+			            		<td>`+datoR.horaFin+`</td>
+			            		<td>`+datoR.idUsuario+`</td>
+			            		<td>`+datoR.idVehiculo+`</td>
+			            		<td><button class="deleteR delete_paneles">DELETE</button></td>
+			            		<td><button class="updateR update_paneles">UPDATE</button></td>
+			        		</tr>`);
+			});
         },
         error: function(xhr){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);
         }
     });
 	}
+
+
+
+
+
