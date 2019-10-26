@@ -120,35 +120,48 @@ $(document).ready(function(){
 
 	iniciar_frontal();
 	iniciar_reservas();
-	$("#iniciar_sesion").click(function(){
-
-
-	
-		$usuario =$("#userInputUsername").val();
-		$contrasena =$("#userInputPassword").val();
-				
-		$.ajax({
-				
-			 	type:"GET",
-		        data:{"user":usuario,"password":contrasena},
-		        url:"controller/cLogin.php",
-		        datatype:json,
-		        success: function(result){
-		        	userdata=JSON.parse(datos);
-		        },
-		        error: function(xhr){
-		            alert("An error occured: "+xhr.status+" "+xhr.statusText);
-		        }
-
 	
 	
-		});
+	$("#createUser").click(function(){
+		$nombre =$("#createInputNombre").val();
+    	$apellido =$("#createInputApellido").val();
+    	$telefono =$("#createInputTelefono").val();
+    	$dni =$("#createInputDNI").val();
+    	$tipo =$("#createInputTipo").val();
+    	
 	});
+	
+//	$("#iniciar_sesion").click(function(){
+//
+//
+//	
+//		$usuario =$("#userInputUsername").val();
+//		$contrasena =$("#userInputPassword").val();
+//		//alert($usuario+" "+$contrasena);
+//				
+//		$.ajax({
+//				
+//			 	type:"GET",
+//		        data:{"user":usuario,"password":contrasena},
+//		        url:"../controller/cLogin.php",
+//		        datatype:json,
+//		        success: function(result){
+//		        	userdata=JSON.parse(datos);
+//		        },
+//		        error: function(xhr){
+//		            alert("An error occured: "+xhr.status+" "+xhr.statusText);
+//		        }
+//
+//	
+//	
+//		});
+//	});
 
 });
 
 
 function iniciar_frontal(){
+//	alert("frontal");
 	$.ajax({
         type:"JSON",
         url:"controller/cIndex.php",
@@ -195,6 +208,7 @@ function iniciar_frontal(){
     });
 }
 function iniciar_reservas(){
+//	alert("reservas");
 	$.ajax({
         type:"JSON",
         url:"controller/cIndex.php",

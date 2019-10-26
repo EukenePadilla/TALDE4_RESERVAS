@@ -136,13 +136,56 @@ font-size:20px;
 	display:none;
 }
 
-.boton_atras_vAdmin{
-	font-size:18px;
-	padding:5px;
-	background-color:blue;
-	color:white;
-	border-color:blue;
-	border-radius:5px;
+
+/* desde casa */
+
+#form_vAdminInsertV{
+    display:grid;
+    justify-content: center;
+    align-items: center;
+}
+#elementos_vAdminInsertV{
+    border:5px solid red;
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 5px;
+    grid-template-columns: 1fr;
+}
+#elementos_vAdminInsertV > .nombre_vAdminInsertV, .modelo_vAdminInsertV, .potencia_vAdminInsertV, .img_vAdminInsertV, .tipo_vAdminInsertV{
+    background-color: rgb(103, 212, 93);
+    padding:5px;
+    border: 2px solid black;
+    display: inline-grid;
+    align-items: center;
+    grid-template-columns: 30% 70%;
+    -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+    -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+         box-sizing: border-box;
+    
+}
+#elementos_vAdminInsertV>div>input{
+    width:90%;
+    padding:5px;
+    border-radius: 5px;
+    border: 3px solid rgb(71, 112, 67);
+    background-color: rgb(189, 198, 238);
 }
 
+#submit_vAdminInsertV{
+	font-size:18px;
+	padding:5px;
+	background-color:green;
+	color:white;
+	border:2px solid black;
+	border-radius:5px;
+}
+.boton_atras_vAdminV{
+	font-size:18px;
+	padding:5px;
+	background-color:red;
+	color:white;
+	border:2px solid black;
+	border-radius:5px;
+}
 /* Esto se aplica para la vista vAdmin.php */

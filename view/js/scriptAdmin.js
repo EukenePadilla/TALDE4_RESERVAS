@@ -23,15 +23,38 @@ $(document).ready(function(){
 	$(".insertV").click(function(){
 		
 		$(".paneles").hide(800);
-		
-		$(".insertarVAdmin").append(`<form id="form">
-		
-		  <input id="name" type="text" placeholder="NAME">
-		  <input id="email" type="text" placeholder="E-MAIL">
-		  <textarea id="message" type="text" placeholder="MESSAGE"></textarea>
-  <input id="submit" type="submit" value="GO!">
-  <button class="boton_atras_vAdmin goBack">GO BACK</button>
-</form>`);
+		$(".encabezado_vAdmin").hide(800);
+		$("body").css("background-color", "#2d6622");
+		$(".insertarVAdmin").append(`<form id="form_vAdminInsertV">
+    <div id="elementos_vAdminInsertV">
+        <div class="nombre_vAdminInsertV">
+        <label>Nombre:</label>
+        <input id="nombre" type="text">
+        </div>
+
+        <div class="modelo_vAdminInsertV">
+        <label>Modelo:</label>
+        <input id="modelo" type="text">
+        </div>
+
+        <div class="potencia_vAdminInsertV">
+        <label>Potencia:</label>
+        <input id="potencia" type="text">     
+        </div>
+
+        <div class="img_vAdminInsertV">
+        <label>Img:</label>
+        <input id="img" type="text"> 
+        </div>
+
+        <div class="tipo_vAdminInsertV">
+        <label>Tipo:</label>
+        <input id="tipo" type="text">
+        </div>
+    </div>
+    <input id="submit_vAdminInsertV" type="submit" value="GO!">
+    <button class="boton_atras_vAdminV goBack">GO BACK</button>
+    </form>`);
 		
 		$(".goBack").click(function(){
 			$(".insertarAdmin").hide(800);
