@@ -37,7 +37,7 @@ class vehiculoModel extends vehiculoClass
         mysqli_close ($this->link);
     }
     
-    public function findIdVehiculo($idVehiculo)
+/*     public function findIdVehiculo($idVehiculo)
     {
         // echo "$idEditorial"; //ok
         $this->OpenConnect();
@@ -61,7 +61,7 @@ class vehiculoModel extends vehiculoClass
         // echo $this->getCiudad(); //ok
         return $this;
     }
-    
+     */
     public function setList()
     {
         $this->OpenConnect();  // konexioa zabaldu  - abrir conexión
@@ -107,6 +107,29 @@ class vehiculoModel extends vehiculoClass
             return "El vehiculo se ha borrado con exito";
         } else {
             return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
+        }
+        
+        $this->CloseConnect();
+    }
+    
+    public function insert()
+    {
+        $this->OpenConnect();
+        
+        $nombre=$this->getNombre();
+        $modelo=$this->getModelo();
+        $potencia=$this->getPotencia();
+        $img= $this->getImg();
+        $tipo= $this->getTipo();
+        
+        $sql = "CALL spInsertVehiculo('$nombre', '$modelo', '$potencia', '$img', '$tipo')";
+        //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
+        
+        if ($this->link->query($sql)>=1) // insert egiten da
+        {
+            return "El vehiculo se ha insertado con exito";
+        } else {
+            return "Fall� la insercion del libro: (" . $this->link->errno . ") " . $this->link->error;
         }
         
         $this->CloseConnect();

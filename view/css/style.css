@@ -106,7 +106,7 @@ font-size:20px;
 	border-radius:5px;
 }
 .update_paneles{
-		padding:5px;
+	padding:5px;
 	background-color:green;
 	color:white;
 	border-color:green;
@@ -140,6 +140,7 @@ font-size:20px;
 /* desde casa */
 
 #form_vAdminInsertV{
+	margin-top:100px;
     display:grid;
     justify-content: center;
     align-items: center;
@@ -176,6 +177,7 @@ font-size:20px;
 }
 
 #submit_vAdminInsertV{
+	height:40px;
 	margin-top:5px!important;
 	cursor:pointer!important;
 	font-size:18px!important;
