@@ -145,17 +145,20 @@ font-size:20px;
     align-items: center;
 }
 #elementos_vAdminInsertV{
-    border:5px solid red;
+	background-color: #489c63;
+	padding:20px;
+    border:5px solid #6ea181; 
     display:grid;
     justify-content: center;
     align-items: center;
     grid-gap: 5px;
     grid-template-columns: 1fr;
 }
-#elementos_vAdminInsertV > .nombre_vAdminInsertV, .modelo_vAdminInsertV, .potencia_vAdminInsertV, .img_vAdminInsertV, .tipo_vAdminInsertV{
-    background-color: rgb(103, 212, 93);
+#elementos_vAdminInsertV > .nombre_vAdminInsertV, .modelo_vAdminInsertV, .potencia_vAdminInsertV, .img_vAdminInsertV, .tipo_vAdminInsertV, #submit_vAdminInsertV{
+    background-color:#5bbc8e ;
     padding:5px;
     border: 2px solid black;
+    border-radius: 5px;
     display: inline-grid;
     align-items: center;
     grid-template-columns: 30% 70%;
@@ -164,28 +167,33 @@ font-size:20px;
          box-sizing: border-box;
     
 }
-#elementos_vAdminInsertV>div>input{
+#elementos_vAdminInsertV>div>input:not(.submit_vAdminInsertV){
     width:90%;
     padding:5px;
     border-radius: 5px;
-    border: 3px solid rgb(71, 112, 67);
-    background-color: rgb(189, 198, 238);
+    border: 3px solid #409568;
+    background-color: #95d0b1;
 }
 
 #submit_vAdminInsertV{
-	font-size:18px;
-	padding:5px;
-	background-color:green;
-	color:white;
-	border:2px solid black;
-	border-radius:5px;
+	margin-top:5px!important;
+	cursor:pointer!important;
+	font-size:18px!important;
+	padding:5px!important;
+	background-color:green!important;
+	color:white!important;
+	border:2px solid black!important;
+	border-radius:5px!important;
 }
 .boton_atras_vAdminV{
+	margin-top:10px;
+	cursor:pointer;
 	font-size:18px;
 	padding:5px;
-	background-color:red;
+	background-color:#860e04;
 	color:white;
 	border:2px solid black;
 	border-radius:5px;
 }
+
 /* Esto se aplica para la vista vAdmin.php */

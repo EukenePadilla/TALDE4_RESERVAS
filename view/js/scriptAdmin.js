@@ -24,7 +24,9 @@ $(document).ready(function(){
 		
 		$(".paneles").hide(800);
 		$(".encabezado_vAdmin").hide(800);
-		$("body").css("background-color", "#2d6622");
+		$("body").css("background-color", "	#abcdef");
+
+	    
 		$(".insertarVAdmin").append(`<form id="form_vAdminInsertV">
     <div id="elementos_vAdminInsertV">
         <div class="nombre_vAdminInsertV">
@@ -51,8 +53,9 @@ $(document).ready(function(){
         <label>Tipo:</label>
         <input id="tipo" type="text">
         </div>
+        <input id="submit_vAdminInsertV" type="submit" value="GO!">
+		
     </div>
-    <input id="submit_vAdminInsertV" type="submit" value="GO!">
     <button class="boton_atras_vAdminV goBack">GO BACK</button>
     </form>`);
 		
