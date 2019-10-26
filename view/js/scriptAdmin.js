@@ -27,7 +27,7 @@ $(document).ready(function(){
 		$("body").css("background-color", "	#abcdef");
 
 	    
-		$(".insertarVAdmin").append(`<form id="form_vAdminInsertV" >
+		$(".insertarAdmin").append(`<form id="form_vAdminInsertV" >
 		    <div id="elementos_vAdminInsertV">
 		        <div class="nombre_vAdminInsertV">
 		        <label>Nombre:</label>
@@ -84,6 +84,67 @@ $(document).ready(function(){
 			$(".rellenoAdminUsuario").hide(800);
 			comprobarU=0;
 		}
+	});
+$(".insertU").click(function(){
+		
+		$(".paneles").hide(800);
+		$(".encabezado_vAdmin").hide(800);
+		$("body").css("background-color", "	#abcdef");
+
+	    
+		$(".insertarAdmin").append(`<form id="form_vAdminInsertU" >
+		    <div id="elementos_vAdminInsertU">
+		    
+		        <div class="usuario_vAdminInsertU">
+		        <label>Usuario:</label>
+		        <input id="usuario" type="text">
+		        </div>
+		        
+		        <div class="contrasena_vAdminInsertU">
+		        <label>Contrasena:</label>
+		        <input id="contrasena" type="text">
+		        </div>	
+		        	        
+		        <div class="nombre_vAdminInsertU">
+		        <label>Nombre:</label>
+		        <input id="nombre" type="text">
+		        </div>	
+		        
+		        <div class="apellido_vAdminInsertU">
+		        <label>Apellido:</label>
+		        <input id="apellido" type="text">
+		        </div>
+		        
+		        <div class="telefono_vAdminInsertU">
+		        <label>Telefono:</label>
+		        <input id="telefono" type="text">
+		        </div>
+		        
+		        <div class="dni_vAdminInsertU">
+		        <label>DNI:</label>
+		        <input id="dni" type="text">
+		        </div>
+		        
+		        <div class="tipo_vAdminInsertU">
+		        <label>Tipo:</label>
+		        <input id="tipo" type="text">
+		        </div>
+		        
+		        <input type="button" id="submit_vAdminInsertU" value="GO!" onclick="onclick_vAdminUsuario()">
+				
+		    </div>
+		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
+		    </form>`);
+		
+		
+		
+		//boton para esconder el insert de vAdmin correspondiente y mostrar las tablas
+		$(".goBack").click(function(){
+			$(".insertarAdmin").hide(800);
+
+			$(".paneles").show(1200);
+			
+		});    
 	});
 	
 /*	iniciarRAdmin();
@@ -262,19 +323,14 @@ function iniciarRAdmin(){
 
 
 
-/*FIN DE INICIAR LAS TABLAS EN LA VISTA ADMIN
- * 
- * 
-*/
+/*FIN DE INICIAR LAS TABLAS EN LA VISTA ADMIN */
 
-/*INICIO DE INSERTAR DATOS EN LAS TABLAS DESDE VADMIN
- * 
- * 
-*/
+/*INICIO DE INSERTAR DATOS EN LAS TABLAS DESDE VADMIN */
+
 function onclick_vAdminVehiculo() {
     // do your things
    
-	alert("Esto es el submit");
+//	alert("Esto es el submit vehiculo");
 		
 	var nombre=$("#nombre").val();
 	var modelo=$("#modelo").val();
@@ -301,8 +357,33 @@ function onclick_vAdminVehiculo() {
 }
 
 
-
-/*FIN DE INSERTAR DATOS EN LAS TABLAS DESDE VADMIN
- * 
- * 
-*/
+function onclick_vAdminUsuario() {
+    // do your things
+   
+	alert("Esto es el submit usuario");
+	var usuario=$("#usuario").val();
+	var contrasena=$("#contrasena").val();
+	var nombre=$("#nombre").val();
+	var apellido=$("#apellido").val();
+	var telefono=$("#telefono").val();
+	var dni=$("#dni").val();
+	var tipo=$("#tipo").val();
+	
+	
+	$.ajax({
+	 	type: "GET",
+	 	data:{'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
+	 	url: "../controller/cInsertUsuario.php", 
+	
+	 	success: function(result){  
+	 		
+	 		console.log(result);
+	 		alert(result);
+	 		location.reload(true);  //recarga la pagina
+	 	},
+	 	error : function(xhr) {
+				alert("An error occured: " + xhr.status + " " + xhr.statusText);
+			}
+	 });
+}
+/*FIN DE INSERTAR DATOS EN LAS TABLAS DESDE VADMIN */

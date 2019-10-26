@@ -140,6 +140,32 @@ class userModel extends userClass
         
         $this->CloseConnect();
     }
+    
+    public function insert()
+    {
+        $this->OpenConnect();
+        
+        $usuario=$this->getUsuario();
+        $contrasena=$this->getContrasena();
+        $nombre=$this->getNombre();
+        $apellido=$this->getApellido();
+        $telefono=$this->getTelefono();
+        $dni= $this->getDni();
+        $tipo= $this->getTipo();
+        
+        $sql = "CALL spInsertUsuario('$usuario', '$contrasena', '$nombre', '$apellido', '$telefono', '$dni', '$tipo')";
+        //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
+        
+        if ($this->link->query($sql)>=1) // insert egiten da
+        {
+            return "El usuario se ha insertado con exito";
+        } else {
+            return "Fall� la insercion del usuario: (" . $this->link->errno . ") " . $this->link->error;
+        }
+        
+        $this->CloseConnect();
+    }
+    
 
 }
 ?>

@@ -129,7 +129,7 @@ class vehiculoModel extends vehiculoClass
         {
             return "El vehiculo se ha insertado con exito";
         } else {
-            return "Fall� la insercion del libro: (" . $this->link->errno . ") " . $this->link->error;
+            return "Fall� la insercion del vehiculo: (" . $this->link->errno . ") " . $this->link->error;
         }
         
         $this->CloseConnect();
