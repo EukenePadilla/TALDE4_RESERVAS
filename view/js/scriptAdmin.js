@@ -127,7 +127,7 @@ $(".insertU").click(function(){
 		        
 		        <div class="tipo_vAdminInsertU">
 		        <label>Tipo:</label>
-		        <input id="tipo" type="text">
+		        <input id="tipo" type="number">
 		        </div>
 		        
 		        <input type="button" id="submit_vAdminInsertU" value="GO!" onclick="onclick_vAdminUsuario()">
@@ -256,7 +256,7 @@ function iniciarUAdmin(){
 		            		<td>`+datoU.dni+`</td>
 		            		<td>`+datoU.tipo+`</td>
 		            		<td><button class="deleteU delete_paneles" value="`+datoU.idUsuario+`">DELETE</button></td>
-		            		<td><button class="updateU update_paneles">UPDATE</button></td>
+		            		<td><button class="updateU update_paneles" value="`+datoU.idUsuario+`">UPDATE</button></td>
 		        		</tr>`);
 		        	$(".deleteU").click(function(){
 		     			
@@ -280,7 +280,97 @@ function iniciarUAdmin(){
 		     		   		}
 		     		       });
 		 	       });
-		     		    });
+		        	$(".updateU").click(function(id){
+		        		
+		        		$(".paneles").hide(800);
+		        		$(".encabezado_vAdmin").hide(800);
+		        		$("body").css("background-color", "	#abcdef");
+
+		        	    
+		        		$(".insertarAdmin").append(`<form id="form_vAdminUpdateU" >
+		        		    <div id="elementos_vAdminInsertU">
+		        		    
+		        		        <div class="usuario_vAdminInsertU">
+		        		        <label>Usuario:</label>
+		        		        <input id="usuario" type="text">
+		        		        </div>
+		        		        
+		        		        <div class="contrasena_vAdminInsertU">
+		        		        <label>Contrasena:</label>
+		        		        <input id="contrasena" type="text">
+		        		        </div>	
+		        		        	        
+		        		        <div class="nombre_vAdminInsertU">
+		        		        <label>Nombre:</label>
+		        		        <input id="nombre" type="text">
+		        		        </div>	
+		        		        
+		        		        <div class="apellido_vAdminInsertU">
+		        		        <label>Apellido:</label>
+		        		        <input id="apellido" type="text">
+		        		        </div>
+		        		        
+		        		        <div class="telefono_vAdminInsertU">
+		        		        <label>Telefono:</label>
+		        		        <input id="telefono" type="text">
+		        		        </div>
+		        		        
+		        		        <div class="dni_vAdminInsertU">
+		        		        <label>DNI:</label>
+		        		        <input id="dni" type="text">
+		        		        </div>
+		        		        
+		        		        <div class="tipo_vAdminInsertU">
+		        		        <label>Tipo:</label>
+		        		        <input id="tipo" type="number">
+		        		        </div>
+		        		        
+		        		        <input type="button" class="submit_vAdminUpdateU" value="GO!" onclick="onclick_vAdminUsuario()">
+		        				
+		        		    </div>
+		        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
+		        		    </form>`);
+		        		
+		        		
+		        		
+		        		//boton para esconder el insert de vAdmin correspondiente y mostrar las tablas
+		        		$(".goBack").click(function(){
+		        			$(".insertarAdmin").hide(800);
+
+		        			$(".paneles").show(1200);
+		        			
+		        		});    
+		        	});
+		        	
+		        	$(".submit_vAdminUpdateU").click(function(){
+		        		
+		        		var id=$(this).val(); 
+		        		var usuario=$("#usuario").val();
+		        		var contrasena=$("#contrasena").val();
+		        		var nombre=$("#nombre").val();
+		        		var apellido=$("#apellido").val();
+		        		var telefono=$("#telefono").val();
+		        		var dni=$("#dni").val();
+		        		var tipo=$("#tipo").val();
+		        		
+		        		
+		        		$.ajax({
+		        		 	type: "GET",
+		        		 	data:{'id':id,'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
+		     		       	url: "../controller/cUpdateUsuario.php", 
+
+		     		       	success: function(result){  
+		     		       		
+		     		       		console.log(result);
+		     		       		alert(result);
+		     		       		location.reload(true);  //recarga la pagina
+		     		       	},
+		     		       	error : function(xhr) {
+		     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+		     		   		}
+		     		       });
+		 	       });
+		     });
         },
         error: function(xhr){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);

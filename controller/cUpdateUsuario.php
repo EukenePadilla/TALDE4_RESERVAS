@@ -5,6 +5,11 @@ include_once ("../model/userModel.php");
 $usuario_nuevo=new userModel();
 
 
+$id=filter_input(INPUT_GET,"id");
+if (isset($id))
+{
+    $usuario_nuevo->setIdUsuario($id);
+}
 
 $usuario=filter_input(INPUT_GET,"usuario");
 if (isset($usuario))
@@ -48,7 +53,7 @@ if (isset($tipo))
     $usuario_nuevo->setTipo($tipo);
 }
 
-$resultado=$usuario_nuevo->insert();
+$resultado=$usuario_nuevo->update();
 
 echo $resultado;   // pasar a AJAX el resultado
 

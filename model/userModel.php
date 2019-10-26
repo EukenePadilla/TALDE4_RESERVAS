@@ -153,7 +153,7 @@ class userModel extends userClass
         $dni= $this->getDni();
         $tipo= $this->getTipo();
         
-        $sql = "CALL spInsertUsuario('$usuario', '$contrasena', '$nombre', '$apellido', '$telefono', '$dni', '$tipo')";
+        $sql = "CALL spInsertUsuario('$usuario', '$contrasena', '$nombre', '$apellido', '$telefono', '$dni', $tipo)";
         //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
         
         if ($this->link->query($sql)>=1) // insert egiten da
@@ -166,6 +166,28 @@ class userModel extends userClass
         $this->CloseConnect();
     }
     
-
+    public function update()
+    {
+        $this->OpenConnect();
+        
+        $id=$this->getIdUsuario();
+        $usuario=$this->getUsuario();
+        $contrasena=$this->getContrasena();
+        $nombre=$this->getNombre();
+        $apellido=$this->getApellido();
+        $telefono=$this->getTelefono();
+        $dni= $this->getDni();
+        $tipo= $this->getTipo();
+        
+        $sql = "CALL spUpdateUsuario('$id',$usuario', '$contrasena', '$nombre', '$apellido', '$telefono', '$dni', $tipo)";
+        if ($this->link->query($sql)>=1) // aldatu egiten da
+        {
+            echo "El USUARIO se ha modificado con exito";
+        } else {
+            echo "Fall� la modificacion del libro: (" . $this->link->errno . ") " . $this->link->error;
+        }
+        
+        $this->CloseConnect();
+    }
 }
 ?>

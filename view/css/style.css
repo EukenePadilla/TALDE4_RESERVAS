@@ -233,7 +233,7 @@ font-size:20px;
          box-sizing: border-box;
     
 }
-#elementos_vAdminInsertU>div>input:not(.submit_vAdminInsertU){
+#elementos_vAdminInsertU>div>input{
     width:90%;
     padding:5px;
     border-radius: 5px;
@@ -241,7 +241,7 @@ font-size:20px;
     background-color: #95d0b1;
 }
 
-#submit_vAdminInsertU{
+#submit_vAdminInsertU, .submit_vAdminUpdateU{
 	height:40px;
 	margin-top:5px!important;
 	cursor:pointer!important;
@@ -252,6 +252,7 @@ font-size:20px;
 	border:2px solid black!important;
 	border-radius:5px!important;
 }
+
 .boton_atras_vAdminU{
 	margin-top:10px;
 	cursor:pointer;
