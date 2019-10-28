@@ -26,7 +26,7 @@ $(document).ready(function(){
 		$(".encabezado_vAdmin").hide(800);
 		$("body").css("background-color", "	#abcdef");
 
-	    
+	    $(".insertarAdmin").html("");
 		$(".insertarAdmin").append(`<form id="form_vAdminInsertV" >
 		    <div id="elementos_vAdminInsertV">
 		        <div class="nombre_vAdminInsertV">
@@ -91,7 +91,7 @@ $(".insertU").click(function(){
 		$(".encabezado_vAdmin").hide(800);
 		$("body").css("background-color", "	#abcdef");
 
-	    
+	    $(".insertarAdmin").html("");	    
 		$(".insertarAdmin").append(`<form id="form_vAdminInsertU" >
 		    <div id="elementos_vAdminInsertU">
 		    
