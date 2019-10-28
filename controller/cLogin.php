@@ -10,7 +10,7 @@ $usuario->setContrasena($password);
 
 $result=$usuario->comprobarUser();
 
-
+echo("esto en Clogin");
 
 
 unset ($usuario);
