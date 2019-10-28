@@ -254,7 +254,7 @@ function iniciarUAdmin(){
 		            		<td>`+datoU.dni+`</td>
 		            		<td>`+datoU.tipo+`</td>
 		            		<td><button class="deleteU delete_paneles" value="`+datoU.idUsuario+`">DELETE</button></td>
-		            		<td><button class="updateU update_paneles" value="`+datoU.idUsuario+`">UPDATE</button></td>
+		            		<td><button class="updateU update_paneles" value="`+datoU.idUsuario+`||`+datoU.usuario+`||`+datoU.contrasena+`||`+datoU.nombre+`||`+datoU.apellido+`||`+datoU.telefono+`||`+datoU.dni+` ||`+datoU.tipo+`">UPDATE</button></td>
 		        		</tr>`);
 		            
 		        
@@ -292,68 +292,72 @@ function iniciarUAdmin(){
 				});
 				
 				$(".updateU").click(function(){
+					var todo=$(this).val();
+					alert(todo);
+					var todo = todo.split("||");
 					
-	     			var id=$(this).val(); 
-	     			alert(id);
+	     			var id=todo[0]; 
+	     			var usuario=todo[1]; 
+//	     			alert(id +"izq id y drc usuario"+usuario);
+	     			var contrasena=todo[2]; 
+	     			var nombre=todo[3]; 
+	     			var apellido=todo[4]; 
+	     			var telefono=todo[5]; 
+	     			var dni=todo[6]; 
+	     			var tipo=todo[7]; 
+
 	     			
 	        		$(".paneles").hide(800);
 	        		$(".encabezado_vAdmin").hide(800);
 	        		$("body").css("background-color", "	#abcdef");
 
-	     		  	$.ajax({
-	     		       	type: "GET",
-	     		       	data:{'id':id},
-	     		       	url: "../controller/cUpdateUser.php", 
-
-	     		       	success: function(result){  
-	     		       		alert(result);
+	     		 
 	     		       	$(".insertarAdmin").append(`<form id="form_vAdminUpdateU" >
 	    	        		    <div id="elementos_vAdminInsertU">
 	    	        		    
 	    	        		        <div class="usuario_vAdminInsertU">
 	    	        		        <label>Usuario:</label>
-	    	        		        <input id="usuario" type="text" value="`+result.idUsuario+`">
+	    	        		        <input id="usuario" type="text" value="`+usuario+`">
 	    	        		        </div>
 	    	        		        
 	    	        		        <div class="contrasena_vAdminInsertU">
 	    	        		        <label>Contrasena:</label>
-	    	        		        <input id="contrasena" type="text">
+	    	        		        <input id="contrasena" type="text"  value="`+contrasena+`">
 	    	        		        </div>	
 	    	        		        	        
 	    	        		        <div class="nombre_vAdminInsertU">
 	    	        		        <label>Nombre:</label>
-	    	        		        <input id="nombre" type="text">
+	    	        		        <input id="nombre" type="text"  value="`+nombre+`">
 	    	        		        </div>	
 	    	        		        
 	    	        		        <div class="apellido_vAdminInsertU">
 	    	        		        <label>Apellido:</label>
-	    	        		        <input id="apellido" type="text">
+	    	        		        <input id="apellido" type="text"  value="`+apellido+`">
 	    	        		        </div>
 	    	        		        
 	    	        		        <div class="telefono_vAdminInsertU">
 	    	        		        <label>Telefono:</label>
-	    	        		        <input id="telefono" type="text">
+	    	        		        <input id="telefono" type="text"  value="`+telefono+`">
 	    	        		        </div>
 	    	        		        
 	    	        		        <div class="dni_vAdminInsertU">
 	    	        		        <label>DNI:</label>
-	    	        		        <input id="dni" type="text">
+	    	        		        <input id="dni" type="text"  value="`+dni+`">
 	    	        		        </div>
 	    	        		        
 	    	        		        <div class="tipo_vAdminInsertU">
 	    	        		        <label>Tipo:</label>
-	    	        		        <input id="tipo" type="number">
+	    	        		        <input id="tipo" type="number"  value="`+tipo+`">
 	    	        		        </div>
 	    	        		        
-	    	        		        <input type="button" class="submit_vAdminUpdateU" value="GO!" >
+	    	        		        <input type="button" class="submit_vAdminUpdateU" id="`+id+`" value="GO!">
 	    	        				
 	    	        		    </div>
 	    	        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
 	    	        		    </form>`);
 	     		       		
-	     		       		
 	    		        	$(".submit_vAdminUpdateU").click(function(){
-	    		        		var id=$(this).val(); 
+	    		        		var id=$(this).attr("id"); 
 	    		        		var usuario=$("#usuario").val();
 	    		        		var contrasena=$("#contrasena").val();
 	    		        		var nombre=$("#nombre").val();
@@ -361,7 +365,6 @@ function iniciarUAdmin(){
 	    		        		var telefono=$("#telefono").val();
 	    		        		var dni=$("#dni").val();
 	    		        		var tipo=$("#tipo").val();
-	    		        		
 	    		        		
 	    		        		$.ajax({
 	    		        		 	type: "GET",
@@ -379,13 +382,9 @@ function iniciarUAdmin(){
 	    		     		   		}
 	    		     		       });
 	    		 	       });
-	     		       	},
-	     		       	error : function(xhr) {
-	     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
-	     		   		}
-	     		       });
+				  });
 
-		     });
+		
 				
         },
         error: function(xhr){

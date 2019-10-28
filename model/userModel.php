@@ -59,6 +59,7 @@ class userModel extends userClass
         }
         mysqli_free_result($result);
         $this->CloseConnect();
+        echo 'alert("No")';
         // echo $this->getCiudad(); //ok
         return $this;
     }
@@ -179,7 +180,7 @@ class userModel extends userClass
         $dni= $this->getDni();
         $tipo= $this->getTipo();
         
-        $sql = "CALL spUpdateUsuario('$id',$usuario', '$contrasena', '$nombre', '$apellido', '$telefono', '$dni', $tipo)";
+        $sql = "CALL spUpdateUsuario('$id','$usuario', '$contrasena', '$nombre', '$apellido', '$telefono', '$dni', $tipo)";
         if ($this->link->query($sql)>=1) // aldatu egiten da
         {
             echo "El USUARIO se ha modificado con exito";
