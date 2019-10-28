@@ -3,7 +3,10 @@
 <title>Administracion</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/scriptAdmin.js" type="text/javascript"></script>
-
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/style.css">
 </head>
 

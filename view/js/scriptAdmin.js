@@ -1,7 +1,7 @@
 var comprobarV=0;
 var comprobarU=0;
 var comprobarR=0;
-
+var userId= -1;
 var midato= new Object();
 var tipos = [];
 var m;// variable utilizada en frontal para sacar los tipos
@@ -244,7 +244,6 @@ function iniciarUAdmin(){
 
 				$.each(midatoU,function(i,datoU){
 				
-				
 		            $(".rellenoAdminUsuario").append(`<tr>
 		            		<td>`+datoU.idUsuario+`</td>            		
 		            		<td>`+datoU.usuario+`</td>
@@ -257,6 +256,8 @@ function iniciarUAdmin(){
 		            		<td><button class="deleteU delete_paneles" value="`+datoU.idUsuario+`">DELETE</button></td>
 		            		<td><button class="updateU update_paneles" value="`+datoU.idUsuario+`">UPDATE</button></td>
 		        		</tr>`);
+		            
+		        
 		        	$(".deleteU").click(function(){
 		     			
 		     			var id=$(this).val(); 
@@ -287,87 +288,105 @@ function iniciarUAdmin(){
 		        			$(".paneles").show(1200);
 		        			
 		        		});    
-		        	});
-				$(".updateU").click(function(id){
-	        		
+		        	
+				});
+				
+				$(".updateU").click(function(){
+					
+	     			var id=$(this).val(); 
+	     			alert(id);
+	     			
 	        		$(".paneles").hide(800);
 	        		$(".encabezado_vAdmin").hide(800);
 	        		$("body").css("background-color", "	#abcdef");
 
-	        		$(".insertarAdmin").append(`<form id="form_vAdminUpdateU" >
-	        		    <div id="elementos_vAdminInsertU">
-	        		    
-	        		        <div class="usuario_vAdminInsertU">
-	        		        <label>Usuario:</label>
-	        		        <input id="usuario" type="text">
-	        		        </div>
-	        		        
-	        		        <div class="contrasena_vAdminInsertU">
-	        		        <label>Contrasena:</label>
-	        		        <input id="contrasena" type="text">
-	        		        </div>	
-	        		        	        
-	        		        <div class="nombre_vAdminInsertU">
-	        		        <label>Nombre:</label>
-	        		        <input id="nombre" type="text">
-	        		        </div>	
-	        		        
-	        		        <div class="apellido_vAdminInsertU">
-	        		        <label>Apellido:</label>
-	        		        <input id="apellido" type="text">
-	        		        </div>
-	        		        
-	        		        <div class="telefono_vAdminInsertU">
-	        		        <label>Telefono:</label>
-	        		        <input id="telefono" type="text">
-	        		        </div>
-	        		        
-	        		        <div class="dni_vAdminInsertU">
-	        		        <label>DNI:</label>
-	        		        <input id="dni" type="text">
-	        		        </div>
-	        		        
-	        		        <div class="tipo_vAdminInsertU">
-	        		        <label>Tipo:</label>
-	        		        <input id="tipo" type="number">
-	        		        </div>
-	        		        
-	        		        <input type="button" class="submit_vAdminUpdateU" value="GO!" >
-	        				
-	        		    </div>
-	        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
-	        		    </form>`);
-	        		
-	        		
-	        		
-		        	$(".submit_vAdminUpdateU").click(function(){
-		        		var id=$(this).val(); 
-		        		var usuario=$("#usuario").val();
-		        		var contrasena=$("#contrasena").val();
-		        		var nombre=$("#nombre").val();
-		        		var apellido=$("#apellido").val();
-		        		var telefono=$("#telefono").val();
-		        		var dni=$("#dni").val();
-		        		var tipo=$("#tipo").val();
-		        		
-		        		
-		        		$.ajax({
-		        		 	type: "GET",
-		        		 	data:{'id':id,'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
-		     		       	url: "../controller/cUpdateUsuario.php", 
+	     		  	$.ajax({
+	     		       	type: "GET",
+	     		       	data:{'id':id},
+	     		       	url: "../controller/cUpdateUser.php", 
 
-		     		       	success: function(result){  
-		     		       		
-		     		       		console.log(result);
-		     		       		alert(result);
-		     		       		location.reload(true);  //recarga la pagina
-		     		       	},
-		     		       	error : function(xhr) {
-		     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
-		     		   		}
-		     		       });
-		 	       });
+	     		       	success: function(result){  
+	     		       		alert(result);
+	     		       	$(".insertarAdmin").append(`<form id="form_vAdminUpdateU" >
+	    	        		    <div id="elementos_vAdminInsertU">
+	    	        		    
+	    	        		        <div class="usuario_vAdminInsertU">
+	    	        		        <label>Usuario:</label>
+	    	        		        <input id="usuario" type="text" value="`+result.idUsuario+`">
+	    	        		        </div>
+	    	        		        
+	    	        		        <div class="contrasena_vAdminInsertU">
+	    	        		        <label>Contrasena:</label>
+	    	        		        <input id="contrasena" type="text">
+	    	        		        </div>	
+	    	        		        	        
+	    	        		        <div class="nombre_vAdminInsertU">
+	    	        		        <label>Nombre:</label>
+	    	        		        <input id="nombre" type="text">
+	    	        		        </div>	
+	    	        		        
+	    	        		        <div class="apellido_vAdminInsertU">
+	    	        		        <label>Apellido:</label>
+	    	        		        <input id="apellido" type="text">
+	    	        		        </div>
+	    	        		        
+	    	        		        <div class="telefono_vAdminInsertU">
+	    	        		        <label>Telefono:</label>
+	    	        		        <input id="telefono" type="text">
+	    	        		        </div>
+	    	        		        
+	    	        		        <div class="dni_vAdminInsertU">
+	    	        		        <label>DNI:</label>
+	    	        		        <input id="dni" type="text">
+	    	        		        </div>
+	    	        		        
+	    	        		        <div class="tipo_vAdminInsertU">
+	    	        		        <label>Tipo:</label>
+	    	        		        <input id="tipo" type="number">
+	    	        		        </div>
+	    	        		        
+	    	        		        <input type="button" class="submit_vAdminUpdateU" value="GO!" >
+	    	        				
+	    	        		    </div>
+	    	        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
+	    	        		    </form>`);
+	     		       		
+	     		       		
+	    		        	$(".submit_vAdminUpdateU").click(function(){
+	    		        		var id=$(this).val(); 
+	    		        		var usuario=$("#usuario").val();
+	    		        		var contrasena=$("#contrasena").val();
+	    		        		var nombre=$("#nombre").val();
+	    		        		var apellido=$("#apellido").val();
+	    		        		var telefono=$("#telefono").val();
+	    		        		var dni=$("#dni").val();
+	    		        		var tipo=$("#tipo").val();
+	    		        		
+	    		        		
+	    		        		$.ajax({
+	    		        		 	type: "GET",
+	    		        		 	data:{'id':id,'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
+	    		     		       	url: "../controller/cUpdateUsuario.php", 
+
+	    		     		       	success: function(result){  
+	    		     		       		
+	    		     		       		console.log(result);
+	    		     		       		alert(result);
+	    		     		       		location.reload(true);  //recarga la pagina
+	    		     		       	},
+	    		     		       	error : function(xhr) {
+	    		     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+	    		     		   		}
+	    		     		       });
+	    		 	       });
+	     		       	},
+	     		       	error : function(xhr) {
+	     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+	     		   		}
+	     		       });
+
 		     });
+				
         },
         error: function(xhr){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);
