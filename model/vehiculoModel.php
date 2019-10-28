@@ -134,6 +134,27 @@ class vehiculoModel extends vehiculoClass
         
         $this->CloseConnect();
     }
-    
+    public function update()
+    {
+        $this->OpenConnect();
+        
+        $id=$this->getIdVehiculo();
+        $nombre=$this->getNombre();
+        $modelo=$this->getModelo();
+        $potencia=$this->getPotencia();
+        $img= $this->getImg();
+        $tipo= $this->getTipo();
+        echo "esto es la id / $id /";
+        
+        $sql = "CALL spUpdateVehiculo('$id', '$nombre', '$modelo', '$potencia', '$img', '$tipo')";
+        if ($this->link->query($sql)>=1) // aldatu egiten da
+        {
+            echo "El vehiculo se ha modificado con exito";
+        } else {
+            echo "Fall� la modificacion del libro: (" . $this->link->errno . ") " . $this->link->error;
+        }
+        
+        $this->CloseConnect();
+    }
 }
 ?>

@@ -191,7 +191,7 @@ function iniciarVAdmin(){
             		<td><img src="`+datoV.img+`" style="width:100px; height:auto;"></td>
             		<td>`+datoV.tipo+`</td>
             		<td><button class="deleteV delete_paneles" value="`+datoV.idVehiculo+`">DELETE</button></td>
-            		<td><button class="updateV update_paneles">UPDATE</button></td>
+            		<td><button class="updateV update_paneles" value="`+datoV.idVehiculo+`||`+datoV.nombre+`||`+datoV.modelo+`||`+datoV.potencia+`||`+datoV.img+`||`+datoV.tipo+`">UPDATE</button></td>
         		</tr>`);
  		});
 
@@ -218,11 +218,88 @@ function iniciarVAdmin(){
  		   		}
  		       });
  		  	
- 		    });
- 		
+ 		 
+ 	   });
+		$(".updateV").click(function(){
+			var todo=$(this).val();
 
+			var todo = todo.split("||");
+			
+ 			var id=todo[0]; 
+ 			var nombre=todo[1]; 
+// 			alert(id +"izq id y drc usuario"+usuario);
+ 			var modelo=todo[2]; 
+ 			var potencia=todo[3]; 
+ 			var img=todo[4]; 
+ 			var tipo=todo[5]; 
+
+ 			
+    		$(".paneles").hide(800);
+    		$(".encabezado_vAdmin").hide(800);
+    		$("body").css("background-color", "	#abcdef");
+
+ 		 
+ 		       	$(".insertarAdmin").append(`<form id="form_vAdminUpdate" >
+	        		    <div id="elementos_vAdminUpdate">
+	        		    
+	        		        <div class="nombre_vAdminInsertU">
+	        		        <label>Nombre:</label>
+	        		        <input id="nombre" type="text" value="`+nombre+`">
+	        		        </div>
+	        		        
+	        		        <div class="contrasena_vAdminInsertU">
+	        		        <label>modelo:</label>
+	        		        <input id="modelo" type="text"  value="`+modelo+`">
+	        		        </div>	
+	        		        	        
+	        		        <div class="nombre_vAdminInsertU">
+	        		        <label>potencia:</label>
+	        		        <input id="potencia" type="text"  value="`+potencia+`">
+	        		        </div>	
+	        		        
+	        		        <div class="apellido_vAdminInsertU">
+	        		        <label>img:</label>
+	        		        <input id="img" type="text"  value="`+img+`">
+	        		        </div>
+	        		        
+	        		        <div class="telefono_vAdminInsertU">
+	        		        <label>tipo:</label>
+	        		        <input tipo="telefono" type="text"  value="`+tipo+`">
+	        		        </div>
+	        		        
+	        		        <input type="button" class="submit_vAdminUpdate" id="`+id+`" value="GO!">
+	        				
+	        		    </div>
+	        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
+	        		    </form>`);
+ 		       		
+		        	$(".submit_vAdminUpdate").click(function(){
+		        		var id=$(this).attr("id"); 
+		        		var nombre=$("#nombre").val();
+		        		var modelo=$("#modelo").val();
+		        		var potencia=$("#potencia").val();
+		        		var img=$("#img").val();
+		        		var tipo=$("#tipo").val();
+		        		
+		        		$.ajax({
+		        		 	type: "GET",
+		        		 	data:{'id':id,'nombre':nombre , 'modelo':modelo , 'potencia':potencia, 'img':img , 'tipo':tipo },
+		     		       	url: "../controller/cUpdateVehiculo.php", 
+
+		     		       	success: function(result){  
+		     		       		
+		     		       		console.log(result);
+		     		       		alert(result);
+		     		       		location.reload(true);  //recarga la pagina
+		     		       	},
+		     		       	error : function(xhr) {
+		     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+		     		   		}
+		     		       });
+		 	       });
+		  });
 		
-
+ 
 
         },
         error: function(xhr){
@@ -293,7 +370,7 @@ function iniciarUAdmin(){
 				
 				$(".updateU").click(function(){
 					var todo=$(this).val();
-					alert(todo);
+
 					var todo = todo.split("||");
 					
 	     			var id=todo[0]; 
@@ -312,10 +389,10 @@ function iniciarUAdmin(){
 	        		$("body").css("background-color", "	#abcdef");
 
 	     		 
-	     		       	$(".insertarAdmin").append(`<form id="form_vAdminUpdateU" >
-	    	        		    <div id="elementos_vAdminInsertU">
+	     		       	$(".insertarAdmin").append(`<form id="form_vAdminUpdate" >
+	    	        		    <div id="elementos_vAdminUpdate">
 	    	        		    
-	    	        		        <div class="usuario_vAdminInsertU">
+	    	        		        <div class="nombre_vAdminInsertU">
 	    	        		        <label>Usuario:</label>
 	    	        		        <input id="usuario" type="text" value="`+usuario+`">
 	    	        		        </div>
@@ -350,7 +427,7 @@ function iniciarUAdmin(){
 	    	        		        <input id="tipo" type="number"  value="`+tipo+`">
 	    	        		        </div>
 	    	        		        
-	    	        		        <input type="button" class="submit_vAdminUpdateU" id="`+id+`" value="GO!">
+	    	        		        <input type="button" class="submit_vAdminUpdate" id="`+id+`" value="GO!">
 	    	        				
 	    	        		    </div>
 	    	        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
