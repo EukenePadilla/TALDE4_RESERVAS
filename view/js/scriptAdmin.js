@@ -232,7 +232,7 @@ function iniciarVAdmin(){
  			var potencia=todo[3]; 
  			var img=todo[4]; 
  			var tipo=todo[5]; 
-			
+			alert(tipo);
     		$(".paneles").hide(800);
     		$(".encabezado_vAdmin").hide(800);
     		$("body").css("background-color", "	#abcdef");
@@ -263,7 +263,7 @@ function iniciarVAdmin(){
 	        		        
 	        		        <div class="telefono_vAdminInsertU">
 	        		        <label>tipo:</label>
-	        		        <input tipo="telefono" type="text"  value="`+tipo+`">
+	        		        <input tipo="tipo" type="text"  value="`+tipo+`">
 	        		        </div>
 	        		        
 	        		        <input type="button" class="submit_vAdminUpdate" id="`+id+`" value="GO!">
