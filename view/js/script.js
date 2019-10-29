@@ -134,12 +134,13 @@ $(document).ready(function(){
 				
 		$.ajax({
 				
-			 	type:"GET",
-		        data:{'user':usuario,'password':contrasena},
-		        url:"controller/cLogin.php",
+			 	type:'GET',
+		        data:{'usuario':$usuario,'contrasena':$contrasena},
+		        url:'controller/cLogin.php',
 //		        datatype:json,
 		        success: function(result){
 //		        	userdata=JSON.parse(datos);
+		        	alert("result");
 		        },
 		        error: function(xhr){
 		            alert("An error occured: "+xhr.status+" "+xhr.statusText);
