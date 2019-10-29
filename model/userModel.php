@@ -98,7 +98,7 @@ class userModel extends userClass
     }
   
     
-    public   function comprobarUser($usuario,$password){
+    public   function comprobarUser(){
         
         $this->OpenConnect();
         
