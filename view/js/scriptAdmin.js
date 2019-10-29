@@ -232,8 +232,7 @@ function iniciarVAdmin(){
  			var potencia=todo[3]; 
  			var img=todo[4]; 
  			var tipo=todo[5]; 
-
- 			
+			
     		$(".paneles").hide(800);
     		$(".encabezado_vAdmin").hide(800);
     		$("body").css("background-color", "	#abcdef");
