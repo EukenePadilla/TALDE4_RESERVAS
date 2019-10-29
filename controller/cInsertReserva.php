@@ -1,54 +1,44 @@
 <?php
 
-include_once ("../model/userModel.php");
+include_once ("../model/reservaModel.php");
 
-$usuario_nuevo=new userModel();
+$reserva=new reservaModel();
 
-
-
-$usuario=filter_input(INPUT_GET,"usuario");
-if (isset($usuario))
+$fechaReserva=filter_input(INPUT_GET,"fechaReserva");
+if (isset($fechaReserva))
 {
-    $usuario_nuevo->setUsuario($usuario);
+    $reserva->setFechaReserva($fechaReserva);
 }
 
-$contrasena=filter_input(INPUT_GET,"contrasena");
-if (isset($contrasena))
+$fechaReservada=filter_input(INPUT_GET,"fechaReservada");
+if (isset($fechaReservada))
 {
-    $usuario_nuevo->setContrasena($contrasena);
+    $reserva->setFechaReservada($fechaReservada);
 }
 
-$nombre=filter_input(INPUT_GET,"nombre");
-if (isset($nombre))
+$horaInicio=filter_input(INPUT_GET,"horaInicio");
+if (isset($horaInicio))
 {
-    $usuario_nuevo->setNombre($nombre);
+    $reserva->setHoraInicio($horaInicio);
 }
 
-$apellido=filter_input(INPUT_GET,"apellido");
-if (isset($apellido))
+$horaFin=filter_input(INPUT_GET,"horaFin");
+if (isset($horaFin))
 {
-    $usuario_nuevo->setApellido($apellido);
+    $reserva->setHoraFin($horaFin);
 }
 
-$telefono=filter_input(INPUT_GET,"telefono");
-if (isset($telefono))
+$idUsuario=filter_input(INPUT_GET,"idUsuario");
+if (isset($idUsuario))
 {
-    $usuario_nuevo->setTelefono($telefono);
+    $reserva->setIdUsuario($idUsuario);
 }
-
-$dni=filter_input(INPUT_GET,"dni");
-if (isset($dni))
+$idVehiculo=filter_input(INPUT_GET,"idVehiculo");
+if (isset($idVehiculo))
 {
-    $usuario_nuevo->setDni($dni);
+    $reserva->setIdVehiculo($idVehiculo);
 }
-
-$tipo=filter_input(INPUT_GET,"tipo");
-if (isset($tipo))
-{
-    $usuario_nuevo->setTipo($tipo);
-}
-
-$resultado=$usuario_nuevo->insert();
+$resultado=$reserva->insert();
 
 echo $resultado;   // pasar a AJAX el resultado
 
