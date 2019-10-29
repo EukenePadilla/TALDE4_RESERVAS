@@ -240,15 +240,41 @@ function iniciar_reservas(){
                 	           Modelo: `+dato.modelo+` <br>
                 	           Potencia: `+dato.potencia+` <br>
                 	           Tipo: `+dato.tipo+`</p>
-                	           <button class="btn btn-primary btn-block" type="button"
-				data-toggle="modal" data-target="#reservaModal">Reserva ya</button>
+                	           <button class="btn btn-primary btn-block reserva" type="button"
+				data-toggle="modal" data-target="#reservaModal" id"`+dato.idVehiculo +`">Reserva ya</button>
                 	           </div></div></div>`);
                 	 }
 /*                		 alert("hola");
 */                		 
                 	 });/*termina el each con el que se sacan los podructos por tipo*/
                  });/*termina aqui el each de los titulos de reservas*/
-             
+             $(".reserva").click(function(){
+           		$fReserva =$("#reservaInputreservada").val();
+               	$fReservada =$("#reservaInputreservada").val();
+               	$hInicio =$("#reservaInputInicio").val();
+               	$hFinal =$("#reservaInputFin").val();
+               	var idVehiculo=$(this).attr("id"); 
+               	var $idUsuario = 1;
+               	alert(idVehiculo);
+               	$.ajax({
+           			
+           		 	type:"GET",
+           	        data:{'fechaReserva':fReserva,'fechaReservada':fReservada ,
+           	        	'horaInicio':hInicio , 'horaFin':hFinal,
+           	        	'idUsuario':idUsuario, 'idVehiculo':idVehiculo },
+           	        url:"../controller/cInsertReserva.php",
+           	        datatype:json,
+           	        success: function(result){
+           	        	userdata=JSON.parse(datos);
+           	        },
+           	        error: function(xhr){
+           	            alert("An error occured: "+xhr.status+" "+xhr.statusText);
+           	        }
+
+
+
+           	});
+           	});
              
         },
         error: function(xhr){
