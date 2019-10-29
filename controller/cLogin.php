@@ -1,17 +1,21 @@
 <?php
 include_once ("../model/userModel.php");
 
-$user=filter_input(INPUT_GET,"user");
-$password=filter_input(INPUT_GET,"password");
+$usuario_nuevo= new userModel();
 
-$usuario= new userModel();
-$usuario->setUsuario($user);
-$usuario->setContrasena($password);
+$usuario=filter_input(INPUT_GET,"usuario");
+if (isset($usuario))
+{
+    $usuario_nuevo->setUsuario($usuario);
+}
 
-$result=$usuario->comprobarUser();
+$contrasena=filter_input(INPUT_GET,"contrasena");
+if (isset($contrasena))
+{
+    $usuario_nuevo->setContrasena($contrasena);
+}
 
-echo("esto en Clogin");
-
+$result=$usuario_nuevo->comprobarUser();
 
 unset ($usuario);
 
