@@ -121,33 +121,34 @@ $(document).ready(function(){
 	iniciar_frontal();
 	iniciar_reservas();
 	
-	
-	
-	
 	$("#iniciar_sesion").click(function(){
-
-
-	
+		
 		$usuario =$("#userInputUsername").val();
 		$contrasena =$("#userInputPassword").val();
-		//alert($usuario+" "+$contrasena);
+		alert($usuario+" "+$contrasena);
 				
 		$.ajax({
 				
-			 	type:'GET',
+	        type:"JSON",
 		        data:{'usuario':$usuario,'contrasena':$contrasena},
 		        url:'controller/cLogin.php',
-//		        datatype:json,
-		        success: function(result){
-//		        	userdata=JSON.parse(datos);
-		        	alert("result");
+
+		        success: function(datos){
+		       
+		        	
+		        	midato=JSON.stringify(datos);
+
+		        	alert(midato);
+		        	console.log(midato);
+//		        	
+//					$.each(midato,function(i,dato){
+//			        	alert(dato.usuario+"    "+dato.tipo);
+//
+//					});
 		        },
 		        error: function(xhr){
 		            alert("An error occured: "+xhr.status+" "+xhr.statusText);
 		        }
-
-	
-	
 		});
 	});
 
@@ -193,14 +194,13 @@ function iniciar_frontal(){
                 	 }
                               });/*termina aqui el each de los datos del frontal*/
 
-                	 
-            	 
         },
         error: function(xhr){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);
         }
     });
 }
+
 function iniciar_reservas(){
 //	alert("reservas");
 	$.ajax({
@@ -249,34 +249,31 @@ function iniciar_reservas(){
 */                		 
                 	 });/*termina el each con el que se sacan los podructos por tipo*/
                  });/*termina aqui el each de los titulos de reservas*/
-             $(".reserva").click(function(){
-           		$fReserva =$("#reservaInputreservada").val();
-               	$fReservada =$("#reservaInputreservada").val();
-               	$hInicio =$("#reservaInputInicio").val();
-               	$hFinal =$("#reservaInputFin").val();
-               	var idVehiculo=$(this).attr("id"); 
-               	var $idUsuario = 1;
-               	alert(idVehiculo);
-               	$.ajax({
-           			
-           		 	type:"GET",
-           	        data:{'fechaReserva':fReserva,'fechaReservada':fReservada ,
-           	        	'horaInicio':hInicio , 'horaFin':hFinal,
-           	        	'idUsuario':idUsuario, 'idVehiculo':idVehiculo },
-           	        url:"../controller/cInsertReserva.php",
-           	        datatype:json,
-           	        success: function(result){
-           	        	userdata=JSON.parse(datos);
-           	        },
-           	        error: function(xhr){
-           	            alert("An error occured: "+xhr.status+" "+xhr.statusText);
-           	        }
-
-
-
-           	});
-           	});
              
+             $(".reserva").click(function(){
+	           		$fReserva =$("#reservaInputreservada").val();
+	               	$fReservada =$("#reservaInputreservada").val();
+	               	$hInicio =$("#reservaInputInicio").val();
+	               	$hFinal =$("#reservaInputFin").val();
+	               	var idVehiculo=$(this).attr("id"); 
+	               	var $idUsuario = 1;
+	               	alert(idVehiculo);
+	               	
+	               	$.ajax({
+	           		 	type:"GET",
+	           	        data:{'fechaReserva':fReserva,'fechaReservada':fReservada ,
+	           	        	'horaInicio':hInicio , 'horaFin':hFinal,
+	           	        	'idUsuario':idUsuario, 'idVehiculo':idVehiculo },
+	           	        url:"../controller/cInsertReserva.php",
+	           	        datatype:json,
+	           	        success: function(result){
+	           	        	userdata=JSON.parse(datos);
+	           	        },
+	           	        error: function(xhr){
+	           	            alert("An error occured: "+xhr.status+" "+xhr.statusText);
+	           	        }
+	               	});
+	           	});//reserva.click
         },
         error: function(xhr){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);
@@ -284,32 +281,3 @@ function iniciar_reservas(){
     });
 	
 }
-	
-	
-
-
-
-
-
-//$("#iniciar_sesion").click(){
-//	alert("aaaaaaaaaaaaaa");
-//	var usuario =$(#userInputUsername).val();
-//	var contrasena =$(#userInputPassword).val();
-//	alert(usuario,contrasena);
-//	
-//	$.ajax({
-//			
-//		 	type:"GET",
-//	        data:{"user":usuario,"password":contrasena},
-//	        url:"controller/cLogin.php",
-//	        datatype:json,
-//	        success: function(result){
-//	        	userdata=JSON.parse(datos);
-//	        },
-//	        error: function(xhr){
-//	            alert("An error occured: "+xhr.status+" "+xhr.statusText);
-//	        }
-
-//}
-//
-//});

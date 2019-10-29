@@ -9,9 +9,13 @@ class userModel extends userClass
     private $link;
     private $list=array();         //editorial guztien lista - lista de todas editoriales
     private $listaUsuarios=array(); // editorial honen liburu guztiak - libros de una editorial
+    private $usuarioLogin=array();
     
     public function getList() {
         return $this->list;
+    }
+    public function getUsuarioLogin() {
+        return $this->usuarioLogin;
     }
     
     public function OpenConnect()
@@ -98,30 +102,36 @@ class userModel extends userClass
     }
   
     
-    public   function comprobarUser(){
+    public function setUsuarioLogin(){
         
         $this->OpenConnect();
         
         $usuario=$this->getUsuario();
         $password=$this->getContrasena();
-        
-        
+        echo ("usuario".$usuario);
         $sql = "CALL spComprobarUser('$usuario','$password')";
         
+        $resultado = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
+//         // se guarda en result toda la información solicitada a la bbdd
         
-        if ($this->link->query($sql)) // insert egiten da
-        {
-            alert("el usuario existe");
-            echo "El usuario existe";
-        } else {
-            alert("el usuario no existe");
-            echo "Fall� el usuario no existe: (" . $this->link->error . ") " . $this->link->error;
+        while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+           
+            $Usuario=new self();
+           $Usuario->setIdUsuario($row['idUsuario']);
+           $Usuario->setUsuario($row['usuario']);
+           $Usuario->setContrasena($row['contrasena']);
+           $Usuario->setNombre($row['nombre']);
+           $Usuario->setApellido($row['apellido']);
+           $Usuario->setTelefono($row['telefono']);
+           $Usuario->setDni($row['dni']);
+           $Usuario->setTipo($row['tipo']);
+           
+           array_push($this->usuarioLogin, $row);
         }
+        mysqli_free_result($resultado);
         
         $this->CloseConnect();
-       
-    
-    }
+        }
     
     public function delete()
     {
