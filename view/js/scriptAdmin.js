@@ -53,7 +53,7 @@ $(document).ready(function(){
 		        <label>Tipo:</label>
 		        <input id="tipo" type="text">
 		        </div>
-		        <input type="button" id="submit_vAdminInsertV" value="GO!" onclick="onclick_vAdminVehiculo()">
+		        <input type="button" id="submit_vAdminInsertV" value="GO!" onclick="insertarVehiculo()">
 				
 		    </div>
 		    <button class="boton_atras_vAdminV goBack">GO BACK</button>
@@ -129,7 +129,7 @@ $(".insertU").click(function(){
 		        <input id="tipo" type="number">
 		        </div>
 		        
-		        <input type="button" id="submit_vAdminInsertU" value="GO!" onclick="onclick_vAdminUsuario()">
+		        <input type="button" id="submit_vAdminInsertU" value="GO!" onclick="insertarUsuario()">
 				
 		    </div>
 		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
@@ -232,8 +232,7 @@ function iniciarVAdmin(){
  			var potencia=todo[3]; 
  			var img=todo[4]; 
  			var tipo=todo[5]; 
-
- 			
+			alert(tipo);
     		$(".paneles").hide(800);
     		$(".encabezado_vAdmin").hide(800);
     		$("body").css("background-color", "	#abcdef");
@@ -264,7 +263,7 @@ function iniciarVAdmin(){
 	        		        
 	        		        <div class="telefono_vAdminInsertU">
 	        		        <label>tipo:</label>
-	        		        <input tipo="telefono" type="text"  value="`+tipo+`">
+	        		        <input tipo="tipo" type="text"  value="`+tipo+`">
 	        		        </div>
 	        		        
 	        		        <input type="button" class="submit_vAdminUpdate" id="`+id+`" value="GO!">
@@ -509,7 +508,7 @@ function iniciarRAdmin(){
 
 /*INICIO DE INSERTAR DATOS EN LAS TABLAS DESDE VADMIN */
 
-function actualizarUser() {
+function insertarVehiculo() {
     // do your things
    
 //	alert("Esto es el submit vehiculo");
@@ -539,10 +538,10 @@ function actualizarUser() {
 }
 
 
-/*function actualizasUser() {
+function insertarUsuario() {
     // do your things
    
-	alert("porque no funcionara");
+	alert("Esto es el submit usuario");
 	var usuario=$("#usuario").val();
 	var contrasena=$("#contrasena").val();
 	var nombre=$("#nombre").val();
@@ -567,5 +566,5 @@ function actualizarUser() {
 				alert("An error occured: " + xhr.status + " " + xhr.statusText);
 			}
 	 });
-}*/
+}
 /*FIN DE INSERTAR DATOS EN LAS TABLAS DESDE VADMIN */
