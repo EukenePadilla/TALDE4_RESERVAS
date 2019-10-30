@@ -106,11 +106,11 @@ class userModel extends userClass
         
         $this->OpenConnect();
         
-        $usuario=$this->getUsuario();
-        $password=$this->getContrasena();
-        echo ("usuario".$usuario);
-        $sql = "CALL spComprobarUser('$usuario','$password')";
+        $usuario="'".$this->getUsuario()."'";
+        $password="'".$this->getContrasena()."'";
         
+        $sql = "CALL spComprobarUser($usuario,$password)";
+
         $resultado = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
 //         // se guarda en result toda la información solicitada a la bbdd
         
@@ -130,7 +130,9 @@ class userModel extends userClass
         }
         mysqli_free_result($resultado);
         
+        
         $this->CloseConnect();
+        return $Usuario;
         }
     
     public function delete()
