@@ -116,6 +116,24 @@ class reservaModel extends reservaClass
         
         $this->CloseConnect();
     }
+    public function delete()
+    {
+        $this->OpenConnect();
+        
+        $id=$this->getIdReserva();
+        
+        
+        $sql = "CALL spDeleteReserva($id)";
+        
+        if ($this->link->query($sql)>=1) // delete egiten da
+        {
+            return "la reserva se ha borrado con exito";
+        } else {
+            return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
+        }
+        
+        $this->CloseConnect();
+    }
     
 }
 ?>
