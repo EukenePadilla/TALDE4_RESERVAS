@@ -104,7 +104,7 @@ class reservaModel extends reservaClass
         $idUsuario= $this->getIdUsuario();
         $idVehiculo= $this->getIdVehiculo();
         
-        $sql = "CALL spInsertReserva('$fechaReserva', '$fechaReservada', '$horaInicio', '$horaFin', '$idUsuario', '$idVehiculo')";
+        $sql = "CALL spInsertReservas('$fechaReserva', '$fechaReservada', '$horaInicio', '$horaFin', '$idUsuario', '$idVehiculo')";
         //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
         
         if ($this->link->query($sql)>=1) // insert egiten da
@@ -112,6 +112,24 @@ class reservaModel extends reservaClass
             return "la reserva se ha insertado con exito";
         } else {
             return "Fall� la insercion de reserva: (" . $this->link->errno . ") " . $this->link->error;
+        }
+        
+        $this->CloseConnect();
+    }
+    public function delete()
+    {
+        $this->OpenConnect();
+        
+        $id=$this->getIdReserva();
+        
+        
+        $sql = "CALL spDeleteReserva($id)";
+        
+        if ($this->link->query($sql)>=1) // delete egiten da
+        {
+            return "la reserva se ha borrado con exito";
+        } else {
+            return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
         }
         
         $this->CloseConnect();
