@@ -93,6 +93,29 @@ class reservaModel extends reservaClass
         //         unset($listaLibrosEditorial);
         $this->CloseConnect();
     }
+    public function insert()
+    {
+        $this->OpenConnect();
+        
+        $fechaReserva=$this->getFechaReserva();
+        $fechaReservada=$this->getFechaReservada();
+        $horaInicio=$this->getHoraInicio();
+        $horaFin= $this->getHoraFin();
+        $idUsuario= $this->getIdUsuario();
+        $idVehiculo= $this->getIdVehiculo();
+        
+        $sql = "CALL spInsertReserva('$fechaReserva', '$fechaReservada', '$horaInicio', '$horaFin', '$idUsuario', '$idVehiculo')";
+        //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
+        
+        if ($this->link->query($sql)>=1) // insert egiten da
+        {
+            return "la reserva se ha insertado con exito";
+        } else {
+            return "Fall� la insercion de reserva: (" . $this->link->errno . ") " . $this->link->error;
+        }
+        
+        $this->CloseConnect();
+    }
     
 }
 ?>
