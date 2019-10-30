@@ -125,26 +125,21 @@ $(document).ready(function(){
 		
 		$usuario =$("#userInputUsername").val();
 		$contrasena =$("#userInputPassword").val();
-		alert($usuario+" "+$contrasena);
+		datosUser={'usuario':$usuario,'contrasena':$contrasena};
+		datosUser=JSON.stringify(datosUser);
+		
 				
 		$.ajax({
 				
-	        type:"JSON",
-		        data:{'usuario':$usuario,'contrasena':$contrasena},
+	        type:"GET",
+		        data:{'datosUser':datosUser},
 		        url:'controller/cLogin.php',
 
-		        success: function(datos){
-		       
-		        	
-		        	midato=JSON.stringify(datos);
+		        success: function(result){
+		        	alert("holaaaa");
+		        	alert(result);
+		        	console.log(result);
 
-		        	alert(midato);
-		        	console.log(midato);
-//		        	
-//					$.each(midato,function(i,dato){
-//			        	alert(dato.usuario+"    "+dato.tipo);
-//
-//					});
 		        },
 		        error: function(xhr){
 		            alert("An error occured: "+xhr.status+" "+xhr.statusText);
