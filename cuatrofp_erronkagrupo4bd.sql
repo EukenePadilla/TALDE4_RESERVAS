@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2019 a las 11:29:37
+-- Tiempo de generación: 30-10-2019 a las 10:07:20
 -- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.1.32
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,10 +35,10 @@ DELETE FROM vehiculos WHERE vehiculos.idVehiculo = pidVehiculo$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spFindUsuario` (IN `pid` INT)  NO SQL
 select * from usuarios where usuarios.idUsuario=pid$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spInsertUsuario` (IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` VARCHAR(40))  NO SQL
-INSERT INTO usuarios (usuarios.nombre, usuarios.apellido, usuarios.telefono, usuarios.dni, usuarios.tipo) VALUES (pnombre, papellido, ptelefono, pdni, ptipo)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertUsuario` (IN `pusuario` VARCHAR(50), IN `pcontrasena` VARCHAR(50), IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` INT(1))  NO SQL
+INSERT INTO usuarios (usuarios.usuario, usuarios.contrasena, usuarios.nombre, usuarios.apellido, usuarios.telefono, usuarios.dni, usuarios.tipo) VALUES (pusuario, pcontrasena, pnombre, papellido, ptelefono, pdni, ptipo)$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spInsertVehiculo` (IN `pnombre` VARCHAR(40), IN `pmodelo` VARCHAR(40), IN `ppotencia` VARCHAR(40), IN `pimg` VARCHAR(100), IN `ptipo` VARCHAR(50))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertVehiculo` (IN `pnombre` VARCHAR(40), IN `pmodelo` VARCHAR(40), IN `ppotencia` VARCHAR(40), IN `pimg` VARCHAR(100), IN `ptipo` VARCHAR(50))  NO SQL
 INSERT INTO vehiculos (vehiculos.nombre, vehiculos.modelo, vehiculos.potencia, vehiculos.img, vehiculos.tipo) VALUES (pnombre, pmodelo, ppotencia, pimg, ptipo)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSelectAllReservas` ()  NO SQL

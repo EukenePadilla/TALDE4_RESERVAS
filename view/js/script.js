@@ -303,7 +303,7 @@ function iniciar_reservas(){
            	        data:{'fechaReserva':$fReserva,'fechaReservada':$fReservada ,
            	        	'horaInicio':$hInicio , 'horaFin':$hFinal,
            	        	'idUsuario':$idUsuario, 'idVehiculo':idVehiculo },
-           	        url:"../controller/cInsertReserva.php",
+           	        url:"controller/cInsertReserva.php",
            	        success: function(result){
            	        	console.log(result);
            		 		alert(result);
