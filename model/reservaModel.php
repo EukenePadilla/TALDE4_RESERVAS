@@ -104,7 +104,7 @@ class reservaModel extends reservaClass
         $idUsuario= $this->getIdUsuario();
         $idVehiculo= $this->getIdVehiculo();
         
-        $sql = "CALL spInsertReserva('$fechaReserva', '$fechaReservada', '$horaInicio', '$horaFin', '$idUsuario', '$idVehiculo')";
+        $sql = "CALL spInsertReservas('$fechaReserva', '$fechaReservada', '$horaInicio', '$horaFin', '$idUsuario', '$idVehiculo')";
         //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
         
         if ($this->link->query($sql)>=1) // insert egiten da
