@@ -147,6 +147,38 @@ $(document).ready(function(){
 		        }
 		});
 	});
+	
+$("#inputRegistro").click(function(){
+		
+	var usuario=$("#createInputUsuario").val();
+	var contrasena=$("#createInputContrasena").val();
+	var nombre=$("#createInputNombre").val();
+	var apellido=$("#createInputApellido").val();
+	var telefono=$("#createInputTelefono").val();
+	var dni=$("#createInputDni").val();
+	
+//$(document).on('change', '#createInputTipo', function(event) {
+//     $('#createInputTipo').val($("#createInputTipo option:selected").text());
+//});
+	var tipo=$("#createInputTipo").val();
+	
+	
+	$.ajax({
+	 	type: "GET",
+	 	data:{'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
+	 	url: "controller/cInsertUsuario.php", 
+	
+	 	success: function(result){  
+	 		
+	 		console.log(result);
+	 		alert(result);
+	 		location.reload(true);  //recarga la pagina
+	 	},
+	 	error : function(xhr) {
+				alert("An error occured: " + xhr.status + " " + xhr.statusText);
+			}
+	 });
+	});
 
 });
 

@@ -165,6 +165,7 @@ class userModel extends userClass
         $telefono=$this->getTelefono();
         $dni= $this->getDni();
         $tipo= $this->getTipo();
+        echo $usuario."  ".$contrasena." ".$nombre." ".$apellido." ".$telefono." ".$dni." ".$tipo;
         
         $sql = "CALL spInsertUsuario('$usuario', '$contrasena', '$nombre', '$apellido', '$telefono', '$dni', $tipo)";
         //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
