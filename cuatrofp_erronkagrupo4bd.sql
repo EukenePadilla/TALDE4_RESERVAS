@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2019 a las 10:07:20
+-- Tiempo de generación: 30-10-2019 a las 11:18:46
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -26,7 +26,7 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spDeleteUsuario` (IN `pidUsuario` INT(11))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteUsuario` (IN `pidUsuario` INT(11))  NO SQL
 DELETE FROM usuarios WHERE usuarios.idUsuario = pidUsuario$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteVehiculo` (IN `pidVehiculo` INT(11))  NO SQL
@@ -56,8 +56,9 @@ SELECT DISTINCT vehiculos.tipo FROM vehiculos$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUsuario` (IN `pidUsuario` INT(11), IN `pusuario` VARCHAR(40), IN `pcontrasena` VARCHAR(40), IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` INT(1))  NO SQL
 UPDATE `usuarios` SET `usuario`=pusuario,`contrasena`=pcontrasena,`nombre`=pnombre,`apellido`=papellido,`telefono`=ptelefono,`dni`=pdni,`tipo`=ptipo WHERE usuarios.idUsuario=pidUsuario$$
 
-CREATE DEFINER=`cuatrofp_erronka`@`localhost` PROCEDURE `spUpdateVehiculo` (IN `pidVehiculo` INT(11), IN `pnombre` VARCHAR(40), IN `pmodelo` VARCHAR(40), IN `ppotencia` VARCHAR(40), IN `pimg` VARCHAR(100), IN `ptipo` VARCHAR(50))  NO SQL
-UPDATE vehiculos SET vehiculos.nombre = pnombre, vehiculos.modelo = pmodelo, vehiculos.potencia = ppotencia, vehiculos.img = pimg, vehiculos.tipo = ptipo$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateVehiculo` (IN `pidVehiculo` INT(11), IN `pnombre` VARCHAR(40), IN `pmodelo` VARCHAR(40), IN `ppotencia` VARCHAR(40), IN `pimg` VARCHAR(100), IN `ptipo` VARCHAR(50))  NO SQL
+UPDATE vehiculos SET vehiculos.nombre = pnombre, vehiculos.modelo = pmodelo, vehiculos.potencia = ppotencia, vehiculos.img = pimg, vehiculos.tipo = ptipo
+WHERE vehiculos.idVehiculo = pidVehiculo$$
 
 DELIMITER ;
 
@@ -122,7 +123,7 @@ CREATE TABLE `vehiculos` (
 --
 
 INSERT INTO `vehiculos` (`idVehiculo`, `nombre`, `modelo`, `potencia`, `img`, `tipo`) VALUES
-(1, 'XULONG', 'E202', '1000w', 'https://images-na.ssl-images-amazon.com/images/I/61UnVWlFS3L._SL1500_.jpg', 'Monopatin'),
+(1, 'XULONG', 'E202', '1000w', 'https://images-na.ssl-images-amazon.com/images/I/6...', 'Monopatin'),
 (2, 'ECOXTREM', 'Sparrow', '1600w', 'https://images-na.ssl-images-amazon.com/images/I/416d3wIEi8L.jpg', 'Monopatin'),
 (3, 'Ecogyro', 'S9', '250w', 'https://images-na.ssl-images-amazon.com/images/I/61-qdX3X4FL._SL1500_.jpg', 'Monopatin'),
 (4, 'TOEU', 'Hoverboard', '250w', 'https://images-na.ssl-images-amazon.com/images/I/61q%2BaEeB52L._SL1000_.jpg', 'Monopatin'),
