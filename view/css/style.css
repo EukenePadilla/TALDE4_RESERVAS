@@ -21,6 +21,10 @@ body{
 #userLog{
     display:none;
 }
+#admin{
+    display:none;
+}
+
 /////////////////NAVBAR///////////////
 ////////////////FRONTAL//////////////
 .card_frontal{

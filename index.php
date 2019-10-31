@@ -7,6 +7,8 @@ print_r($_SESSION);
 
 <html>
 <head>
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+<!-- esto de arriba es un intento (fallido) de poner un icono a la pagina web, es bien -->
 <meta charset="UTF-8">
 <title>Eco Vehicles</title>
 <script
@@ -18,7 +20,6 @@ print_r($_SESSION);
 <script src="view/js/script.js" type="text/javascript"></script>
 
 <link rel="stylesheet" type="text/css" href="view/css/style.css">
-
 </head>
 <!-- //////////////////////EDER//////////////////////////// -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -46,16 +47,11 @@ print_r($_SESSION);
 
 		</ul>
 		<ul class="navbar-nav  my-2 my-lg-0">
-<button id="userLog" class="btn btn-success botones_navbar" type="button">
-                    
-
-                </button>
-                <button id="logout" class="btn btn-secondary botones_navbar" type="button"
-                >Log out</button>
-			<button class="btn btn-secondary botones_navbar " type="button"
-				data-toggle="modal" id="login" data-target="#userModal">Log in</button>
-			<button class="btn btn-secondary botones_navbar" type="button"
-				data-toggle="modal" id="register" data-target="#createModal">Register</button>
+			<a id="admin" href="view/vAdmin.php"><button class="btn btn-secondary botones_navbar" type="button">Administrador</button></a>
+			<button id="userLog" class="btn btn-success botones_navbar" type="button"></button>
+            <button id="logout" class="btn btn-secondary botones_navbar" type="button">Log out</button>
+			<button class="btn btn-secondary botones_navbar " type="button"	data-toggle="modal" id="login" data-target="#userModal">Log in</button>
+			<button class="btn btn-secondary botones_navbar" type="button"	data-toggle="modal" id="register" data-target="#createModal">Register</button>
 				
                 
 		</ul>

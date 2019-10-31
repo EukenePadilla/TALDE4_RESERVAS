@@ -131,13 +131,16 @@ $(document).ready(function(){
     if(result==null){
         $("#login").show();
         $("#register").show();  
-        
+
     }else{
     	$('#userLog').html(usuario.usuario);
     	$("#userLog").show(1200); 
         $("#logout").show(1200); 
+        $("#admin").show(1200); 
+        $("#admin").show(1200);
         $("#login").hide();
-        $("#register").hide();    
+        $("#register").hide();
+        
     };    
 
 	$("#logout").click(function(){
@@ -152,6 +155,7 @@ $(document).ready(function(){
 		        	$("#login").show(800);
 		            $("#register").show(800);
 		            $("#userLog").hide(800);
+		            $("#admin").hide(800);
 		            $("#logout").hide(800);
 		            location.reload(true);
 
@@ -167,7 +171,6 @@ $(document).ready(function(){
 		$contrasena =$("#userInputPassword").val();
 		datosUser={'usuario':$usuario,'contrasena':$contrasena};
 		datosUser=JSON.stringify(datosUser);
-		
 				
 		$.ajax({
 				
@@ -181,6 +184,7 @@ $(document).ready(function(){
 		        	$('#userLog').html(UUU[0].usuario);
 		        	$("#userLog").show(1200); 
                     $("#logout").show(1200); 
+                    $("#admin").show(800);
                     $("#login").hide(800);
                     $("#register").hide(800);
 /*                    $("#userModal").html("");
