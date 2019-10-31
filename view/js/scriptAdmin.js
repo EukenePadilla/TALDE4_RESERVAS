@@ -172,22 +172,22 @@ $(".insertU").click(function(){
 		    	        		    
 		    	        		        <div class="nombre_vAdminInsertU">
 		    	        		        <label>Fecha reserva:</label>
-		    	        		        <input id="fechaReserva" type="text" >
+		    	        		        <input id="fechaReserva" type="date" >
 		    	        		        </div>
 		    	        		        
 		    	        		        <div class="contrasena_vAdminInsertU">
 		    	        		        <label>Fecha reservada:</label>
-		    	        		        <input id="fechaReservada" type="text"  >
+		    	        		        <input id="fechaReservada" type="date"  >
 		    	        		        </div>	
 		    	        		        	        
 		    	        		        <div class="nombre_vAdminInsertU">
 		    	        		        <label>Hora inicio:</label>
-		    	        		        <input id="horaInicio" type="text" >
+		    	        		        <input id="horaInicio" type="time" >
 		    	        		        </div>	
 		    	        		        
 		    	        		        <div class="apellido_vAdminInsertU">
 		    	        		        <label>Hora fin:</label>
-		    	        		        <input id="horaFin" type="text" >
+		    	        		        <input id="horaFin" type="time" >
 		    	        		        </div>
 		    	        		        
 		    	        		        <div class="telefono_vAdminInsertU">
@@ -254,7 +254,6 @@ function iniciarVAdmin(){
  		$(".deleteV").click(function(){
  			
  			var id=$(this).val(); 
- 			alert(id);
  			console.log(id);
  			
  		  	$.ajax({
@@ -265,7 +264,6 @@ function iniciarVAdmin(){
  		       	success: function(result){  
  		       		
  		       		console.log(result);
- 		       		alert(result);
  		       		location.reload(true);  //recarga la pagina
  		       	},
  		       	error : function(xhr) {
@@ -282,13 +280,12 @@ function iniciarVAdmin(){
 			
  			var id=todo[0]; 
  			var nombre=todo[1]; 
-// 			alert(id +"izq id y drc usuario"+usuario);
  			var modelo=todo[2]; 
  			var potencia=todo[3]; 
  			var img=todo[4]; 
  			var tipo=todo[5]; 
-			alert(tipo);
-    		$(".paneles").hide(800);
+
+ 			$(".paneles").hide(800);
     		$(".encabezado_vAdmin").hide(800);
     		$("body").css("background-color", "	#abcdef");
 
@@ -318,7 +315,7 @@ function iniciarVAdmin(){
 	        		        
 	        		        <div class="telefono_vAdminInsertU">
 	        		        <label>tipo:</label>
-	        		        <input tipo="tipo" type="text"  value="`+tipo+`">
+	        		        <input id="tipo" type="text"  value="`+tipo+`">
 	        		        </div>
 	        		        
 	        		        <input type="button" class="submit_vAdminUpdate" id="`+id+`" value="GO!">
@@ -343,7 +340,6 @@ function iniciarVAdmin(){
 		     		       	success: function(result){  
 		     		       		
 		     		       		console.log(result);
-		     		       		alert(result);
 		     		       		location.reload(true);  //recarga la pagina
 		     		       	},
 		     		       	error : function(xhr) {
@@ -392,7 +388,6 @@ function iniciarUAdmin(){
 		        	$(".deleteU").click(function(){
 		     			
 		     			var id=$(this).val(); 
-		     			alert(id);
 		     			console.log(id);
 		     			
 		     		  	$.ajax({
@@ -403,7 +398,6 @@ function iniciarUAdmin(){
 		     		       	success: function(result){  
 		     		       		
 		     		       		console.log(result);
-		     		       		alert(result);
 		     		       		location.reload(true);  //recarga la pagina
 		     		       	},
 		     		       	error : function(xhr) {
@@ -411,7 +405,7 @@ function iniciarUAdmin(){
 		     		   		}
 		     		       });
 		 	       });
-		        	
+
 		        		//boton para esconder el insert de vAdmin correspondiente y mostrar las tablas
 		        		$(".goBack").click(function(){
 		        			$(".insertarAdmin").hide(800);
@@ -422,14 +416,13 @@ function iniciarUAdmin(){
 		        	
 				});
 				
-				$(".updateU").click(function(){
+	        	$(".updateU").click(function(){
 					var todo=$(this).val();
 
 					var todo = todo.split("||");
 					
 	     			var id=todo[0]; 
 	     			var usuario=todo[1]; 
-//	     			alert(id +"izq id y drc usuario"+usuario);
 	     			var contrasena=todo[2]; 
 	     			var nombre=todo[3]; 
 	     			var apellido=todo[4]; 
@@ -487,7 +480,7 @@ function iniciarUAdmin(){
 	    	        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
 	    	        		    </form>`);
 	     		       		
-	    		        	$(".submit_vAdminUpdateU").click(function(){
+	    		        	$(".submit_vAdminUpdate").click(function(){
 	    		        		var id=$(this).attr("id"); 
 	    		        		var usuario=$("#usuario").val();
 	    		        		var contrasena=$("#contrasena").val();
@@ -505,7 +498,6 @@ function iniciarUAdmin(){
 	    		     		       	success: function(result){  
 	    		     		       		
 	    		     		       		console.log(result);
-	    		     		       		alert(result);
 	    		     		       		location.reload(true);  //recarga la pagina
 	    		     		       	},
 	    		     		       	error : function(xhr) {
@@ -514,8 +506,6 @@ function iniciarUAdmin(){
 	    		     		       });
 	    		 	       });
 				  });
-
-		
 				
         },
         error: function(xhr){
@@ -529,9 +519,7 @@ function iniciarRAdmin(){
         type:"JSON",
         url:"../controller/cMostrarReservas.php",
         success: function(datosR){
-//
-//        	 alert(datosR); 
-//        	 alert("success");
+
 
              midatoR=JSON.parse(datosR);
 
@@ -554,8 +542,7 @@ function iniciarRAdmin(){
 			            $(".deleteR").click(function(){
 			     			
 			     			var id=$(this).val(); 
-			     			alert(id);
-			     			console.log(id);
+			     		
 			     			
 			     		  	$.ajax({
 			     		       	type: "GET",
@@ -564,8 +551,7 @@ function iniciarRAdmin(){
 
 			     		       	success: function(result){  
 			     		       		
-//			     		       		console.log(result);
-//			     		       		alert(result);
+			     		       		console.log(result);
 			     		       		location.reload(true);  //recarga la pagina
 			     		       	},
 			     		       	error : function(xhr) {
@@ -573,7 +559,9 @@ function iniciarRAdmin(){
 			     		   		}
 			     		       });
 			 	       });
-			        	
+			            
+
+				
 			        		//boton para esconder el insert de vAdmin correspondiente y mostrar las tablas
 			        		$(".goBack").click(function(){
 			        			$(".insertarAdmin").hide(800);
@@ -591,7 +579,6 @@ function iniciarRAdmin(){
 						
 		     			var id=todo[0]; 
 		     			var fechaReserva=todo[1]; 
-//		     			alert(id +"izq id y drc usuario"+usuario);
 		     			var fechaReservada=todo[2]; 
 		     			var horaInicio=todo[3]; 
 		     			var horaFin=todo[4]; 
@@ -609,22 +596,22 @@ function iniciarRAdmin(){
 		    	        		    
 		    	        		        <div class="nombre_vAdminInsertU">
 		    	        		        <label>Fecha reserva:</label>
-		    	        		        <input id="fechaReserva" type="text" value="`+fechaReserva+`">
+		    	        		        <input id="fechaReserva" type="date" value="`+fechaReserva+`">
 		    	        		        </div>
 		    	        		        
 		    	        		        <div class="contrasena_vAdminInsertU">
 		    	        		        <label>Fecha reservada:</label>
-		    	        		        <input id="fechaReservada" type="text"  value="`+fechaReservada+`">
+		    	        		        <input id="fechaReservada" type="date"  value="`+fechaReservada+`">
 		    	        		        </div>	
 		    	        		        	        
 		    	        		        <div class="nombre_vAdminInsertU">
 		    	        		        <label>Hora inicio:</label>
-		    	        		        <input id="horaInicio" type="text"  value="`+horaInicio+`">
+		    	        		        <input id="horaInicio" type="time"  value="`+horaInicio+`">
 		    	        		        </div>	
 		    	        		        
 		    	        		        <div class="apellido_vAdminInsertU">
 		    	        		        <label>Hora fin:</label>
-		    	        		        <input id="horaFin" type="text"  value="`+horaFin+`">
+		    	        		        <input id="horaFin" type="time"  value="`+horaFin+`">
 		    	        		        </div>
 		    	        		        
 		    	        		        <div class="telefono_vAdminInsertU">
@@ -659,9 +646,8 @@ function iniciarRAdmin(){
 		    		     		       	url: "../controller/cUpdateReserva.php", 
 
 		    		     		       	success: function(result){  
-		    		     		       		
 		    		     		       		console.log(result);
-		    		     		       		alert(result);
+
 		    		     		       		location.reload(true);  //recarga la pagina
 		    		     		       	},
 		    		     		       	error : function(xhr) {
@@ -687,7 +673,6 @@ function iniciarRAdmin(){
 function insertarVehiculo() {
     // do your things
    
-//	alert("Esto es el submit vehiculo");
 		
 	var nombre=$("#nombre").val();
 	var modelo=$("#modelo").val();
@@ -704,7 +689,6 @@ function insertarVehiculo() {
 	 	success: function(result){  
 	 		
 	 		console.log(result);
-	 		alert(result);
 	 		location.reload(true);  //recarga la pagina
 	 	},
 	 	error : function(xhr) {
@@ -717,7 +701,6 @@ function insertarVehiculo() {
 function insertarUsuario() {
     // do your things
    
-	alert("Esto es el submit usuario");
 	var usuario=$("#usuario").val();
 	var contrasena=$("#contrasena").val();
 	var nombre=$("#nombre").val();
@@ -735,7 +718,6 @@ function insertarUsuario() {
 	 	success: function(result){  
 	 		
 	 		console.log(result);
-	 		alert(result);
 	 		location.reload(true);  //recarga la pagina
 	 	},
 	 	error : function(xhr) {
@@ -760,7 +742,6 @@ function insertarReserva() {
 	       	success: function(result){  
 	       		
 	       		console.log(result);
-	       		alert(result);
 	       		location.reload(true);  //recarga la pagina
 	       	},
 	       	error : function(xhr) {

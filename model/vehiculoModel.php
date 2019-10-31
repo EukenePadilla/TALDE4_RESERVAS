@@ -144,7 +144,6 @@ class vehiculoModel extends vehiculoClass
         $potencia=$this->getPotencia();
         $img= $this->getImg();
         $tipo= $this->getTipo();
-        echo "esto es la id / $id /";
         
         $sql = "CALL spUpdateVehiculo('$id', '$nombre', '$modelo', '$potencia', '$img', '$tipo')";
         if ($this->link->query($sql)>=1) // aldatu egiten da
