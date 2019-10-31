@@ -125,12 +125,20 @@ $(document).ready(function(){
 	iniciar_reservas();
 	
 	var result = localStorage.getItem('usuario');
-	
     usuario = JSON.parse(result) || {};
+
     
-	$('#userLog').html(usuario.usuario);
-    $("#login").hide();
-    $("#register").hide();    
+    if(result==null){
+        $("#login").show();
+        $("#register").show();  
+        
+    }else{
+    	$('#userLog').html(usuario.usuario);
+    	$("#userLog").show(1200); 
+        $("#logout").show(1200); 
+        $("#login").hide();
+        $("#register").hide();    
+    };    
 
 	$("#logout").click(function(){
         
@@ -140,6 +148,7 @@ $(document).ready(function(){
 		        url:'controller/cLogout.php',
 
 		        success: function(result){
+		        	localStorage.removeItem('usuario');//quitar la variable de localstorage 
 		        	$("#login").show(800);
 		            $("#register").show(800);
 		            $("#userLog").hide(800);
@@ -174,6 +183,8 @@ $(document).ready(function(){
                     $("#logout").show(1200); 
                     $("#login").hide(800);
                     $("#register").hide(800);
+/*                    $("#userModal").html("");
+*/
 		            localStorage.setItem("usuario", JSON.stringify(UUU[0]));
 		            alert(JSON.stringify(UUU[0]));
 		            //location.reload(true);

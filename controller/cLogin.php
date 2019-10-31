@@ -4,6 +4,7 @@ session_start();
 $usuario_nuevo= new userModel();
 
 $datosLogin=json_decode($_GET['datosUser']);
+
 $user=$datosLogin->usuario;
 $contrasena=$datosLogin->contrasena;
 

@@ -62,7 +62,7 @@ print_r($_SESSION);
 		<!-- /////////JON///////// -->
 		<!-- MODAL USER-->
 		<div class="modal fade" id="userModal" role="dialog"
-			aria-labelledby="userModalLabel" aria-hidden="true">
+			aria-labelledby="userModalLabel" aria-hidden="true" >
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -73,7 +73,7 @@ print_r($_SESSION);
 						</button>
 					</div>
 					<div class="modal-body">
-						<form>
+						<form >
 							<div class="form-col justify-content-center">
 								<div class="form-group">
 									<label for="userInputUsername">Usuario</label> <input
@@ -86,7 +86,7 @@ print_r($_SESSION);
 										placeholder="Contraseña...">
 								</div>
 							</div>
-							<button type="button" class="btn btn-primary btn-block"
+							<button type="submit" class="btn btn-primary btn-block"
 								id="iniciar_sesion">Iniciar Sesion</button>
 						</form>
 					</div>
