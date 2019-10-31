@@ -114,6 +114,8 @@
 
 */
 var midato= new Object();
+var usuario = {};
+var UUU = {};
 var tipos = [];
 var m;//variable utilizada en frontal para sacar los tipos
 var idVehiculo;// variable utilizada para coger la idVehiculo en reserva.
@@ -122,12 +124,33 @@ $(document).ready(function(){
 	iniciar_frontal();
 	iniciar_reservas();
 	
+	var result = localStorage.getItem('usuario');
 	
+    usuario = JSON.parse(result) || {};
+    
+	$('#userLog').html(usuario.usuario);
+    $("#login").hide();
+    $("#register").hide();    
+
 	$("#logout").click(function(){
-        $("#login").show(800);
-        $("#register").show(800);
-        $("#userLog").hide(800);
-        $("#logout").hide(800);
+        
+        $.ajax({
+			
+	        type:"GET",
+		        url:'controller/cLogout.php',
+
+		        success: function(result){
+		        	$("#login").show(800);
+		            $("#register").show(800);
+		            $("#userLog").hide(800);
+		            $("#logout").hide(800);
+		            location.reload(true);
+
+		        },
+		        error: function(xhr){
+		            alert("An error occured: "+xhr.status+" "+xhr.statusText);
+		        }
+		});
     });
 	$("#iniciar_sesion").click(function(){
 		
@@ -144,10 +167,16 @@ $(document).ready(function(){
 		        url:'controller/cLogin.php',
 
 		        success: function(result){
+		        	console.log(result);
+		        	UUU = JSON.parse(result);
+		        	$('#userLog').html(UUU[0].usuario);
 		        	$("#userLog").show(1200); 
                     $("#logout").show(1200); 
                     $("#login").hide(800);
                     $("#register").hide(800);
+		            localStorage.setItem("usuario", JSON.stringify(UUU[0]));
+		            alert(JSON.stringify(UUU[0]));
+		            //location.reload(true);
 
 		        },
 		        error: function(xhr){

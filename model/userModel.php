@@ -113,33 +113,35 @@ class userModel extends userClass
         
         $usuario="'".$this->getUsuario()."'";
         $password="'".$this->getContrasena()."'";
-        
+        //echo $usuario." ".$password;
         $sql = "CALL spComprobarUser($usuario,$password)";
-
+        $row;
         $resultado = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
+        //print_r($resultado);
 //         // se guarda en result toda la información solicitada a la bbdd
-        if ($this->link->query($sql)>=1) // delete egiten da
+        if ( $this->link->affected_rows >=1) // delete egiten da
         {
-            while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+            $row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
                 
-                $Usuario=new self();
-                $Usuario->setIdUsuario($row['idUsuario']);
-                $Usuario->setUsuario($row['usuario']);
-                $Usuario->setContrasena($row['contrasena']);
-                $Usuario->setNombre($row['nombre']);
-                $Usuario->setApellido($row['apellido']);
-                $Usuario->setTelefono($row['telefono']);
-                $Usuario->setDni($row['dni']);
-                $Usuario->setTipo($row['tipo']);
-                
-                array_push($this->usuarioLogin, $row);
-            }
+            $Usuario=new self();
+            $Usuario->setIdUsuario($row['idUsuario']);
+            $Usuario->setUsuario($row['usuario']);
+            $Usuario->setContrasena($row['contrasena']);
+            $Usuario->setNombre($row['nombre']);
+            $Usuario->setApellido($row['apellido']);
+            $Usuario->setTelefono($row['telefono']);
+            $Usuario->setDni($row['dni']);
+            $Usuario->setTipo($row['tipo']);
+            
+            
+            array_push($this->usuarioLogin, $row);
+            
             mysqli_free_result($resultado);
             
             
             $this->CloseConnect();
 //             return $Usuario;
-            return "El usuario se ha logeado con exito";
+            return $row;
         } else {
             return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
         }

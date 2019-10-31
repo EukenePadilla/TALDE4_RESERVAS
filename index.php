@@ -1,4 +1,9 @@
+<?php 
+session_start();
+print_r($_SESSION);
+?>
 <!DOCTYPE html>
+
 
 <html>
 <head>
@@ -41,17 +46,18 @@
 
 		</ul>
 		<ul class="navbar-nav  my-2 my-lg-0">
-
-			<button class="btn btn-secondary botones_navbar " type="button"
-				data-toggle="modal" id="login" data-target="#userModal">Log in</button>
-			<button class="btn btn-secondary botones_navbar" type="button"
-				data-toggle="modal" id="register" data-target="#createModal">Register</button>
-			<button id="userLog" class="btn btn-success botones_navbar" type="button" >
-                    <!-- <?php echo $_SESSION['usuario'];?> -->
+<button id="userLog" class="btn btn-success botones_navbar" type="button">
+                    
 
                 </button>
                 <button id="logout" class="btn btn-secondary botones_navbar" type="button"
                 >Log out</button>
+			<button class="btn btn-secondary botones_navbar " type="button"
+				data-toggle="modal" id="login" data-target="#userModal">Log in</button>
+			<button class="btn btn-secondary botones_navbar" type="button"
+				data-toggle="modal" id="register" data-target="#createModal">Register</button>
+				
+                
 		</ul>
 		<!-- /////////JON///////// -->
 		<!-- MODAL USER-->
