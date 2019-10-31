@@ -51,7 +51,12 @@ $(document).ready(function(){
 		
 		        <div class="tipo_vAdminInsertV">
 		        <label>Tipo:</label>
-		        <input id="tipo" type="text">
+					<select id="tipo">
+			        <option value="Bicicleta">Bicicleta</option>
+			        <option value="Coche">Coche</option>
+			        <option value="Monopatin">Monopatin</option>
+			        <option value="Patinete">Patinete</option>
+		        </select>		        
 		        </div>
 		        <input type="button" id="submit_vAdminInsertV" value="GO!" onclick="insertarVehiculo()">
 				
@@ -315,7 +320,12 @@ function iniciarVAdmin(){
 	        		        
 	        		        <div class="telefono_vAdminInsertU">
 	        		        <label>tipo:</label>
-	        		        <input id="tipo" type="text"  value="`+tipo+`">
+	        		        <select id="tipo">
+	        		        <option value="Bicicleta">Bicicleta</option>
+	        		        <option value="Coche">Coche</option>
+	        		        <option value="Monopatin">Monopatin</option>
+	        		        <option value="Patinete">Patinete</option>
+	        		        </select>
 	        		        </div>
 	        		        
 	        		        <input type="button" class="submit_vAdminUpdate" id="`+id+`" value="GO!">
