@@ -162,7 +162,62 @@ $(".insertU").click(function(){
 		}
 	});
 	
-	  
+	$(".insertR").click(function(){
+		$(".paneles").hide(800);
+		$(".encabezado_vAdmin").hide(800);
+		$("body").css("background-color", "	#abcdef");
+	    $(".insertarAdmin").html("");	    
+		$(".insertarAdmin").append(`<form id="form_vAdminUpdate" >
+		    	        		    <div id="elementos_vAdminUpdate">
+		    	        		    
+		    	        		        <div class="nombre_vAdminInsertU">
+		    	        		        <label>Fecha reserva:</label>
+		    	        		        <input id="fechaReserva" type="text" >
+		    	        		        </div>
+		    	        		        
+		    	        		        <div class="contrasena_vAdminInsertU">
+		    	        		        <label>Fecha reservada:</label>
+		    	        		        <input id="fechaReservada" type="text"  >
+		    	        		        </div>	
+		    	        		        	        
+		    	        		        <div class="nombre_vAdminInsertU">
+		    	        		        <label>Hora inicio:</label>
+		    	        		        <input id="horaInicio" type="text" >
+		    	        		        </div>	
+		    	        		        
+		    	        		        <div class="apellido_vAdminInsertU">
+		    	        		        <label>Hora fin:</label>
+		    	        		        <input id="horaFin" type="text" >
+		    	        		        </div>
+		    	        		        
+		    	        		        <div class="telefono_vAdminInsertU">
+		    	        		        <label>Id usuario:</label>
+		    	        		        <input id="idUsuario" type="text" >
+		    	        		        </div>
+		    	        		        
+		    	        		        <div class="dni_vAdminInsertU">
+		    	        		        <label>Id vehiculo:</label>
+		    	        		        <input id="idVehiculo" type="text" >
+		    	        		        </div>
+		
+		    	        		        
+		    	        		        <input type="button" class="submit_vAdminUpdate" onclick="insertarReserva()" value="GO!">
+		    	        				
+		    	        		    </div>
+		    	        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
+		    	        		    </form>`);
+		
+		
+		
+		//boton para esconder el insert de vAdmin correspondiente y mostrar las tablas
+		$(".goBack").click(function(){
+			$(".insertarAdmin").hide(800);
+
+			$(".paneles").show(1200);
+			
+		});    
+	});
+	
 });
 
 
@@ -688,4 +743,30 @@ function insertarUsuario() {
 			}
 	 });
 }
+
+function insertarReserva() {
+	var fechaReserva=$("#fechaReserva").val();
+	var fechaReservada=$("#fechaReservada").val();
+	var horaInicio=$("#horaInicio").val();
+	var horaFin=$("#horaFin").val();
+	var idUsuario=$("#idUsuario").val();
+	var idVehiculo=$("#idVehiculo").val();
+	
+	$.ajax({
+	 	type: "GET",
+	 	data:{'fechaReserva':fechaReserva , 'fechaReservada':fechaReservada , 'horaInicio':horaInicio, 'horaFin':horaFin , 'idUsuario':idUsuario , 'idVehiculo':idVehiculo },
+	       	url: "../controller/cInsertReserva.php", 
+
+	       	success: function(result){  
+	       		
+	       		console.log(result);
+	       		alert(result);
+	       		location.reload(true);  //recarga la pagina
+	       	},
+	       	error : function(xhr) {
+	   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+	   		}
+	       });
+}
+
 /*FIN DE INSERTAR DATOS EN LAS TABLAS DESDE VADMIN */
