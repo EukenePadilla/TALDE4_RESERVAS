@@ -65,7 +65,7 @@ class reservaModel extends reservaClass
     public function setList()
     {
         $this->OpenConnect();  // konexioa zabaldu  - abrir conexión
-        $sql = "CALL seleccionarTodasReservas()"; // SQL sententzia - sentencia SQL
+        $sql = "CALL spSelectAllReservas()"; // SQL sententzia - sentencia SQL
         
         $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
         // se guarda en result toda la información solicitada a la bbdd
@@ -73,7 +73,7 @@ class reservaModel extends reservaClass
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             
             $nuevoVehiculo=new self();
-            $nuevoVehiculo->setIdReserva($row['$idReserva']);
+            $nuevoVehiculo->setIdReserva($row['idReserva']);
             $nuevoVehiculo->setFechaReserva($row['fechaReserva']);
             $nuevoVehiculo->setFechaReservada($row['fechaReservada']);
             $nuevoVehiculo->setHoraInicio($row['horaInicio']);
@@ -121,7 +121,7 @@ class reservaModel extends reservaClass
         $this->OpenConnect();
         
         $id=$this->getIdReserva();
-        
+        echo $id;
         
         $sql = "CALL spDeleteReserva($id)";
         

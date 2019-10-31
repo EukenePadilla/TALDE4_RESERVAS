@@ -113,26 +113,32 @@ class userModel extends userClass
 
         $resultado = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
 //         // se guarda en result toda la información solicitada a la bbdd
-        
-        while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-           
-            $Usuario=new self();
-           $Usuario->setIdUsuario($row['idUsuario']);
-           $Usuario->setUsuario($row['usuario']);
-           $Usuario->setContrasena($row['contrasena']);
-           $Usuario->setNombre($row['nombre']);
-           $Usuario->setApellido($row['apellido']);
-           $Usuario->setTelefono($row['telefono']);
-           $Usuario->setDni($row['dni']);
-           $Usuario->setTipo($row['tipo']);
-           
-           array_push($this->usuarioLogin, $row);
+        if ($this->link->query($sql)>=1) // delete egiten da
+        {
+            while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+                
+                $Usuario=new self();
+                $Usuario->setIdUsuario($row['idUsuario']);
+                $Usuario->setUsuario($row['usuario']);
+                $Usuario->setContrasena($row['contrasena']);
+                $Usuario->setNombre($row['nombre']);
+                $Usuario->setApellido($row['apellido']);
+                $Usuario->setTelefono($row['telefono']);
+                $Usuario->setDni($row['dni']);
+                $Usuario->setTipo($row['tipo']);
+                
+                array_push($this->usuarioLogin, $row);
+            }
+            mysqli_free_result($resultado);
+            
+            
+            $this->CloseConnect();
+//             return $Usuario;
+            return "El usuario se ha logeado con exito";
+        } else {
+            return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
         }
-        mysqli_free_result($resultado);
-        
-        
-        $this->CloseConnect();
-        return $Usuario;
+       
         }
     
     public function delete()

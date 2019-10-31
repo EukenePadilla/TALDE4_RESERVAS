@@ -9,10 +9,10 @@ $id=filter_input(INPUT_GET,"id");
 
 if (isset($id))
 {
-    $vehiculo->setIdReserva($id);
+    $reserva->setIdReserva($id);
 }
 
-$resultado=$vehiculo->delete();
+$resultado=$reserva->delete();
 echo $resultado;
 
 //header('Location: ../index.php');

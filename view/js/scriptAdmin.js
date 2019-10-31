@@ -146,8 +146,8 @@ $(".insertU").click(function(){
 		});    
 	});
 	
-/*	iniciarRAdmin();
-*/	
+	iniciarRAdmin();
+	
 	$(".tituloRAdmin").click(function(){
 		if(comprobarR==0){
 			$(".rellenoAdminReserva").show(1200);			
@@ -468,22 +468,23 @@ function iniciarUAdmin(){
         }
     });
 	}
-/*
+
 function iniciarRAdmin(){
 	$.ajax({
         type:"JSON",
         url:"../controller/cMostrarReservas.php",
         success: function(datosR){
+//
+//        	 alert(datosR); 
+//        	 alert("success");
 
-
- * alert(datos); alert("success");
              midatoR=JSON.parse(datosR);
 
 
 			$.each(midatoR,function(i,datoR){
 			
 			
-			            $(".rellenoAdminUsuario").append(`<tr>
+			            $(".rellenoAdminReserva").append(`<tr>
 			            		<td>`+datoR.idReserva+`</td>            		
 			            		<td>`+datoR.fechaReserva+`</td>
 			            		<td>`+datoR.fechaReservada+`</td>
@@ -491,10 +492,136 @@ function iniciarRAdmin(){
 			            		<td>`+datoR.horaFin+`</td>
 			            		<td>`+datoR.idUsuario+`</td>
 			            		<td>`+datoR.idVehiculo+`</td>
-			            		<td><button class="deleteR delete_paneles value="`+datoR.idReserva+`">DELETE</button></td>
+			            		<td><button class="deleteR delete_paneles" value="`+datoR.idReserva+`">DELETE</button></td>
 			            		<td><button class="updateR update_paneles">UPDATE</button></td>
 			        		</tr>`);
-			});
+			            
+			            $(".deleteR").click(function(){
+			     			
+			     			var id=$(this).val(); 
+			     			alert(id);
+			     			console.log(id);
+			     			
+			     		  	$.ajax({
+			     		       	type: "GET",
+			     		       	data:{'id':id},
+			     		       	url: "../controller/cDeleteReservas.php", 
+
+			     		       	success: function(result){  
+			     		       		
+//			     		       		console.log(result);
+//			     		       		alert(result);
+			     		       		location.reload(true);  //recarga la pagina
+			     		       	},
+			     		       	error : function(xhr) {
+			     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+			     		   		}
+			     		       });
+			 	       });
+			        	
+			        		//boton para esconder el insert de vAdmin correspondiente y mostrar las tablas
+			        		$(".goBack").click(function(){
+			        			$(".insertarAdmin").hide(800);
+
+			        			$(".paneles").show(1200);
+			        			
+			        		});    
+			        	
+					});
+					
+//					$(".updateR").click(function(){
+//						var todo=$(this).val();
+//
+//						var todo = todo.split("||");
+//						
+//		     			var id=todo[0]; 
+//		     			var usuario=todo[1]; 
+////		     			alert(id +"izq id y drc usuario"+usuario);
+//		     			var contrasena=todo[2]; 
+//		     			var nombre=todo[3]; 
+//		     			var apellido=todo[4]; 
+//		     			var telefono=todo[5]; 
+//		     			var dni=todo[6]; 
+//		     			var tipo=todo[7]; 
+//
+//		     			
+//		        		$(".paneles").hide(800);
+//		        		$(".encabezado_vAdmin").hide(800);
+//		        		$("body").css("background-color", "	#abcdef");
+//
+//		     		 
+//		     		       	$(".insertarAdmin").append(`<form id="form_vAdminUpdate" >
+//		    	        		    <div id="elementos_vAdminUpdate">
+//		    	        		    
+//		    	        		        <div class="nombre_vAdminInsertU">
+//		    	        		        <label>Usuario:</label>
+//		    	        		        <input id="usuario" type="text" value="`+usuario+`">
+//		    	        		        </div>
+//		    	        		        
+//		    	        		        <div class="contrasena_vAdminInsertU">
+//		    	        		        <label>Contrasena:</label>
+//		    	        		        <input id="contrasena" type="text"  value="`+contrasena+`">
+//		    	        		        </div>	
+//		    	        		        	        
+//		    	        		        <div class="nombre_vAdminInsertU">
+//		    	        		        <label>Nombre:</label>
+//		    	        		        <input id="nombre" type="text"  value="`+nombre+`">
+//		    	        		        </div>	
+//		    	        		        
+//		    	        		        <div class="apellido_vAdminInsertU">
+//		    	        		        <label>Apellido:</label>
+//		    	        		        <input id="apellido" type="text"  value="`+apellido+`">
+//		    	        		        </div>
+//		    	        		        
+//		    	        		        <div class="telefono_vAdminInsertU">
+//		    	        		        <label>Telefono:</label>
+//		    	        		        <input id="telefono" type="text"  value="`+telefono+`">
+//		    	        		        </div>
+//		    	        		        
+//		    	        		        <div class="dni_vAdminInsertU">
+//		    	        		        <label>DNI:</label>
+//		    	        		        <input id="dni" type="text"  value="`+dni+`">
+//		    	        		        </div>
+//		    	        		        
+//		    	        		        <div class="tipo_vAdminInsertU">
+//		    	        		        <label>Tipo:</label>
+//		    	        		        <input id="tipo" type="number"  value="`+tipo+`">
+//		    	        		        </div>
+//		    	        		        
+//		    	        		        <input type="button" class="submit_vAdminUpdate" id="`+id+`" value="GO!">
+//		    	        				
+//		    	        		    </div>
+//		    	        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
+//		    	        		    </form>`);
+//		     		       		
+//		    		        	$(".submit_vAdminUpdateU").click(function(){
+//		    		        		var id=$(this).attr("id"); 
+//		    		        		var usuario=$("#usuario").val();
+//		    		        		var contrasena=$("#contrasena").val();
+//		    		        		var nombre=$("#nombre").val();
+//		    		        		var apellido=$("#apellido").val();
+//		    		        		var telefono=$("#telefono").val();
+//		    		        		var dni=$("#dni").val();
+//		    		        		var tipo=$("#tipo").val();
+//		    		        		
+//		    		        		$.ajax({
+//		    		        		 	type: "GET",
+//		    		        		 	data:{'id':id,'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
+//		    		     		       	url: "../controller/cUpdateUsuario.php", 
+//
+//		    		     		       	success: function(result){  
+//		    		     		       		
+//		    		     		       		console.log(result);
+//		    		     		       		alert(result);
+//		    		     		       		location.reload(true);  //recarga la pagina
+//		    		     		       	},
+//		    		     		       	error : function(xhr) {
+//		    		     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+//		    		     		   		}
+//		    		     		       });
+//		    		 	       });
+//					  });
+
         },
         error: function(xhr){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);
