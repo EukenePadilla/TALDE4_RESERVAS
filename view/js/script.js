@@ -156,13 +156,9 @@ $("#inputRegistro").click(function(){
 	var apellido=$("#createInputApellido").val();
 	var telefono=$("#createInputTelefono").val();
 	var dni=$("#createInputDni").val();
-	
-//$(document).on('change', '#createInputTipo', function(event) {
-//     $('#createInputTipo').val($("#createInputTipo option:selected").text());
-//});
 	var tipo=$("#createInputTipo").val();
 	
-	
+	alert(dni);
 	$.ajax({
 	 	type: "GET",
 	 	data:{'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
