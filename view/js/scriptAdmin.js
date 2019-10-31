@@ -493,7 +493,7 @@ function iniciarRAdmin(){
 			            		<td>`+datoR.idUsuario+`</td>
 			            		<td>`+datoR.idVehiculo+`</td>
 			            		<td><button class="deleteR delete_paneles" value="`+datoR.idReserva+`">DELETE</button></td>
-			            		<td><button class="updateR update_paneles">UPDATE</button></td>
+			            		<td><button class="updateR update_paneles" value="`+datoR.idReserva+`||`+datoR.fechaReserva+`||`+datoR.fechaReservada+`||`+datoR.horaInicio+`||`+datoR.horaFin+`||`+datoR.idUsuario+`||`+datoR.idVehiculo+`">UPDATE</button></td>
 			        		</tr>`);
 			            
 			            $(".deleteR").click(function(){
@@ -529,98 +529,92 @@ function iniciarRAdmin(){
 			        	
 					});
 					
-//					$(".updateR").click(function(){
-//						var todo=$(this).val();
-//
-//						var todo = todo.split("||");
-//						
-//		     			var id=todo[0]; 
-//		     			var usuario=todo[1]; 
-////		     			alert(id +"izq id y drc usuario"+usuario);
-//		     			var contrasena=todo[2]; 
-//		     			var nombre=todo[3]; 
-//		     			var apellido=todo[4]; 
-//		     			var telefono=todo[5]; 
-//		     			var dni=todo[6]; 
-//		     			var tipo=todo[7]; 
-//
-//		     			
-//		        		$(".paneles").hide(800);
-//		        		$(".encabezado_vAdmin").hide(800);
-//		        		$("body").css("background-color", "	#abcdef");
-//
-//		     		 
-//		     		       	$(".insertarAdmin").append(`<form id="form_vAdminUpdate" >
-//		    	        		    <div id="elementos_vAdminUpdate">
-//		    	        		    
-//		    	        		        <div class="nombre_vAdminInsertU">
-//		    	        		        <label>Usuario:</label>
-//		    	        		        <input id="usuario" type="text" value="`+usuario+`">
-//		    	        		        </div>
-//		    	        		        
-//		    	        		        <div class="contrasena_vAdminInsertU">
-//		    	        		        <label>Contrasena:</label>
-//		    	        		        <input id="contrasena" type="text"  value="`+contrasena+`">
-//		    	        		        </div>	
-//		    	        		        	        
-//		    	        		        <div class="nombre_vAdminInsertU">
-//		    	        		        <label>Nombre:</label>
-//		    	        		        <input id="nombre" type="text"  value="`+nombre+`">
-//		    	        		        </div>	
-//		    	        		        
-//		    	        		        <div class="apellido_vAdminInsertU">
-//		    	        		        <label>Apellido:</label>
-//		    	        		        <input id="apellido" type="text"  value="`+apellido+`">
-//		    	        		        </div>
-//		    	        		        
-//		    	        		        <div class="telefono_vAdminInsertU">
-//		    	        		        <label>Telefono:</label>
-//		    	        		        <input id="telefono" type="text"  value="`+telefono+`">
-//		    	        		        </div>
-//		    	        		        
-//		    	        		        <div class="dni_vAdminInsertU">
-//		    	        		        <label>DNI:</label>
-//		    	        		        <input id="dni" type="text"  value="`+dni+`">
-//		    	        		        </div>
-//		    	        		        
-//		    	        		        <div class="tipo_vAdminInsertU">
-//		    	        		        <label>Tipo:</label>
-//		    	        		        <input id="tipo" type="number"  value="`+tipo+`">
-//		    	        		        </div>
-//		    	        		        
-//		    	        		        <input type="button" class="submit_vAdminUpdate" id="`+id+`" value="GO!">
-//		    	        				
-//		    	        		    </div>
-//		    	        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
-//		    	        		    </form>`);
-//		     		       		
-//		    		        	$(".submit_vAdminUpdateU").click(function(){
-//		    		        		var id=$(this).attr("id"); 
-//		    		        		var usuario=$("#usuario").val();
-//		    		        		var contrasena=$("#contrasena").val();
-//		    		        		var nombre=$("#nombre").val();
-//		    		        		var apellido=$("#apellido").val();
-//		    		        		var telefono=$("#telefono").val();
-//		    		        		var dni=$("#dni").val();
-//		    		        		var tipo=$("#tipo").val();
-//		    		        		
-//		    		        		$.ajax({
-//		    		        		 	type: "GET",
-//		    		        		 	data:{'id':id,'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
-//		    		     		       	url: "../controller/cUpdateUsuario.php", 
-//
-//		    		     		       	success: function(result){  
-//		    		     		       		
-//		    		     		       		console.log(result);
-//		    		     		       		alert(result);
-//		    		     		       		location.reload(true);  //recarga la pagina
-//		    		     		       	},
-//		    		     		       	error : function(xhr) {
-//		    		     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
-//		    		     		   		}
-//		    		     		       });
-//		    		 	       });
-//					  });
+					$(".updateR").click(function(){
+						var todo=$(this).val();
+
+						var todo = todo.split("||");
+						
+		     			var id=todo[0]; 
+		     			var fechaReserva=todo[1]; 
+//		     			alert(id +"izq id y drc usuario"+usuario);
+		     			var fechaReservada=todo[2]; 
+		     			var horaInicio=todo[3]; 
+		     			var horaFin=todo[4]; 
+		     			var idUsuario=todo[5]; 
+		     			var idVehiculo=todo[6]; 
+
+		     			
+		        		$(".paneles").hide(800);
+		        		$(".encabezado_vAdmin").hide(800);
+		        		$("body").css("background-color", "	#abcdef");
+
+		     		 
+		     		       	$(".insertarAdmin").append(`<form id="form_vAdminUpdate" >
+		    	        		    <div id="elementos_vAdminUpdate">
+		    	        		    
+		    	        		        <div class="nombre_vAdminInsertU">
+		    	        		        <label>Fecha reserva:</label>
+		    	        		        <input id="fechaReserva" type="text" value="`+fechaReserva+`">
+		    	        		        </div>
+		    	        		        
+		    	        		        <div class="contrasena_vAdminInsertU">
+		    	        		        <label>Fecha reservada:</label>
+		    	        		        <input id="fechaReservada" type="text"  value="`+fechaReservada+`">
+		    	        		        </div>	
+		    	        		        	        
+		    	        		        <div class="nombre_vAdminInsertU">
+		    	        		        <label>Hora inicio:</label>
+		    	        		        <input id="horaInicio" type="text"  value="`+horaInicio+`">
+		    	        		        </div>	
+		    	        		        
+		    	        		        <div class="apellido_vAdminInsertU">
+		    	        		        <label>Hora fin:</label>
+		    	        		        <input id="horaFin" type="text"  value="`+horaFin+`">
+		    	        		        </div>
+		    	        		        
+		    	        		        <div class="telefono_vAdminInsertU">
+		    	        		        <label>Id usuario:</label>
+		    	        		        <input id="idUsuario" type="text"  value="`+idUsuario+`">
+		    	        		        </div>
+		    	        		        
+		    	        		        <div class="dni_vAdminInsertU">
+		    	        		        <label>Id vehiculo:</label>
+		    	        		        <input id="idVehiculo" type="text"  value="`+idVehiculo+`">
+		    	        		        </div>
+		
+		    	        		        
+		    	        		        <input type="button" class="submit_vAdminUpdate" id="`+id+`" value="GO!">
+		    	        				
+		    	        		    </div>
+		    	        		    <button class="boton_atras_vAdminU goBack">GO BACK</button>
+		    	        		    </form>`);
+		     		       		
+		    		        	$(".submit_vAdminUpdate").click(function(){
+		    		        		var id=$(this).attr("id"); 
+		    		        		var fechaReserva=$("#fechaReserva").val();
+		    		        		var fechaReservada=$("#fechaReservada").val();
+		    		        		var horaInicio=$("#horaInicio").val();
+		    		        		var horaFin=$("#horaFin").val();
+		    		        		var idUsuario=$("#idUsuario").val();
+		    		        		var idVehiculo=$("#idVehiculo").val();
+		    		        		
+		    		        		$.ajax({
+		    		        		 	type: "GET",
+		    		        		 	data:{'id':id,'fechaReserva':fechaReserva , 'fechaReservada':fechaReservada , 'horaInicio':horaInicio, 'horaFin':horaFin , 'idUsuario':idUsuario , 'idVehiculo':idVehiculo },
+		    		     		       	url: "../controller/cUpdateReserva.php", 
+
+		    		     		       	success: function(result){  
+		    		     		       		
+		    		     		       		console.log(result);
+		    		     		       		alert(result);
+		    		     		       		location.reload(true);  //recarga la pagina
+		    		     		       	},
+		    		     		       	error : function(xhr) {
+		    		     		   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+		    		     		   		}
+		    		     		       });
+		    		 	       });
+					  });
 
         },
         error: function(xhr){
