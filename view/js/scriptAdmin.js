@@ -500,7 +500,7 @@ function iniciarRAdmin(){
             alert("An error occured: "+xhr.status+" "+xhr.statusText);
         }
     });
-	}*/
+	}
 
 
 
