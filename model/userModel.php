@@ -10,12 +10,17 @@ class userModel extends userClass
     private $list=array();         //editorial guztien lista - lista de todas editoriales
     private $listaUsuarios=array(); // editorial honen liburu guztiak - libros de una editorial
     private $usuarioLogin=array();
+    private $usuarioRegister=array();
     
     public function getList() {
         return $this->list;
     }
     public function getUsuarioLogin() {
         return $this->usuarioLogin;
+    }
+    
+    public function getUsuarioRegister() {
+        return $this->usuarioRegister;
     }
     
     public function OpenConnect()
@@ -40,33 +45,33 @@ class userModel extends userClass
         mysqli_close ($this->link);
     }
     
-    public function findIdUsuario($idUsuario)
-    {
-        // echo "$idEditorial"; //ok
-        $this->OpenConnect();
-        $sql = "CALL spFindIdUsuario($idUsuario)";
+//     public function findIdUsuario($idUsuario)
+//     {
+//         // echo "$idEditorial"; //ok
+//         $this->OpenConnect();
+//         $sql = "CALL spFindIdUsuario($idUsuario)";
         
-        $result = $this->link->query($sql);
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+//         $result = $this->link->query($sql);
+//         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             
-            $this->setIdUsuario($row['idUsuario']);
-            $this->setUsuario($row['usuario']);
-            $this->setContrasena($row['contrasena']);
-            $this->setNombre($row['nombre']);
-            $this->setApellido($row['apellido']);
-            $this->setTelefono($row['telefono']);
-            $this->setDni($row['dni']);
-            $this->setTipo($row['tipo']);
+//             $this->setIdUsuario($row['idUsuario']);
+//             $this->setUsuario($row['usuario']);
+//             $this->setContrasena($row['contrasena']);
+//             $this->setNombre($row['nombre']);
+//             $this->setApellido($row['apellido']);
+//             $this->setTelefono($row['telefono']);
+//             $this->setDni($row['dni']);
+//             $this->setTipo($row['tipo']);
             
-            //echo $row['nombreEditorial'];  //ok
-            //  echo $new->getNombreEditorial();  //ok
-        }
-        mysqli_free_result($result);
-        $this->CloseConnect();
-        echo 'alert("No")';
-        // echo $this->getCiudad(); //ok
-        return $this;
-    }
+//             //echo $row['nombreEditorial'];  //ok
+//             //  echo $new->getNombreEditorial();  //ok
+//         }
+//         mysqli_free_result($result);
+//         $this->CloseConnect();
+//         echo 'alert("No")';
+//         // echo $this->getCiudad(); //ok
+//         return $this;
+//     }
     
     public function setList()
     {
@@ -140,7 +145,24 @@ class userModel extends userClass
         }
        
         }
-    
+        public function setUsuarioRegister(){
+            
+            $this->OpenConnect();
+            
+//             $usuario="'".$this->getUsuario()."'";
+            
+            $sql = "CALL spComprobarNickname('.$this->getUsuario().')";
+            
+            $resultado = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
+            //         // se guarda en result toda la información solicitada a la bbdd
+            if ($this->link->query($sql)>=1){ // delete egiten da
+            
+                return "El usuario se ha logeado con exito";
+            } else {
+                return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
+            }
+            
+        }
     public function delete()
     {
         $this->OpenConnect();

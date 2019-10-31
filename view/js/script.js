@@ -122,6 +122,13 @@ $(document).ready(function(){
 	iniciar_frontal();
 	iniciar_reservas();
 	
+	
+	$("#logout").click(function(){
+        $("#login").show(800);
+        $("#register").show(800);
+        $("#userLog").hide(800);
+        $("#logout").hide(800);
+    });
 	$("#iniciar_sesion").click(function(){
 		
 		$usuario =$("#userInputUsername").val();
@@ -137,9 +144,10 @@ $(document).ready(function(){
 		        url:'controller/cLogin.php',
 
 		        success: function(result){
-		        	alert("holaaaa");
-		        	alert(result);
-		        	console.log(result);
+		        	$("#userLog").show(1200); 
+                    $("#logout").show(1200); 
+                    $("#login").hide(800);
+                    $("#register").hide(800);
 
 		        },
 		        error: function(xhr){
@@ -149,33 +157,54 @@ $(document).ready(function(){
 	});
 	
 $("#inputRegistro").click(function(){
-		
-	var usuario=$("#createInputUsuario").val();
-	var contrasena=$("#createInputContrasena").val();
-	var nombre=$("#createInputNombre").val();
-	var apellido=$("#createInputApellido").val();
-	var telefono=$("#createInputTelefono").val();
-	var dni=$("#createInputDni").val();
-	var tipo=$("#createInputTipo").val();
 	
-	alert(dni);
+	$usuario =$("#createInputUsuario").val();
+	datosUser={'usuario':$usuario};
+	datosUser=JSON.stringify(datosUser);
+	
 	$.ajax({
-	 	type: "GET",
-	 	data:{'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
-	 	url: "controller/cInsertUsuario.php", 
-	
-	 	success: function(result){  
-	 		
-	 		console.log(result);
-	 		alert(result);
-	 		location.reload(true);  //recarga la pagina
-	 	},
-	 	error : function(xhr) {
-				alert("An error occured: " + xhr.status + " " + xhr.statusText);
-			}
-	 });
-	});
+		
+        type:"GET",
+        data:{'datosUser':datosUser},
+	        url:'controller/cComprobarNickname.php',
 
+	        success: function(result){
+	        	alert("esto es registro en plan bien");
+	        	alert(result);
+	        	console.log(result);
+
+	        },
+	        error: function(xhr){
+	            alert("An error occured: "+xhr.status+" "+xhr.statusText);
+	        }
+	});
+});
+//	var usuario=$("#createInputUsuario").val();
+//	var contrasena=$("#createInputContrasena").val();
+//	var nombre=$("#createInputNombre").val();
+//	var apellido=$("#createInputApellido").val();
+//	var telefono=$("#createInputTelefono").val();
+//	var dni=$("#createInputDni").val();
+//	var tipo=$("#createInputTipo").val();
+//	
+//	alert(dni);
+//	$.ajax({
+//	 	type: "GET",
+//	 	data:{'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
+//	 	url: "controller/cInsertUsuario.php", 
+//	
+//	 	success: function(result){  
+//	 		
+//	 		console.log(result);
+//	 		alert(result);
+//	 		location.reload(true);  //recarga la pagina
+//	 	},
+//	 	error : function(xhr) {
+//				alert("An error occured: " + xhr.status + " " + xhr.statusText);
+//			}
+//	 });
+//	});
+//
 });
 
 
