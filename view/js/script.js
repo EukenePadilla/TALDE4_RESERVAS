@@ -209,6 +209,16 @@ $(document).ready(function(){
 $("#inputRegistro").click(function(){
 	
 	$usuario =$("#createInputUsuario").val();
+	$contrasena =$("#createInputContrasena").val();
+	$reContrasena =$("#createInputReContrasena").val();
+	$nombre=$("#createInputNombre").val();
+	$apellido=$("#createInputApellido").val();
+	$telefono=$("#createInputTelefono").val();
+	$dni=$("#createInputDni").val();
+	$tipo=$("#createInputTipo").val();
+	
+	todosUser={'usuario':$usuario,'contrasena':$contrasena,'nombre':$nombre,'apellido':$apellido,'telefono':$telefono,'dni':$dni,'tipo':$tipo};
+	
 	datosUser={'usuario':$usuario};
 	datosUser=JSON.stringify(datosUser);
 	
@@ -219,9 +229,18 @@ $("#inputRegistro").click(function(){
 	        url:'controller/cComprobarNickname.php',
 
 	        success: function(result){
-	        	alert("esto es registro en plan bien");
-	        	alert(result);
-	        	console.log(result);
+	        	if(result.length==2){//si viene vacio(con dos corchetes), quiere decir que no hay ninguno con ese nombre de usuario
+//		        	alert("esto es registro en plan bien");
+		        	if($contrasena==$reContrasena){
+		        		registrasUsuarioNuevo(todosUser);
+
+		        	}else{
+		        		alert("No coinciden las contraseñas.");
+		        	}
+	        	}else{
+	        		alert("Ese nombre de usuario ya existe elije otro por dios.");
+	        	}
+	        	
 
 	        },
 	        error: function(xhr){
@@ -229,32 +248,32 @@ $("#inputRegistro").click(function(){
 	        }
 	});
 });
-//	var usuario=$("#createInputUsuario").val();
-//	var contrasena=$("#createInputContrasena").val();
-//	var nombre=$("#createInputNombre").val();
-//	var apellido=$("#createInputApellido").val();
-//	var telefono=$("#createInputTelefono").val();
-//	var dni=$("#createInputDni").val();
-//	var tipo=$("#createInputTipo").val();
-//	
-//	alert(dni);
-//	$.ajax({
-//	 	type: "GET",
-//	 	data:{'usuario':usuario , 'contrasena':contrasena , 'nombre':nombre, 'apellido':apellido , 'telefono':telefono , 'dni':dni , 'tipo':tipo },
-//	 	url: "controller/cInsertUsuario.php", 
-//	
-//	 	success: function(result){  
-//	 		
-//	 		console.log(result);
-//	 		alert(result);
-//	 		location.reload(true);  //recarga la pagina
-//	 	},
-//	 	error : function(xhr) {
-//				alert("An error occured: " + xhr.status + " " + xhr.statusText);
-//			}
-//	 });
-//	});
-//
+
+function registrasUsuarioNuevo(todosUser){
+
+	
+
+	$.ajax({
+	 	type: "GET",
+	 	data:{'usuario':todosUser.usuario , 'contrasena':todosUser.contrasena , 'nombre':todosUser.nombre, 'apellido':todosUser.apellido , 'telefono':todosUser.telefono , 'dni':todosUser.dni , 'tipo':todosUser.tipo },
+	 	url: "controller/cInsertUsuario.php", 
+	
+	 	success: function(result){  
+	 		
+	 		console.log(result);
+	 		alert(result);
+	 		location.reload(true);  //recarga la pagina
+	 	},
+	 	error : function(xhr) {
+				alert("An error occured: " + xhr.status + " " + xhr.statusText);
+			}
+	 });
+	
+};
+
+
+	
+
 });
 
 

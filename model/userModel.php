@@ -45,34 +45,6 @@ class userModel extends userClass
         mysqli_close ($this->link);
     }
     
-//     public function findIdUsuario($idUsuario)
-//     {
-//         // echo "$idEditorial"; //ok
-//         $this->OpenConnect();
-//         $sql = "CALL spFindIdUsuario($idUsuario)";
-        
-//         $result = $this->link->query($sql);
-//         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
-//             $this->setIdUsuario($row['idUsuario']);
-//             $this->setUsuario($row['usuario']);
-//             $this->setContrasena($row['contrasena']);
-//             $this->setNombre($row['nombre']);
-//             $this->setApellido($row['apellido']);
-//             $this->setTelefono($row['telefono']);
-//             $this->setDni($row['dni']);
-//             $this->setTipo($row['tipo']);
-            
-//             //echo $row['nombreEditorial'];  //ok
-//             //  echo $new->getNombreEditorial();  //ok
-//         }
-//         mysqli_free_result($result);
-//         $this->CloseConnect();
-//         echo 'alert("No")';
-//         // echo $this->getCiudad(); //ok
-//         return $this;
-//     }
-    
     public function setList()
     {
         $this->OpenConnect();  // konexioa zabaldu  - abrir conexión
@@ -146,25 +118,49 @@ class userModel extends userClass
             return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
         }
        
-        }
+        } 
         public function setUsuarioRegister(){
             
             $this->OpenConnect();
             
-//             $usuario="'".$this->getUsuario()."'";
+            $usuario="'".$this->getUsuario()."'";
             
-            $sql = "CALL spComprobarNickname('.$this->getUsuario().')";
-            
+            $sql = "CALL spComprobarNickname($usuario)";
+            $row;
             $resultado = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
+            //print_r($resultado);
             //         // se guarda en result toda la información solicitada a la bbdd
-            if ($this->link->query($sql)>=1){ // delete egiten da
-            
-                return "El usuario se ha logeado con exito";
+            if ( $this->link->affected_rows >=1) // delete egiten da
+            {
+                $row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+                
+                $Usuario=new self();
+                $Usuario->setIdUsuario($row['idUsuario']);
+                $Usuario->setUsuario($row['usuario']);
+                $Usuario->setContrasena($row['contrasena']);
+                $Usuario->setNombre($row['nombre']);
+                $Usuario->setApellido($row['apellido']);
+                $Usuario->setTelefono($row['telefono']);
+                $Usuario->setDni($row['dni']);
+                $Usuario->setTipo($row['tipo']);
+                
+                
+                array_push($this->usuarioRegister, $row);
+                
+                mysqli_free_result($resultado);
+                
+                
+                $this->CloseConnect();
+                //             return $Usuario;
+                return $row;
             } else {
                 return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
             }
             
-        }
+                return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
+            }
+            
+
     public function delete()
     {
         $this->OpenConnect();
@@ -195,7 +191,6 @@ class userModel extends userClass
         $telefono=$this->getTelefono();
         $dni= $this->getDni();
         $tipo= $this->getTipo();
-        echo $usuario."  ".$contrasena." ".$nombre." ".$apellido." ".$telefono." ".$dni." ".$tipo;
         
         $sql = "CALL spInsertUsuario('$usuario', '$contrasena', '$nombre', '$apellido', '$telefono', '$dni', $tipo)";
         //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
