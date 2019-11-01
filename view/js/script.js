@@ -115,8 +115,9 @@
 */
 var midato= new Object();
 var usuario = {};
-var UUU = {};
+var userdata = {};
 var tipos = [];
+var tp=-1;// para guardar el tipo de usuario en numero(1==admin, 2==usuario normal)
 var m;//variable utilizada en frontal para sacar los tipos
 var idVehiculo;// variable utilizada para coger la idVehiculo en reserva.
 $(document).ready(function(){
@@ -126,7 +127,7 @@ $(document).ready(function(){
 	
 	var result = localStorage.getItem('usuario');
     usuario = JSON.parse(result) || {};
-
+    tp=usuario.tipo;
     
     if(result==null){
         $("#login").show();
@@ -136,8 +137,10 @@ $(document).ready(function(){
     	$('#userLog').html(usuario.usuario);
     	$("#userLog").show(1200); 
         $("#logout").show(1200); 
-        $("#admin").show(1200); 
-        $("#admin").show(1200);
+        if(tp==1){//si es administrador
+            $("#admin").show(1200); 
+
+        }
         $("#login").hide();
         $("#register").hide();
         
@@ -180,17 +183,20 @@ $(document).ready(function(){
 
 		        success: function(result){
 		        	console.log(result);
-		        	UUU = JSON.parse(result);
-		        	$('#userLog').html(UUU[0].usuario);
+		        	userdata = JSON.parse(result);
+		        	$('#userLog').html(userdata[0].usuario);
 		        	$("#userLog").show(1200); 
                     $("#logout").show(1200); 
-                    $("#admin").show(800);
+                    if(userdata[0].tipo==1){//si es administrador
+                        $("#admin").show(800);
+
+                    }
                     $("#login").hide(800);
                     $("#register").hide(800);
 /*                    $("#userModal").html("");
 */
-		            localStorage.setItem("usuario", JSON.stringify(UUU[0]));
-		            alert(JSON.stringify(UUU[0]));
+		            localStorage.setItem("usuario", JSON.stringify(userdata[0]));
+		            alert(JSON.stringify(userdata[0]));
 		            //location.reload(true);
 
 		        },
