@@ -6,6 +6,8 @@ var midato= new Object();
 var tipos = [];
 var m;// variable utilizada en frontal para sacar los tipos
 $(document).ready(function(){
+	
+	
 // alert("ready");
 	iniciarVAdmin();
 	$(".tituloVAdmin").click(function(){

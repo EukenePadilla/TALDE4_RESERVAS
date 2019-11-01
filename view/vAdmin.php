@@ -11,11 +11,13 @@
 </head>
 
 <body>
-	<header class="encabezado_vAdmin">
-		<h1>Admin</h1>
+	<header class="encabezado_vAdmin paneles" style="margin-bottom:50px;">
+		<h1>ADMIN VIEW</h1>
+		
+		
 	</header>
 <div class="paneles">
-    	<div class="panelV paneles" id="panelV">
+    	<div class="panelV paneles" id="panelV" style="margin-bottom:50px;">
     	<div class="titulo_boton">
     		<h2 class="tituloVAdmin">VEHICULOS</h2>
     		<button class="insertV insert_paneles" >INSERT</button>
@@ -34,7 +36,7 @@
         		</tr>
         	</table>
     	</div>
-<div class="panelU paneles" id="panelU">
+<div class="panelU paneles" id="panelU" style="margin-bottom:50px;">
 			<div class="titulo_boton">
     		<h2 class="tituloUAdmin">USUARIOS</h2>
     		<button class="insertU insert_paneles">INSERT</button>
@@ -57,7 +59,7 @@
         	        		
     	</div>
     
-<div class="panelR paneles" id="panelR">
+<div class="panelR paneles" id="panelR" style="margin-bottom:50px;">
 			<div class="titulo_boton">
     		<h2 class="tituloRAdmin">RESERVAS</h2>
     		<button class="insertR insert_paneles">INSERT</button>
@@ -79,6 +81,8 @@
         	        		
     	</div>
     </div>
+    <div  class="paneles" style="margin-top:50px;"><a href="../index.php"><button class="boton_atras_vAdminV ">GO INDEX</button></a></div>
+   
     <div class="insertarAdmin"></div>  
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

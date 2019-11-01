@@ -98,6 +98,9 @@ div img{
 }
 .paneles table{
 	margin:auto;
+	background-color: #8e9cb3;
+	border-radius:30px;
+	padding:20px;
 }
 .paneles tr{
 	border: 2px solid black;
