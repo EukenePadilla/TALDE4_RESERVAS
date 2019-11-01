@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2019 a las 10:47:47
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.1.32
+-- Tiempo de generación: 01-11-2019 a las 20:42:32
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -26,8 +26,11 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spComprobarNickname` (IN `pUsuario` VARCHAR(30))  NO SQL
+select * from usuarios where usuarios.usuario=pUsuario$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spComprobarUser` (IN `spUsuario` VARCHAR(40), IN `spContrasena` VARCHAR(40))  NO SQL
-select * from usuarios where usuarios.usuario=spUsuario$$
+select * from usuarios where usuarios.usuario=spUsuario and usuarios.contrasena=spContrasena$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteReserva` (IN `pIdReserva` INT)  NO SQL
 DELETE FROM reservas WHERE reservas.idReserva = pIdReserva$$
@@ -95,7 +98,7 @@ CREATE TABLE `reservas` (
 
 INSERT INTO `reservas` (`idReserva`, `fechaReserva`, `fechaReservada`, `horaInicio`, `horaFin`, `idUsuario`, `idVehiculo`) VALUES
 (13, '2019-10-31', '2019-11-07', '03:59', '04:59', 1, 10),
-(15, '2019-10-22', '2023-05-18', '00:00', '05:00', 2, 2);
+(15, '2019-10-31', '2023-05-18', '00:00', '05:00', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -120,7 +123,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`idUsuario`, `usuario`, `contrasena`, `nombre`, `apellido`, `telefono`, `dni`, `tipo`) VALUES
 (1, 'xarles', 'xarles', 'xarles', 'goitiz', '676767679', '46366000M', 2),
-(2, 'patxi', 'patxi', 'patxi', 'elizaburu', '666555444', '46366666M', 1);
+(2, 'patxi', 'patxi', 'patxi', 'elizaburu', '666555444', '46366666M', 1),
+(3, 'eukene', 'eukene', 'EUKENE', 'PADILLA', '678812323', '12343245E', 1);
 
 -- --------------------------------------------------------
 
@@ -191,19 +195,19 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `idVehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idVehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restricciones para tablas volcadas
