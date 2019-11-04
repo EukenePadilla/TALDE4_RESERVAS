@@ -76,23 +76,31 @@ class reservaModel extends reservaClass
     {
         $this->OpenConnect();
         
-        $fechaReserva=$this->getFechaReserva();
-        $fechaReservada=$this->getFechaReservada();
+        $fechaReserva="'".$this->getFechaReserva()."'";
+        $fechaReservada="'".$this->getFechaReservada()."'";
+        
         $rango=$this->getRango();
         $precio=30;
         $idUsuario= $this->getIdUsuario();
         $idVehiculo= $this->getIdVehiculo();
-        $sql = "CALL spComprobarReservas('$fechaReservada', '$rango','$idVehiculo')";
+        $sql = "CALL spComprobarReservas($fechaReservada, $rango, $idVehiculo)";
         $row;
         $resultado = $this->link->query($sql);
         //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
-        if ( $this->link->affected_rows >=1) // delete egiten da
+
+        if ( $this->link->affected_rows >=1)
         {
             return "Reserva no disponible.";
         }else{
-            $sql2 = "CALL spInsertReservas('$fechaReserva', '$fechaReservada', '$rango', '$precio', '$idUsuario', '$idVehiculo')";
-            $resultado2 = $this->link->query($sql2);
-            return $sql2;
+            
+            $sql2 = "CALL spInsertReservas($fechaReserva, $fechaReservada, $rango, 30, $idUsuario,12)";
+            if ($this->link->query($sql2)>=1) // insert egiten da
+            {
+                return "la reserva se ha insertado con exito";
+            } else {
+                return $sql2;
+            }
+            
 //             if ( $this->link->affected_rows >=1) // delete egiten da
 //             {
 //             $row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
@@ -136,7 +144,7 @@ class reservaModel extends reservaClass
         
         if ($this->link->query($sql)>=1) // insert egiten da
         {
-            return "la reserva se ha insertado con exito";
+            return "la reserva se ha modificado con exito";
         } else {
             return "Fall� la insercion de reserva: (" . $this->link->errno . ") " . $this->link->error;
         }

@@ -16,16 +16,16 @@ if (isset($fechaReservada))
     $reserva->setFechaReservada($fechaReservada);
 }
 
-$horaInicio=filter_input(INPUT_GET,"horaInicio");
-if (isset($horaInicio))
+$rango=filter_input(INPUT_GET,"rango");
+if (isset($rango))
 {
-    $reserva->setHoraInicio($horaInicio);
+    $reserva->setRango($rango);
 }
 
-$horaFin=filter_input(INPUT_GET,"horaFin");
-if (isset($horaFin))
+$precio=filter_input(INPUT_GET,"precio");
+if (isset($precio))
 {
-    $reserva->setHoraFin($horaFin);
+    $reserva->setPrecio($precio);
 }
 
 $idUsuario=filter_input(INPUT_GET,"idUsuario");
@@ -38,7 +38,7 @@ if (isset($idVehiculo))
 {
     $reserva->setIdVehiculo($idVehiculo);
 }
-$resultado=$reserva->insert();
+$resultado=$reserva->comprobarReserva();
 
 echo $resultado;   // pasar a AJAX el resultado
 

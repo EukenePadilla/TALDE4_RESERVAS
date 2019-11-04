@@ -188,13 +188,16 @@ $(".insertU").click(function(){
 		    	        		        </div>	
 		    	        		        	        
 		    	        		        <div class="nombre_vAdminInsertU">
-		    	        		        <label>Hora inicio:</label>
-		    	        		        <input id="horaInicio" type="time" >
-		    	        		        </div>	
-		    	        		        
+											<label for="reservaInputRango">Rango</label>  <select
+											id="rango" class="form-control" name="rango">
+											<option value="1">09:00-12:00</option>
+											<option value="2">13:00-16:00</option>
+											<option value="3">17:00-20:00</option>
+		    	        		        	</select>
+		    	        		        </div>
 		    	        		        <div class="apellido_vAdminInsertU">
-		    	        		        <label>Hora fin:</label>
-		    	        		        <input id="horaFin" type="time" >
+		    	        		        <label>Precio:</label>
+		    	        		        <input id="precio" type="number"  value="30" readonly>
 		    	        		        </div>
 		    	        		        
 		    	        		        <div class="telefono_vAdminInsertU">
@@ -619,11 +622,15 @@ function iniciarRAdmin(){
 		    	        		        <input id="fechaReservada" type="date"  value="`+fechaReservada+`">
 		    	        		        </div>	
 		    	        		        	        
+		    	        		      	
 		    	        		        <div class="nombre_vAdminInsertU">
-		    	        		        <label>Rango:</label>
-		    	        		        <input id="rango" type="number"  value="`+rango+`">
-		    	        		        </div>	
-		    	        		        
+											<label for="reservaInputRango">Rango</label>  <select
+											id="rango" class="form-control" name="rango">
+											<option value="1">09:00-12:00</option>
+											<option value="2">13:00-16:00</option>
+											<option value="3">17:00-20:00</option>
+		    	        		        	</select>
+		    	        		        </div>
 		    	        		        <div class="apellido_vAdminInsertU">
 		    	        		        <label>Precio:</label>
 		    	        		        <input id="precio" type="number"  value="`+precio+`" readonly>
@@ -743,21 +750,23 @@ function insertarUsuario() {
 
 function insertarReserva() {
 	var fechaReserva=$("#fechaReserva").val();
+	
 	var fechaReservada=$("#fechaReservada").val();
-	var horaInicio=$("#horaInicio").val();
-	var horaFin=$("#horaFin").val();
+	var rango=$("#rango").val();
+	var precio=$("#precio").val();
 	var idUsuario=$("#idUsuario").val();
 	var idVehiculo=$("#idVehiculo").val();
 	
 	$.ajax({
 	 	type: "GET",
-	 	data:{'fechaReserva':fechaReserva , 'fechaReservada':fechaReservada , 'horaInicio':horaInicio, 'horaFin':horaFin , 'idUsuario':idUsuario , 'idVehiculo':idVehiculo },
+	 	data:{'fechaReserva':fechaReserva , 'fechaReservada':fechaReservada , 'rango':rango, 'precio':precio , 'idUsuario':idUsuario , 'idVehiculo':idVehiculo },
 	       	url: "../controller/cInsertReserva.php", 
 
 	       	success: function(result){  
 	       		
 	       		console.log(result);
-	       		location.reload(true);  //recarga la pagina
+	       		alert(result);
+	       		//location.reload(true);  //recarga la pagina
 	       	},
 	       	error : function(xhr) {
 	   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
