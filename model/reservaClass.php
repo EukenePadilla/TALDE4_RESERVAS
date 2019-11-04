@@ -4,10 +4,42 @@ class reservaClass{
     protected $idReserva;
     protected $fechaReserva;
     protected $fechaReservada;
-    protected $horaInicio;
-    protected $horaFin;
+    protected $rango;
+    protected $precio;
     protected $idUsuario;
     protected $idVehiculo;
+    /**
+     * @return mixed
+     */
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
+
+    /**
+     * @param mixed $precio
+     */
+    public function setPrecio($precio)
+    {
+        $this->precio = $precio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRango()
+    {
+        return $this->rango;
+    }
+
+    /**
+     * @param mixed $rango
+     */
+    public function setRango($rango)
+    {
+        $this->rango = $rango;
+    }
+
     /**
      * @return mixed
      */
@@ -35,19 +67,7 @@ class reservaClass{
     /**
      * @return mixed
      */
-    public function getHoraInicio()
-    {
-        return $this->horaInicio;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHoraFin()
-    {
-        return $this->horaFin;
-    }
-
+  
     /**
      * @return mixed
      */
@@ -90,20 +110,7 @@ class reservaClass{
 
     /**
      * @param mixed $horaInicio
-     */
-    public function setHoraInicio($horaInicio)
-    {
-        $this->horaInicio = $horaInicio;
-    }
-
-    /**
-     * @param mixed $horaFin
-     */
-    public function setHoraFin($horaFin)
-    {
-        $this->horaFin = $horaFin;
-    }
-
+   
     /**
      * @param mixed $idUsuario
      */

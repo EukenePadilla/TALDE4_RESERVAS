@@ -38,30 +38,6 @@ class reservaModel extends reservaClass
         mysqli_close ($this->link);
     }
     
-    public function findIdReserva($idReserva)
-    {
-        $this->OpenConnect();
-        $sql = "CALL seleccionarTodasReservas($idReserva)";
-        
-        $result = $this->link->query($sql);
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
-            $nuevoVehiculo->setIdReserva($row['$idReserva']);
-            $nuevoVehiculo->setFechaReserva($row['fechaReserva']);
-            $nuevoVehiculo->setFechaReservada($row['fechaReservada']);
-            $nuevoVehiculo->setHoraInicio($row['horaInicio']);
-            $nuevoVehiculo->setHoraFin($row['horaFin']);
-            $nuevoVehiculo->setIdUsuario($row['idUsuario']);
-            $nuevoVehiculo->setIdVehiculo($row['idVehiculo']);
-            
-            //echo $row['nombreEditorial'];  //ok
-            //  echo $new->getNombreEditorial();  //ok
-        }
-        mysqli_free_result($result);
-        $this->CloseConnect();
-        return $this;
-    }
-    
     public function setList()
     {
         $this->OpenConnect();  // konexioa zabaldu  - abrir conexión
@@ -76,8 +52,8 @@ class reservaModel extends reservaClass
             $nuevoVehiculo->setIdReserva($row['idReserva']);
             $nuevoVehiculo->setFechaReserva($row['fechaReserva']);
             $nuevoVehiculo->setFechaReservada($row['fechaReservada']);
-            $nuevoVehiculo->setHoraInicio($row['horaInicio']);
-            $nuevoVehiculo->setHoraFin($row['horaFin']);
+            $nuevoVehiculo->setRango($row['rango']);
+            $nuevoVehiculo->setPrecio($row['precio']);
             $nuevoVehiculo->setIdUsuario($row['idUsuario']);
             $nuevoVehiculo->setIdVehiculo($row['idVehiculo']);
             
@@ -93,26 +69,32 @@ class reservaModel extends reservaClass
         //         unset($listaLibrosEditorial);
         $this->CloseConnect();
     }
-    public function insert()
+    public function comprobarReserva()
     {
         $this->OpenConnect();
         
         $fechaReserva=$this->getFechaReserva();
         $fechaReservada=$this->getFechaReservada();
-        $horaInicio=$this->getHoraInicio();
-        $horaFin= $this->getHoraFin();
+        $rango=$this->getRango();
+        $precio=30;
         $idUsuario= $this->getIdUsuario();
         $idVehiculo= $this->getIdVehiculo();
-        
-        $sql = "CALL spInsertReservas('$fechaReserva', '$fechaReservada', '$horaInicio', '$horaFin', '$idUsuario', '$idVehiculo')";
+        $sql = "CALL spComprobarReservas('$fechaReservada', '$rango','$idVehiculo')";
+        $row;
+        $resultado = $this->link->query($sql);
         //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
-        
-        if ($this->link->query($sql)>=1) // insert egiten da
+        if ( $this->link->affected_rows >=1) // delete egiten da
         {
-            return "la reserva se ha insertado con exito";
-        } else {
-            return "Fall� la insercion de reserva: (" . $this->link->errno . ") " . $this->link->error;
+            return "Reserva no disponible.";
+        }else{
+            $sql2 = "CALL spInsertReservas('$fechaReserva', '$fechaReservada', '$rango', '$precio', '$idUsuario', '$idVehiculo')";
+            $resultado2 = $this->link->query($sql2);
+            return $sql2;
+//             if ( $this->link->affected_rows >=1) // delete egiten da
+//             {
+//             $row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
         }
+       
         
         $this->CloseConnect();
     }
@@ -141,12 +123,12 @@ class reservaModel extends reservaClass
         $id=$this->getIdReserva();
         $fechaReserva=$this->getFechaReserva();
         $fechaReservada=$this->getFechaReservada();
-        $horaInicio=$this->getHoraInicio();
-        $horaFin= $this->getHoraFin();
+        $rango=$this->getRango();
+        $precio= $this->getPrecio();
         $idUsuario= $this->getIdUsuario();
         $idVehiculo= $this->getIdVehiculo();
         
-        $sql = "CALL spUpdateReservas($id,'$fechaReserva', '$fechaReservada', '$horaInicio', '$horaFin', '$idUsuario', '$idVehiculo')";
+        $sql = "CALL spUpdateReservas($id,'$fechaReserva', '$fechaReservada', '$rango', '$precio', '$idUsuario', '$idVehiculo')";
         //$sql = "CALL spInsert('nuevo', 'ssss', 55)";
         
         if ($this->link->query($sql)>=1) // insert egiten da

@@ -70,8 +70,8 @@
          			<th>IDRESERVA</th>
          			<th>FECHA RESERVA</th> 
          			<th>FECHA RESERVADA</th> 
-         			<th>HORA INICIO</th>
-         			<th>HORA FIN</th>
+         			<th>RANGO</th>
+         			<th>PRECIO</th>
          			<th>ID USUARIO</th>
          			<th>ID VEHICULO</th>
          			<th>DELETE</th>

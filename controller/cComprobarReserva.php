@@ -4,12 +4,6 @@ include_once ("../model/reservaModel.php");
 
 $reserva=new reservaModel();
 
-$id=filter_input(INPUT_GET,"id");
-
-if (isset($id))
-{
-    $reserva->setIdReserva($id);
-}
 $fechaReserva=filter_input(INPUT_GET,"fechaReserva");
 if (isset($fechaReserva))
 {
@@ -22,17 +16,18 @@ if (isset($fechaReservada))
     $reserva->setFechaReservada($fechaReservada);
 }
 
+
 $rango=filter_input(INPUT_GET,"rango");
 if (isset($rango))
 {
     $reserva->setRango($rango);
 }
 
-$precio=filter_input(INPUT_GET,"precio");
-if (isset($precio))
-{
-    $reserva->setPrecio($precio);
-}
+// $precio=filter_input(INPUT_GET,"precio");
+// if (isset($precio))
+// {
+//     $reserva->setPrecio($precio);
+// }
 
 $idUsuario=filter_input(INPUT_GET,"idUsuario");
 if (isset($idUsuario))
@@ -44,7 +39,7 @@ if (isset($idVehiculo))
 {
     $reserva->setIdVehiculo($idVehiculo);
 }
-$resultado=$reserva->update();
+$resultado=$reserva->comprobarReserva();
 
 echo $resultado;   // pasar a AJAX el resultado
 

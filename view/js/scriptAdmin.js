@@ -531,24 +531,21 @@ function iniciarRAdmin(){
         type:"JSON",
         url:"../controller/cMostrarReservas.php",
         success: function(datosR){
-
-
+        	
              midatoR=JSON.parse(datosR);
 
-
 			$.each(midatoR,function(i,datoR){
-			
 			
 			            $(".rellenoAdminReserva").append(`<tr>
 			            		<td>`+datoR.idReserva+`</td>            		
 			            		<td>`+datoR.fechaReserva+`</td>
 			            		<td>`+datoR.fechaReservada+`</td>
-			            		<td>`+datoR.horaInicio+`</td>
-			            		<td>`+datoR.horaFin+`</td>
+			            		<td>`+datoR.rango+`</td>
+			            		<td>`+datoR.precio+`</td>
 			            		<td>`+datoR.idUsuario+`</td>
 			            		<td>`+datoR.idVehiculo+`</td>
 			            		<td><button class="deleteR delete_paneles" value="`+datoR.idReserva+`">DELETE</button></td>
-			            		<td><button class="updateR update_paneles" value="`+datoR.idReserva+`||`+datoR.fechaReserva+`||`+datoR.fechaReservada+`||`+datoR.horaInicio+`||`+datoR.horaFin+`||`+datoR.idUsuario+`||`+datoR.idVehiculo+`">UPDATE</button></td>
+			            		<td><button class="updateR update_paneles" value="`+datoR.idReserva+`||`+datoR.fechaReserva+`||`+datoR.fechaReservada+`||`+datoR.rango+`||`+datoR.precio+`||`+datoR.idUsuario+`||`+datoR.idVehiculo+`">UPDATE</button></td>
 			        		</tr>`);
 			            
 			            $(".deleteR").click(function(){
@@ -592,13 +589,19 @@ function iniciarRAdmin(){
 		     			var id=todo[0]; 
 		     			var fechaReserva=todo[1]; 
 		     			var fechaReservada=todo[2]; 
-		     			var horaInicio=todo[3]; 
-		     			var horaFin=todo[4]; 
+		     			var rango=todo[3]; 
+		     			var precio=todo[4]; 
 		     			var idUsuario=todo[5]; 
 		     			var idVehiculo=todo[6]; 
+//		     			
+//		     			fechaReservada=fechaReservada.split("-");
+//		     			fechaReservada=fechaReservada[2]+"-"+fechaReservada[1]+"-"+fechaReservada[0];
+//		     			alert(fechaReservada);
+//		     			fechaReserva=fechaReserva.split("-");
+//		     			fechaReserva=fechaReserva[2]+"-"+fechaReserva[1]+"-"+fechaReserva[0];
+//		     			alert(fechaReserva);
 
-		     			
-		        		$(".paneles").hide(800);
+		     			$(".paneles").hide(800);
 		        		$(".encabezado_vAdmin").hide(800);
 		        		$("body").css("background-color", "	#abcdef");
 
@@ -617,13 +620,13 @@ function iniciarRAdmin(){
 		    	        		        </div>	
 		    	        		        	        
 		    	        		        <div class="nombre_vAdminInsertU">
-		    	        		        <label>Hora inicio:</label>
-		    	        		        <input id="horaInicio" type="time"  value="`+horaInicio+`">
+		    	        		        <label>Rango:</label>
+		    	        		        <input id="rango" type="number"  value="`+rango+`">
 		    	        		        </div>	
 		    	        		        
 		    	        		        <div class="apellido_vAdminInsertU">
-		    	        		        <label>Hora fin:</label>
-		    	        		        <input id="horaFin" type="time"  value="`+horaFin+`">
+		    	        		        <label>Precio:</label>
+		    	        		        <input id="precio" type="number"  value="`+precio+`" readonly>
 		    	        		        </div>
 		    	        		        
 		    	        		        <div class="telefono_vAdminInsertU">
@@ -647,14 +650,14 @@ function iniciarRAdmin(){
 		    		        		var id=$(this).attr("id"); 
 		    		        		var fechaReserva=$("#fechaReserva").val();
 		    		        		var fechaReservada=$("#fechaReservada").val();
-		    		        		var horaInicio=$("#horaInicio").val();
-		    		        		var horaFin=$("#horaFin").val();
+		    		        		var rango=$("#rango").val();
+		    		        		var precio=$("#precio").val();
 		    		        		var idUsuario=$("#idUsuario").val();
 		    		        		var idVehiculo=$("#idVehiculo").val();
 		    		        		
 		    		        		$.ajax({
 		    		        		 	type: "GET",
-		    		        		 	data:{'id':id,'fechaReserva':fechaReserva , 'fechaReservada':fechaReservada , 'horaInicio':horaInicio, 'horaFin':horaFin , 'idUsuario':idUsuario , 'idVehiculo':idVehiculo },
+		    		        		 	data:{'id':id,'fechaReserva':fechaReserva , 'fechaReservada':fechaReservada , 'rango':rango, 'precio':precio , 'idUsuario':idUsuario , 'idVehiculo':idVehiculo },
 		    		     		       	url: "../controller/cUpdateReserva.php", 
 
 		    		     		       	success: function(result){  

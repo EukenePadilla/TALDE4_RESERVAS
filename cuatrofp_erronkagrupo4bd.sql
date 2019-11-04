@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2019 a las 20:42:32
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 5.6.38
+-- Tiempo de generación: 04-11-2019 a las 12:46:16
+-- Versión del servidor: 10.4.8-MariaDB
+-- Versión de PHP: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,6 +29,9 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spComprobarNickname` (IN `pUsuario` VARCHAR(30))  NO SQL
 select * from usuarios where usuarios.usuario=pUsuario$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spComprobarReservas` (IN `pFechaReservada` VARCHAR(40), IN `pRango` INT, IN `pIdVehiculo` INT)  NO SQL
+select * from reservas where reservas.fechaReservada=pFechaReservada && reservas.idVehiculo=pIdVehiculo && reservas.rango = pRango$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spComprobarUser` (IN `spUsuario` VARCHAR(40), IN `spContrasena` VARCHAR(40))  NO SQL
 select * from usuarios where usuarios.usuario=spUsuario and usuarios.contrasena=spContrasena$$
 
@@ -44,8 +47,8 @@ DELETE FROM vehiculos WHERE vehiculos.idVehiculo = pidVehiculo$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spFindUsuario` (IN `pid` INT)  NO SQL
 select * from usuarios where usuarios.idUsuario=pid$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertReservas` (IN `pFechaReserva` VARCHAR(30), IN `pFechaReservada` VARCHAR(30), IN `pHoraInicio` VARCHAR(15), IN `pHoraFin` VARCHAR(15), IN `pIdUsuario` INT, IN `pIdVehiculo` INT)  NO SQL
-INSERT INTO reservas (reservas.fechaReserva, reservas.fechaReservada, reservas.horaInicio, reservas.horaFin, reservas.idUsuario, reservas.idVehiculo) VALUES (pFechaReserva, pFechaReservada, pHoraInicio, pHoraFin, pIdUsuario, pIdVehiculo)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertReservas` (IN `pFechaReserva` VARCHAR(30), IN `pFechaReservada` VARCHAR(30), IN `pRango` INT, IN `pPrecio` DOUBLE, IN `pIdUsuario` INT, IN `pIdVehiculo` INT)  NO SQL
+INSERT INTO reservas (reservas.fechaReserva, reservas.fechaReservada, reservas.rango, reservas.precio, reservas.idUsuario, reservas.idVehiculo) VALUES (pFechaReserva, pFechaReservada, pRango, pPrecio, pIdUsuario, pIdVehiculo)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertUsuario` (IN `pusuario` VARCHAR(40), IN `pcontrasena` VARCHAR(40), IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` VARCHAR(40))  NO SQL
 INSERT INTO usuarios (usuarios.usuario, usuarios.contrasena, usuarios.nombre, usuarios.apellido, usuarios.telefono, usuarios.dni, usuarios.tipo) VALUES (pusuario,pcontrasena,pnombre, papellido, ptelefono, pdni, ptipo)$$
@@ -65,8 +68,8 @@ SELECT * FROM `vehiculos` order by vehiculos.tipo$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSelectTipos` ()  NO SQL
 SELECT DISTINCT vehiculos.tipo FROM vehiculos$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateReservas` (IN `pIdReserva` INT, IN `pFechaReserva` VARCHAR(30), IN `pFechaReservada` VARCHAR(30), IN `pHoraInicio` VARCHAR(15), IN `pHoraFin` VARCHAR(15), IN `pIdUsuario` INT, IN `pIdVehiculo` INT)  NO SQL
-UPDATE `reservas` SET `idReserva`=pIdReserva,`fechaReserva`=pFechaReserva,`fechaReservada`=pFechaReservada,`horaInicio`=pHoraInicio,`horaFin`=pHoraFin,`idUsuario`=pIdUsuario,`idVehiculo`=pIdVehiculo WHERE `idReserva`=pIdReserva$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateReservas` (IN `pIdReserva` INT, IN `pFechaReserva` VARCHAR(30), IN `pFechaReservada` VARCHAR(30), IN `pRango` INT, IN `pPrecio` DOUBLE, IN `pIdUsuario` INT, IN `pIdVehiculo` INT)  NO SQL
+UPDATE `reservas` SET `idReserva`=pIdReserva,`fechaReserva`=pFechaReserva,`fechaReservada`=pFechaReservada,`rango`=pRango,`precio`=pPrecio,`idUsuario`=pIdUsuario,`idVehiculo`=pIdVehiculo WHERE `idReserva`=pIdReserva$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUsuario` (IN `pidUsuario` INT(11), IN `pusuario` VARCHAR(40), IN `pcontrasena` VARCHAR(40), IN `pnombre` VARCHAR(40), IN `papellido` VARCHAR(80), IN `ptelefono` VARCHAR(12), IN `pdni` VARCHAR(9), IN `ptipo` INT(1))  NO SQL
 UPDATE `usuarios` SET `usuario`=pusuario,`contrasena`=pcontrasena,`nombre`=pnombre,`apellido`=papellido,`telefono`=ptelefono,`dni`=pdni,`tipo`=ptipo WHERE usuarios.idUsuario=pidUsuario$$
@@ -86,8 +89,8 @@ CREATE TABLE `reservas` (
   `idReserva` int(11) NOT NULL,
   `fechaReserva` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fechaReservada` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `horaInicio` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `horaFin` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rango` int(11) NOT NULL,
+  `precio` double NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `idVehiculo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -96,9 +99,11 @@ CREATE TABLE `reservas` (
 -- Volcado de datos para la tabla `reservas`
 --
 
-INSERT INTO `reservas` (`idReserva`, `fechaReserva`, `fechaReservada`, `horaInicio`, `horaFin`, `idUsuario`, `idVehiculo`) VALUES
-(13, '2019-10-31', '2019-11-07', '03:59', '04:59', 1, 10),
-(15, '2019-10-31', '2023-05-18', '00:00', '05:00', 2, 2);
+INSERT INTO `reservas` (`idReserva`, `fechaReserva`, `fechaReservada`, `rango`, `precio`, `idUsuario`, `idVehiculo`) VALUES
+(13, '2019-10-31', '2019-11-07', 1, 30, 1, 10),
+(15, '2019-10-31', '2023-05-18', 1, 30, 2, 2),
+(17, '2019-11-07', '2019-11-07', 2, 30, 1, 11),
+(18, '2019-11-20', '2019-11-20', 2, 30, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -195,7 +200,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

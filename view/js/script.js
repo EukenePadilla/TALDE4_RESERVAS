@@ -197,7 +197,7 @@ $(document).ready(function(){
 */
 		            localStorage.setItem("usuario", JSON.stringify(userdata[0]));
 		            alert(JSON.stringify(userdata[0]));
-		            //location.reload(true);
+		            location.reload(true);
 
 		        },
 		        error: function(xhr){
@@ -379,25 +379,22 @@ function iniciar_reservas(){
              $(".reservar").click(function(){
            		$fReserva =$("#reservaInputreserva").val();
                	$fReservada =$("#reservaInputreservada").val();
-               	$hInicio =$("#reservaInputInicio").val();
-               	$hFinal =$("#reservaInputFin").val();
+               	$rango =$("#reservaInputRango").val();
                	
                	var $idUsuario = 1;
-               	alert(idVehiculo + " idvehiculo" + 
-               			$idUsuario + " idUsuario" +
-               			$fReserva +" reserva" + 
-               			$fReservada +" reservada" + 
-               			$hInicio+ " inicio" +
-               			$hFinal +" final");
+               	alert(idVehiculo + " -> idvehiculo ||" + 
+               			$idUsuario + " ->  idUsuario  || " +
+               			$fReserva +" ->  reserva || " + 
+               			$fReservada +" ->  reservada  || " + 
+               			$rango+ " ->  rango || ");
 //               	alert($idUsuario + " idusuario");
-               	
                	$.ajax({
            			
            		 	type:"GET",
            	        data:{'fechaReserva':$fReserva,'fechaReservada':$fReservada ,
-           	        	'horaInicio':$hInicio , 'horaFin':$hFinal,
+           	        	'rango':$rango,
            	        	'idUsuario':$idUsuario, 'idVehiculo':idVehiculo },
-           	        url:"controller/cInsertReserva.php",
+           	        url:"controller/cComprobarReserva.php",
            	        success: function(result){
            	        	console.log(result);
            		 		alert(result);
@@ -410,6 +407,7 @@ function iniciar_reservas(){
 
 
            	});
+             
            	});
         },
         error: function(xhr){

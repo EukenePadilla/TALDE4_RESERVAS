@@ -115,7 +115,7 @@ class userModel extends userClass
 //             return $Usuario;
             return $row;
         } else {
-            return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
+            return "Fall� la borrada del libro: (" . $this->link->errno . ") " . $this->link->error;
         }
        
         } 

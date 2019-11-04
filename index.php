@@ -82,7 +82,7 @@ print_r($_SESSION);
 										placeholder="Contraseña...">
 								</div>
 							</div>
-							<button type="submit" class="btn btn-primary btn-block"
+							<button type="button" class="btn btn-primary btn-block"
 								id="iniciar_sesion">Iniciar Sesion</button>
 						</form>
 					</div>
@@ -185,14 +185,12 @@ print_r($_SESSION);
 										placeholder="Fecha Reservada...">
 								</div>
 								<div class="form-group col-md-5">
-									<label for="reservaInputInicio">Hora Inicio</label> <input
-										type="time" class="form-control" id="reservaInputInicio"
-										placeholder="Hora Inicio...">
-								</div>
-								<div class="form-group col-md-5">
-									<label for="reservaInputFin">Hora Final</label> <input
-										type="time" class="form-control" id="reservaInputFin"
-										placeholder="Hora Final...">
+									<label for="reservaInputRango">Rango</label>  <select
+										id="reservaInputRango" class="form-control" name="rango">
+										<option value="1">09:00-12:00</option>
+										<option value="2">13:00-16:00</option>
+										<option value="3">17:00-20:00</option>
+									</select>
 								</div>
 							</div>
 							<button type="button" class="btn btn-primary btn-block reservar"
