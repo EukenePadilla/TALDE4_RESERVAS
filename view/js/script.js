@@ -303,7 +303,7 @@ function iniciar_frontal(){
                  $.each(midato,function(i,dato){
                 	 if(m!=dato.tipo){
                 		 m=dato.tipo;
-                		 $(".frontal_container").append(`<div class="mx-auto col-3 text-center">
+                		 $(".frontal_container").append(`<div class="mx-auto col-lg-3 col-sm-5   text-center">
                                  <a href="index.html#`+dato.tipo.toLowerCase()+`"><div class="card card_frontal" >
                                          
                                      <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">
@@ -355,7 +355,7 @@ function iniciar_reservas(){
                  $.each(midato,function(i,dato){
 //                	 alert("each con datos"+mota);
                 	 if(mota==dato.tipo.toLowerCase()){
-                	 $("."+mota).append(`<div class="card mx-auto col-2 cards_reserva" >
+                	 $("."+mota).append(`<div class="card mx-auto col-lg-2 col-sm-5 mb-4 mt-4 cards_reserva" >
                 	 <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">
                 	  		  <div class="card-body">
                 	           <p class="card-text">

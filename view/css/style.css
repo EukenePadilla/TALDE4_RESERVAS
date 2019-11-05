@@ -296,3 +296,12 @@ font-size:20px;
     grid-template-columns: 1fr;
 }
 /* Esto se aplica para la vista vAdmin.php */
+
+/* MEDIA QUERY*/
+@media (min-width: 900px) { 
+	
+	.paneles{
+	text-align:center;
+	font-size: 40px;
+	}
+}
