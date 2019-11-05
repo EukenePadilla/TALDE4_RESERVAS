@@ -92,13 +92,15 @@ class reservaModel extends reservaClass
         {
             return "Reserva no disponible.";
         }else{
+            $this->CloseConnect();
+            $this->OpenConnect();
             
-            $sql2 = "CALL spInsertReservas($fechaReserva, $fechaReservada, $rango, 30, $idUsuario,12)";
+            $sql2 = "CALL spInsertReservas($fechaReserva, $fechaReservada, $rango, $precio, $idUsuario,$idVehiculo)";
             if ($this->link->query($sql2)>=1) // insert egiten da
             {
                 return "la reserva se ha insertado con exito";
             } else {
-                return $sql2;
+                return "Fall� la borrado del libro: (" . $this->link->errno . ") " . $this->link->error;
             }
             
 //             if ( $this->link->affected_rows >=1) // delete egiten da
