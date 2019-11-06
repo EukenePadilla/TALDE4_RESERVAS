@@ -81,7 +81,7 @@
         	        		
     	</div>
     </div>
-    <div  class="paneles" style="margin-top:50px;"><a href="../index.php"><button class="boton_atras_vAdminV ">GO INDEX</button></a></div>
+    <div  class="paneles" style="margin-top:50px;"><a href="../index.html"><button class="boton_atras_vAdminV ">GO INDEX</button></a></div>
    
     <div class="insertarAdmin"></div>  
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"

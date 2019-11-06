@@ -308,7 +308,7 @@ function iniciar_frontal(){
                                          
                                      <img src="`+dato.img+`" class="card-img-top" alt="`+dato.img+`">
                                      <div class="card-body">
-                                         <a href="index.html#`+dato.tipo.toLowerCase()+`" class="btn btn-primary btn-block">`+dato.tipo+`</a></a>
+                                         <a href="index.html#`+dato.tipo.toLowerCase()+`" class="btn btn-primary btn-block">`+dato.tipo+`</a>
                                      </a>
                                  </div>
                          </div>
