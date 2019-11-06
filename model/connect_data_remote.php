@@ -1,11 +1,11 @@
 <?php
 
 
-class connect_data_remote
+class connect_data
 {
     public $host='localhost';
-    public $userbbdd='cuatrofp_eder';
-    public $passbbdd='2aw3ikaslea';
-    public $ddbbname='cuatrofp_erronkagrupo4bd';
+    public $userbbdd='cuatrofp_edert4';
+    public $passbbdd='tukeplayer@gmail.com';
+    public $ddbbname='cuatrofp_prueba_fp4';
 }
 
