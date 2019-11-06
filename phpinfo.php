@@ -1,6 +1,6 @@
 <?php
 
-phpinfo();
+ phpinfo();
 
-
+ //esto es cuando si funciona
 ?>

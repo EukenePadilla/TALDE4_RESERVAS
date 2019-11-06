@@ -1,7 +1,7 @@
 <?php
 
 
-class connect_data
+class connect_data_local
 {
     public $host='localhost';
     public $userbbdd='root';

@@ -1,9 +1,9 @@
 <?php
-// if($_SERVER['SERVER_NAME']=="cuatro.fpz1920.com"){
+if($_SERVER['SERVER_NAME']=="cuatro.fpz1920.com"){
     include_once ("connect_data_remote.php");
-// }else{
-//     include_once ("connect_data_local.php");
-// }
+}else{
+    include_once ("connect_data_local.php");
+}
 
 include_once ("userClass.php");
 include_once ("reservaModel.php");
@@ -30,7 +30,7 @@ class userModel extends userClass
     
     public function OpenConnect()
     {
-        $konDat=new connect_data();
+        $konDat=new connect_data_local();
         try
         {
             $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);
