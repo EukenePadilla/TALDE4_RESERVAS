@@ -298,15 +298,15 @@ font-size:20px;
 /* Esto se aplica para la vista vAdmin.php */
 
 /* MEDIA QUERY*/
-@media (min-width: 900px) { 
+@media (max-width: 991px) { 
 	
 	.paneles{
 	text-align:center;
-	font-size: 20px;
+	font-size: 50px!important;
 	}
 	
 	td{
-		font-size: 30px;
+		font-size: 30px!important;
 	}
 	
 	a{		
