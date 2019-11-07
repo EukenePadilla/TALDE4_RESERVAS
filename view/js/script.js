@@ -167,7 +167,6 @@ function registrasUsuarioNuevo(todosUser){
 function iniciar_frontal(){
 //	alert("frontal");
 	$.ajax({
-        type:"JSON",
         url:"controller/cIndex.php",
         success: function(datos){
 /*            alert(datos);
@@ -213,7 +212,6 @@ function iniciar_frontal(){
 function iniciar_reservas(){
 //	alert("reservas");
 	$.ajax({
-        type:"JSON",
         url:"controller/cIndex.php",
         success: function(datos){
 /*            alert(datos);

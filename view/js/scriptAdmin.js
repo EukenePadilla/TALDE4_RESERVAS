@@ -239,7 +239,7 @@ $(".insertU").click(function(){
 
 function iniciarVAdmin(){
 	$.ajax({
-        type:"JSON",
+       
         url:"../controller/cMostrarVehiculos.php",
         success: function(datosV){
 /*
@@ -375,7 +375,7 @@ function iniciarVAdmin(){
 
 function iniciarUAdmin(){
 	$.ajax({
-        type:"JSON",
+        
         url:"../controller/cMostrarUsers.php",
         success: function(datosU){
 
@@ -531,7 +531,7 @@ function iniciarUAdmin(){
 
 function iniciarRAdmin(){
 	$.ajax({
-        type:"JSON",
+        
         url:"../controller/cMostrarReservas.php",
         success: function(datosR){
         	
