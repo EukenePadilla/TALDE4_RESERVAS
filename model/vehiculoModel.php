@@ -21,7 +21,7 @@ class vehiculoModel extends vehiculoClass
     
     public function OpenConnect()
     {
-        $konDat=new connect_data_local();
+        $konDat=new connect_data();
         try
         {
             $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);
