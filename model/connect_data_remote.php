@@ -4,8 +4,8 @@
 class connect_data_remote
 {
     public $host='localhost';
-    public $userbbdd='cuatrofp_eder';
-    public $passbbdd='2aw3ikaslea';
-    public $ddbbname='cuatrofp_erronkagrupo4bd';
+    public $userbbdd='cuatrofp_talde4';
+    public $passbbdd='ederlandaluze@gmail.com';
+    public $ddbbname='cuatrofp_bdserver';
 }
 
